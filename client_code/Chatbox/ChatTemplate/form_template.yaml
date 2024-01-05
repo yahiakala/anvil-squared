@@ -1,0 +1,45 @@
+is_package: true
+container: {type: ColumnPanel}
+components:
+- name: cp_chat
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'OCHCLD,NVYNPV'}
+  components:
+  - name: fp_chat
+    properties: {}
+    type: FlowPanel
+    layout_properties: {grid_position: 'STZDFZ,TIYCFQ'}
+    components:
+    - name: lbl_message
+      properties: {}
+      type: Label
+      data_bindings:
+      - {property: text, code: 'self.item[''text'']', writeback: false}
+      - {property: foreground, code: '''#333333'' if self.item[''from''] == ''bot''
+          else ''white''', writeback: false}
+      - {property: role, code: '"bot-message" if self.item[''from''] == "bot" else
+          "message"', writeback: false}
+    - name: link_loading
+      properties: {visible: false}
+      type: Link
+      layout_properties: {}
+    data_bindings:
+    - {property: align, code: '"left" if self.item[''from''] == "bot" else "right"',
+      writeback: false}
+  - name: fp_sources
+    properties: {visible: false}
+    type: FlowPanel
+    layout_properties: {grid_position: 'EMKVXK,IRYQVO'}
+    components:
+    - name: fp_source_message
+      properties: {}
+      type: FlowPanel
+      components:
+      - name: lbl_source_message
+        properties: {text: 'Learn more: '}
+        type: Label
+        layout_properties: {}
+    - name: fp_source_links
+      properties: {}
+      type: FlowPanel

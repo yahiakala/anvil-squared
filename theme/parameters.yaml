@@ -49,6 +49,8 @@ roles:
   components: [TextBox, TextArea, DatePicker, DropDown]
 - name: input-error
   components: [TextBox, TextArea, DatePicker, DropDown]
+- {name: message}
+- {name: bot-message}
 color_scheme:
   preset_groups:
   - name: Colour Scheme

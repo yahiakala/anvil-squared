@@ -1041,6 +1041,7 @@ div.plot-container.plotly svg.main-svg {
     --anvil-spinner-bg: %color:Surface Variant%;
 }
 
+/* YK Additions */
 /* Footer */
 .footer {
     position: fixed;
@@ -1086,4 +1087,45 @@ footer a, .footer .anvil-component {
 }
 .footer a .link-text {
     padding: 0 4px;
+}
+
+/* Chat Bubbles */
+.anvil-role-message, .anvil-role-bot-message {
+    background-color: #4285f4;
+    padding: 0px 10px 0px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.anvil-role-bot-message {
+    background-color: #f0f0f0 !important;
+    color: #333333 !important;
+}
+
+/* Input Textbox */
+.anvil-role-no-underline-textbox .form-control {
+    background-image: none !important;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    /*     background: #FFFFFF !important; */
+    background: red;
+}
+
+.anvil-role-no-underline-textbox .form-control:focus {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    /*     background: #FFFFFF !important; */
+}
+
+/*chat input */
+input.anvil-component,
+input.anvil-component:hover,
+input.anvil-component:focus {
+    padding-bottom: 2px !important;
+}
+
+input.form-control.to-disable.anvil-text-box.align-left.anvil-spacing-above-small.anvil-spacing-below-small.anvil-component.anvil-role-no-underline-textbox{
+    font-size: 16px !important;
 }

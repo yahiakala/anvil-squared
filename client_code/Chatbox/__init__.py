@@ -6,4 +6,10 @@ class Chatbox(ChatboxTemplate):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
-        # Any code you write here will run before the form opens.
+        # Example data
+        self.message_history = [
+            {'from': 'bot', 'text': 'Hi, how can I help you?'},
+            {'from': 'user', 'text': 'How do I do this thing?'},
+            {'from': 'bot', 'text': "Well that's easy. Just push the button."}
+        ]
+        self.rp_chatbubbles.items = self.message_history
