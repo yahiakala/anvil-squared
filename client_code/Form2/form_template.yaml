@@ -1,5 +1,0 @@
-container:
-  type: HtmlTemplate
-  properties: {html: '@theme:chatbox.html'}
-components: []
-is_package: true
