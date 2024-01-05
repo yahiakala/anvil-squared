@@ -20,6 +20,8 @@ components:
           else ''white''', writeback: false}
       - {property: role, code: '"bot-message" if self.item[''from''] == "bot" else
           "message"', writeback: false}
+      - {property: background, code: '''#f0f0f0'' if self.item[''from''] == ''bot''
+          else self.primary', writeback: false}
     - name: link_loading
       properties: {visible: false}
       type: Link

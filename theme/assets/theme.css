@@ -1091,17 +1091,9 @@ footer a, .footer .anvil-component {
 
 /* Chat Bubbles */
 .anvil-role-message, .anvil-role-bot-message {
-    background-color: %color:Primary%;
     padding: 0px 10px 0px 10px;
     border-radius: 10px;
-    font-size: 14px;
 }
-
-.anvil-role-bot-message {
-    background-color: #f0f0f0 !important;
-    color: #333333 !important;
-}
-
 
 /* New 'naked' role for text areas, text boxes, drop downs and date pickers */
 textarea.anvil-component.anvil-role-naked, input.anvil-component.anvil-role-naked, 

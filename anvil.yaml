@@ -4,9 +4,9 @@ services:
   client_config: {}
   server_config: {}
 startup: {type: form, module: Chatbox}
-package_name: Chatbox2
+package_name: Chatbox
 allow_embedding: false
-name: Chatbox2
+name: Chatbox
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 startup_form: null
 renamed: true
