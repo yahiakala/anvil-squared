@@ -1091,14 +1091,14 @@ footer a, .footer .anvil-component {
 
 /* Chat Bubbles */
 .anvil-role-message, .anvil-role-bot-message {
-    background-color: #4285f4;
+    background-color: %color:Primary%;
     padding: 0px 10px 0px 10px;
     border-radius: 10px;
     font-size: 14px;
 }
 
 .anvil-role-bot-message {
-    background-color: %color:Primary% !important;
+    background-color: #f0f0f0 !important;
     color: #333333 !important;
 }
 
