@@ -51,6 +51,7 @@ roles:
   components: [TextBox, TextArea, DatePicker, DropDown]
 - {name: message}
 - {name: bot-message}
+- {name: no-underline-textbox}
 color_scheme:
   preset_groups:
   - name: Colour Scheme

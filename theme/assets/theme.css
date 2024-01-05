@@ -1103,6 +1103,14 @@ footer a, .footer .anvil-component {
 }
 
 /* Input Textbox */
+input.anvil-role-no-underline-textbox {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    border-bottom: none;
+    /*     background: #FFFFFF !important; */
+}
+
 .anvil-role-no-underline-textbox .form-control {
     background-image: none !important;
     border: none;
@@ -1116,6 +1124,7 @@ footer a, .footer .anvil-component {
     border: none;
     box-shadow: none;
     outline: none;
+    border-bottom: none;
     /*     background: #FFFFFF !important; */
 }
 

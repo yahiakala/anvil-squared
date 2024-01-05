@@ -21,7 +21,7 @@ components:
   layout_properties: {slot: footer-slot}
   components:
   - name: tb_input
-    properties: {}
+    properties: {role: no-underline-textbox}
     type: TextBox
     layout_properties: {expand: true}
   - name: btn_send
