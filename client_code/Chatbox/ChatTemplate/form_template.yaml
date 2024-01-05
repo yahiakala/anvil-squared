@@ -16,8 +16,8 @@ components:
       type: Label
       data_bindings:
       - {property: text, code: 'self.item[''text'']', writeback: false}
-      - {property: foreground, code: '''#333333'' if self.item[''from''] == ''bot''
-          else ''white''', writeback: false}
+      - {property: foreground, code: 'self. if self.item[''from''] == ''bot'' else
+          ''white''', writeback: false}
       - {property: role, code: '"bot-message" if self.item[''from''] == "bot" else
           "message"', writeback: false}
     - name: link_loading

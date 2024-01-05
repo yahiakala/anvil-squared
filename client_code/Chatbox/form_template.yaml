@@ -10,23 +10,28 @@ components:
   - name: rp_chatbubbles
     properties: {item_template: Chatbox.ChatTemplate}
     type: RepeatingPanel
-    layout_properties: {grid_position: 'YOFLLJ,VDHPBQ'}
+    layout_properties: {grid_position: 'GVKUMJ,HANFIW YOFLLJ,VDHPBQ'}
   - name: btn_flag
     properties: {text: '', visible: true, icon: 'fa:flag', align: left}
     type: Button
     layout_properties: {grid_position: 'BOJFJV,TXAVLM'}
-- name: fp_input
-  properties: {vertical_align: middle, border: '', background: 'theme:Surface Variant',
-    role: round-flow-panel}
-  type: FlowPanel
+- name: cp_footer
+  properties: {}
+  type: ColumnPanel
   layout_properties: {slot: footer-slot}
   components:
-  - name: tb_input
-    properties: {role: naked}
-    type: TextBox
-    layout_properties: {expand: true}
-  - name: btn_send
-    properties: {text: '', icon: 'fa:send'}
-    type: Button
-    layout_properties: {}
+  - name: fp_input
+    properties: {vertical_align: middle, border: '', background: 'theme:Surface Variant',
+      role: round-flow-panel}
+    type: FlowPanel
+    layout_properties: {grid_position: 'VWLIGT,YFKBXQ'}
+    components:
+    - name: tb_input
+      properties: {role: naked}
+      type: TextBox
+      layout_properties: {expand: true}
+    - name: btn_send
+      properties: {text: '', icon: 'fa:send'}
+      type: Button
+      layout_properties: {}
 is_package: true

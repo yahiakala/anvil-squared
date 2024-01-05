@@ -1098,7 +1098,7 @@ footer a, .footer .anvil-component {
 }
 
 .anvil-role-bot-message {
-    background-color: #f0f0f0 !important;
+    background-color: %color:Primary% !important;
     color: #333333 !important;
 }
 
@@ -1117,7 +1117,7 @@ input.anvil-component.anvil-role-naked:hover, input.anvil-component.anvil-role-n
     box-shadow: none;
     outline: none;
     border-bottom: none;
-    padding: 2px;
+    padding: 5px 2px 0px 2px;
 }
 
 /* Custom Flow Panel */
