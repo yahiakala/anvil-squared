@@ -1117,4 +1117,12 @@ input.anvil-component.anvil-role-naked:hover, input.anvil-component.anvil-role-n
     padding: 0px 0px 0px 15px; 
     border-radius: 5px; 
     border: 1px solid #bcbcc3;
+    margin-bottom: 0 !important;
+}
+
+.anvil-role-richtext-powered, input.anvil-component.anvil-role-richtext-powered > * {
+  padding: 0 !important;
+  margin: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }

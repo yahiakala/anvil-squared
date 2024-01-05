@@ -54,6 +54,7 @@ roles:
 - {name: no-underline-textbox}
 - {name: naked}
 - {name: round-flow-panel}
+- {name: richtext-powered}
 color_scheme:
   preset_groups:
   - name: Colour Scheme
