@@ -52,6 +52,8 @@ roles:
 - {name: message}
 - {name: bot-message}
 - {name: no-underline-textbox}
+- {name: naked}
+- {name: round-flow-panel}
 color_scheme:
   preset_groups:
   - name: Colour Scheme

@@ -16,12 +16,13 @@ components:
     type: Button
     layout_properties: {grid_position: 'BOJFJV,TXAVLM'}
 - name: fp_input
-  properties: {vertical_align: middle, border: ''}
+  properties: {vertical_align: middle, border: '', background: 'theme:Surface Variant',
+    role: round-flow-panel}
   type: FlowPanel
   layout_properties: {slot: footer-slot}
   components:
   - name: tb_input
-    properties: {role: no-underline-textbox}
+    properties: {role: naked}
     type: TextBox
     layout_properties: {expand: true}
   - name: btn_send

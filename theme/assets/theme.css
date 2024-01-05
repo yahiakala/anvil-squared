@@ -1050,8 +1050,8 @@ div.plot-container.plotly svg.main-svg {
     width: 100%;
     font-size: 20px;
     font-weight: 500;
-    background-color:  #fafafa;
-    color: #fafafa;
+    /*background-color:  #fafafa;*/
+    /*color: #fafafa;*/
     min-height: 40px; /* yk */
     text-align: center;
     padding: 0 10px 0 10px; /* yk */
@@ -1102,39 +1102,27 @@ footer a, .footer .anvil-component {
     color: #333333 !important;
 }
 
-/* Input Textbox */
-input.anvil-role-no-underline-textbox {
+
+/* New 'naked' role for text areas, text boxes, drop downs and date pickers */
+textarea.anvil-component.anvil-role-naked, input.anvil-component.anvil-role-naked, 
+.anvil-component.anvil-role-naked select, .anvil-datepicker.anvil-role-naked input,
+textarea.anvil-component.anvil-role-naked:hover, textarea.anvil-component.anvil-role-naked:focus, 
+input.anvil-component.anvil-role-naked:hover, input.anvil-component.anvil-role-naked:focus,
+.anvil-component.anvil-role-naked select:hover, .anvil-component.anvil-role-naked select:focus,
+.anvil-datepicker.anvil-role-naked input:hover, .anvil-datepicker.anvil-role-naked input:focus {
+    background-color: transparent;
     border: none;
+    border-radius: none;
+    color: %color:On Surface%;
     box-shadow: none;
     outline: none;
     border-bottom: none;
-    /*     background: #FFFFFF !important; */
+    padding: 2px;
 }
 
-.anvil-role-no-underline-textbox .form-control {
-    background-image: none !important;
-    border: none;
-    box-shadow: none;
-    outline: none;
-    /*     background: #FFFFFF !important; */
-    background: red;
-}
-
-.anvil-role-no-underline-textbox .form-control:focus {
-    border: none;
-    box-shadow: none;
-    outline: none;
-    border-bottom: none;
-    /*     background: #FFFFFF !important; */
-}
-
-/*chat input */
-input.anvil-component,
-input.anvil-component:hover,
-input.anvil-component:focus {
-    padding-bottom: 2px !important;
-}
-
-input.form-control.to-disable.anvil-text-box.align-left.anvil-spacing-above-small.anvil-spacing-below-small.anvil-component.anvil-role-no-underline-textbox{
-    font-size: 16px !important;
+/* Custom Flow Panel */
+.anvil-role-round-flow-panel {
+    padding: 0px 0px 0px 15px; 
+    border-radius: 5px; 
+    border: 1px solid #bcbcc3;
 }
