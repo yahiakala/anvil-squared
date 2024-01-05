@@ -1,8 +1,12 @@
-allow_embedding: false
-package_name: M3_App_1
-name: M3 App 1
-startup_form: Form1
-renamed: true
-runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 dependencies: []
-services: []
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {}
+startup: {type: form, module: Form2}
+package_name: Chatbox2
+allow_embedding: false
+name: Chatbox2
+runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+startup_form: null
+renamed: true
