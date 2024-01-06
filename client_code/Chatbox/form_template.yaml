@@ -27,7 +27,7 @@ components:
     layout_properties: {grid_position: 'VWLIGT,YFKBXQ'}
     components:
     - name: tb_input
-      properties: {role: naked}
+      properties: {role: naked, bold: false}
       type: TextBox
       layout_properties: {expand: true}
     - name: btn_send
@@ -35,9 +35,10 @@ components:
       type: Button
       layout_properties: {}
   - name: rt_poweredby
-    properties: {content: 'Powered by<a href="https://Chatbeaver.ca">ChatBeaver</a>',
+    properties: {content: 'Powered by <a href="https://Chatbeaver.ca">ChatBeaver</a>',
       foreground: black, align: center, font_size: 12, role: richtext-powered, format: restricted_html,
       spacing_above: none, spacing_below: none}
     type: RichText
-    layout_properties: {grid_position: 'XLOCDU,SOTSPR'}
+    layout_properties: {grid_position: 'PHJJUR,NKWPHV'}
+    components: []
 is_package: true
