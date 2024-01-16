@@ -76,8 +76,8 @@ input.anvil-component.anvil-role-naked:hover, input.anvil-component.anvil-role-n
 
 /* Custom Flow Panel */
 .anvil-role-round-flow-panel {
-    padding: 0px 0px 0px 15px; 
-    border-radius: 5px; 
+    padding: 0px 0px 0px 15px;
+    border-radius: 5px;
     border: 1px solid #bcbcc3;
     margin-bottom: 0 !important;
 }
@@ -89,15 +89,45 @@ input.anvil-component.anvil-role-naked:hover, input.anvil-component.anvil-role-n
     """
 )
 
-class Chatbox(ChatboxTemplate):
-    def __init__(self, **properties):
-        # Set Form properties and Data Bindings.
-        self.init_components(**properties)
-
-        # Example data
-        self.message_history = [
+msg_hist = [
             {'from': 'bot', 'text': 'Hi, how can I help you?'},
             {'from': 'user', 'text': 'How do I do this thing?'},
             {'from': 'bot', 'text': "Well that's easy. Just push the button."}
-        ]
-        self.rp_chatbubbles.items = self.message_history
+]
+
+_defaults = {
+    "message_history": msg_hist,
+    "show_branding": True,
+    "brand_message": """Powered by <a href="https://Chatbeaver.ca">Placeholder</a>""",
+}
+
+
+class Chatbox(ChatboxTemplate):
+    def __init__(self, **properties):
+        # Set Form properties and Data Bindings.
+        properties = _defaults | properties
+        self.init_components(**properties)
+
+    @property
+    def message_history(self):
+        return self.rp_chatbubbles.items
+
+    @message_history.setter
+    def message_history(self, value):
+        self.rp_chatbubbles.items = value
+
+    @property
+    def brand_message(self):
+        return self.rt_poweredby.content
+
+    @brand_message.setter
+    def brand_message(self, value):
+        self.rt_poweredby.content = value
+
+    @property
+    def show_branding(self):
+        return self.rt_poweredby.visible
+
+    @show_branding.setter
+    def show_branding(self, value):
+        self.rt_poweredby.visible = value

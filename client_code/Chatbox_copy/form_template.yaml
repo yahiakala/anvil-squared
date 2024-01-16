@@ -42,5 +42,5 @@ components:
     layout_properties: {grid_position: 'PHJJUR,NKWPHV'}
     components: []
 is_package: true
-custom_component: true
+custom_component: false
 toolbox_item: {title: Chatboxx}
