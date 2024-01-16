@@ -11,7 +11,7 @@ if len(url_components) > 1:
 
     query_dict = {}
     for pair in params.split('&'):
-        key, value = pair.split('=')    
+        key, value = pair.split('=')
         query_dict[key] = value
 else:
     pattern = hash
