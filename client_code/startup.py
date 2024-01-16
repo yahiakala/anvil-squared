@@ -9,11 +9,9 @@ from .TemplateForm1 import TemplateForm1
 from .TemplateForm2 import TemplateForm2
 from .TemplateForm3 import TemplateForm3
 
+hash, pattern, dict = routing.get_url_components()
 
-url_dict = routing.get_url_dict()
-print(url_dict)
-anvil.alert(url_dict)
+# Loads the template form
+routing.set_url_hash(pattern)
 
-routing.set_url_hash("", replace_current_url=True)
-
-routing.launch() # I will load the correct template form
+routing.launch()
