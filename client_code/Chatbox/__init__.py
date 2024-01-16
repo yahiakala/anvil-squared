@@ -153,3 +153,14 @@ class Chatbox(ChatboxTemplate):
         else:
             self.fp_input.role = 'solo-flow-panel'
         self.rt_poweredby.visible = value
+
+    @property
+    def input_text(self):
+        return self.tb_input.text
+
+    @input_text.setter
+    def input_text(self, value):
+        self.tb_input.text = value
+
+    def scroll_bottom(self):
+        self.btn_flag.scroll_into_view()
