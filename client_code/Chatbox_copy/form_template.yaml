@@ -9,7 +9,7 @@ events:
 - {name: send_message, default_event: true, description: User pressed enter or hit send}
 - {name: flag_click, description: User clicked the flag}
 toolbox_item: {title: Chatbox}
-custom_component: true
+custom_component: false
 components:
 - name: cp_chatbubbles
   properties: {}
@@ -17,7 +17,7 @@ components:
   layout_properties: {slot: default}
   components:
   - name: rp_chatbubbles
-    properties: {item_template: Chatbox.ChatTemplate}
+    properties: {item_template: Chatbox_copy.ChatTemplate_copy}
     type: RepeatingPanel
     layout_properties: {grid_position: 'GVKUMJ,HANFIW YOFLLJ,VDHPBQ'}
   - name: btn_flag
