@@ -19,6 +19,9 @@ else:
 
 
 anvil.alert(pattern)
-# anvil.alert(query_dict)
+anvil.alert(query_dict)
 
-anvil.open_form('Chatbox')
+if pattern == 'chatbox':
+    anvil.open_form('Chatbox')
+else:
+    anvil.open_form('StandardPage')
