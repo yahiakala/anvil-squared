@@ -82,6 +82,14 @@ input.anvil-component.anvil-role-naked:hover, input.anvil-component.anvil-role-n
     margin-bottom: 0 !important;
 }
 
+.anvil-role-solo-flow-panel {
+    padding: 0px 0px 0px 15px;
+    border-radius: 5px;
+    border: 1px solid #bcbcc3;
+    margin: 1px 1px 10px 1px !important;
+}
+
+
 .anvil-role-richtext-powered, input.anvil-component.anvil-role-richtext-powered > * {
     padding-bottom: 0;
     padding-top: 0;
@@ -130,4 +138,8 @@ class Chatbox(ChatboxTemplate):
 
     @show_branding.setter
     def show_branding(self, value):
+        if value:
+            self.fp_input.role = 'round-flow-panel'
+        else:
+            self.fp_input.role = 'solo-flow-panel'
         self.rt_poweredby.visible = value
