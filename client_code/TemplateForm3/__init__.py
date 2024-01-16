@@ -1,10 +1,10 @@
-from ._anvil_designer import Form1Template
+from ._anvil_designer import TemplateForm3Template
 from anvil import *
 from anvil_extras import routing
 
 
-@routing.route('form1', url_keys=['id'])
-class Form1(Form1Template):
+@routing.template(path="temp3", priority=1, condition=None)
+class TemplateForm3(TemplateForm3Template):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)

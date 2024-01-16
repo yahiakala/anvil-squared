@@ -1,6 +1,9 @@
 from ._anvil_designer import ChatboxTemplate
 from anvil import *
+from anvil_extras import routing
 
+
+@routing.template(path="chatbox", priority=0, condition=None)
 class Chatbox(ChatboxTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.

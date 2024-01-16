@@ -15,6 +15,10 @@ components:
     properties: {text: '', visible: true, icon: 'fa:flag', align: left}
     type: Button
     layout_properties: {grid_position: 'BOJFJV,TXAVLM'}
+  - name: content_panel
+    properties: {visible: false}
+    type: ColumnPanel
+    layout_properties: {grid_position: 'SXYMBE,MILHNC'}
 - name: cp_footer
   properties: {col_spacing: none, spacing_above: none, spacing_below: none, role: richtext-powered}
   type: ColumnPanel
