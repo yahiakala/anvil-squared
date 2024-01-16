@@ -10,9 +10,9 @@ from .TemplateForm2 import TemplateForm2
 from .TemplateForm3 import TemplateForm3
 
 
-url_hash = anvil.get_url_hash()
-print(url_hash)
-anvil.alert(url_hash)
+url_dict = routing.get_url_dict()
+print(url_dict)
+anvil.alert(url_dict)
 
 routing.set_url_hash("", replace_current_url=True)
 
