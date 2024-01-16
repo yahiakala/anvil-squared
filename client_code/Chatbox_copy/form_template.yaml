@@ -31,11 +31,11 @@ components:
       type: TextBox
       layout_properties: {expand: true}
     - name: btn_send
-      properties: {text: '', icon: 'fa:send', align: center}
+      properties: {text: '', icon: 'fa:send'}
       type: Button
       layout_properties: {}
   - name: rt_poweredby
-    properties: {content: 'Powered by <a href="https://Chatbeaver.ca">Blank</a>',
+    properties: {content: 'Powered by <a href="https://Chatbeaver.ca">ChatBeaver</a>',
       foreground: black, align: center, font_size: 12, role: richtext-powered, format: restricted_html,
       spacing_above: none, spacing_below: none}
     type: RichText

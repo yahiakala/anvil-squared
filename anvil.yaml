@@ -1,12 +1,9 @@
-dependencies:
-- dep_id: dep_est0r2d23v6ty
-  version: {dev: false}
-  resolution_hints: {app_id: CVAFGUBPSRFZNPZD, name: anvil_extras, package_name: anvil_extras}
+dependencies: []
 services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {}
-startup: {type: module, module: startup2}
+startup: {type: form, module: Chatbox}
 package_name: Chatbox
 allow_embedding: false
 name: Chatbox
