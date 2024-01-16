@@ -1,0 +1,7 @@
+container: {type: ColumnPanel}
+components:
+- name: image_1
+  properties: {source: _/theme/notalone.png, height: 379}
+  type: Image
+  layout_properties: {grid_position: 'RKFDHV,DGYOZT'}
+is_package: true
