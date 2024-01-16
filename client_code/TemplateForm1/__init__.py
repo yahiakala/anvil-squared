@@ -9,5 +9,5 @@ class TemplateForm1(TemplateForm1Template):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
-        routing.set_url_hash('form1')
+        routing.set_url_hash(url_pattern='form1', url_dict={'id':5})
         # Any code you write here will run before the form opens.
