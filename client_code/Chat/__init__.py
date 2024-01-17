@@ -131,8 +131,9 @@ class Chat(ChatTemplate):
 
     def form_show(self, **event_args):
         """This method is called when the HTML panel is shown on the screen"""
-        self.call_js('setChatHeight')
-        # pass
+        print('showing form')
+        self.call_js('setChatHeight', "300", self.rp_chatbubbles)
+        self.btn_flag.scroll_into_view()
         
     @property
     def message_history(self):

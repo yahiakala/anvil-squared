@@ -55,3 +55,4 @@ components:
 container:
   type: HtmlTemplate
   properties: {html: '@theme:chat.html'}
+  event_bindings: {show: form_show}
