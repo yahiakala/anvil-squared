@@ -1,7 +1,12 @@
 container: {type: ColumnPanel}
 components:
-- name: chatbox_1
-  properties: {}
-  type: form:Chatbox
-  layout_properties: {grid_position: 'PICCFK,BDQDBK'}
+- name: outlined_card_1
+  properties: {role: outlined-card}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'MKWLSW,ZFIBHG'}
+  components:
+  - name: chatbox_1
+    properties: {}
+    type: form:Chatbox
+    layout_properties: {grid_position: 'QBQHGY,QYLXJP'}
 is_package: true
