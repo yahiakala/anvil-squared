@@ -1,5 +1,4 @@
-from ._anvil_designer import ChatboxTemplate
-
+from ._anvil_designer import ChatPageTemplate
 from anvil import HtmlPanel as _HtmlPanel
 from anvil.js import get_dom_node as _get_dom_node
 
@@ -110,7 +109,7 @@ _defaults = {
 }
 
 
-class Chatbox(ChatboxTemplate):
+class ChatPage(ChatPageTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         
