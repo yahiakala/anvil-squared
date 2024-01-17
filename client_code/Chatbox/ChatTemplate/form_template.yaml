@@ -26,10 +26,6 @@ components:
       properties: {visible: false, role: null}
       type: Link
       layout_properties: {}
-    - name: load_icon_1
-      properties: {visible: false}
-      type: form:LoadIcon
-      layout_properties: {width: null, expand: false}
     data_bindings:
     - {property: align, code: '"left" if self.item[''from''] == "bot" else "right"',
       writeback: false}

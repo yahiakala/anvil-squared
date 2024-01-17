@@ -1,18 +1,18 @@
 from ._anvil_designer import ChatTemplateTemplate
 import anvil
 
-from ...utils._component_helpers import _html_injector, _spacing_property
+# from ...utils._component_helpers import _html_injector, _spacing_property
 
 
-_html_injector.css(
-    """
-    .anvil-role-src-link {
-        padding: 0px 10px 0px 10px;
-        border-radius: 20px;
-        font-size: 14px;
-    }
-    """
-)
+# _html_injector.css(
+#     """
+#     .anvil-role-src-link {
+#         padding: 0px 10px 0px 10px;
+#         border-radius: 20px;
+#         font-size: 14px;
+#     }
+#     """
+# )
 
 class ChatTemplate(ChatTemplateTemplate):
     def __init__(self, **properties):
@@ -28,13 +28,12 @@ class ChatTemplate(ChatTemplateTemplate):
                     source='_/theme/loading.gif',
                     role='load-message',
                     width=48,
-                    # height=14
                     display_mode='fill_width'
                 ),
                 slot='img'
             )
             
-        if self.item['from'] == 'bot' and 'sources' in self.item:
+        if 'from' in self.item and self.item['from'] == 'bot' and 'sources' in self.item:
             self.fp_sources.visible = True
             self.src_labels = []
             for i in range(len(self.item['sources'])):
