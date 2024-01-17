@@ -16,4 +16,8 @@ components:
     properties: {text: button_1, role: outlined-button}
     type: Button
     layout_properties: {grid_position: 'HWSQDX,RBDXQX'}
+- name: outlined_card_2
+  properties: {role: outlined-card}
+  type: ColumnPanel
+  layout_properties: {slot: default}
 is_package: true
