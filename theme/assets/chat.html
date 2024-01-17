@@ -6,15 +6,19 @@
     <div class="content">
         <div anvil-slot-repeat="default" class="anvil-measure-this"></div>
         <div class="placeholder drop-here" anvil-if-slot-empty="default" anvil-drop-slot="default">Drop a ColumnPanel here.</div>
-        <div class="fixed-repeating-panel" anvil-drop-here anvil-slot=".fixed-repeating-panel">
     </div>
 </div>
 <div anvil-drop-default anvil-drop-redirect=".placeholder" anvil-drop-container=".anvil-container"></div>
 
 <script>
     function setChatHeight(maxHeight) {
-        // Find all the 'div' elements inside this component 
-        var divs = this.find("fixed-repeating-panel");
-        divs.css("max-height", maxHeight)
+        // Find all elements with the class "anvil-role-fixed-repeating-panel"
+        var repeatingPanels = document.querySelectorAll(".anvil-role-fixed-repeating-panel");
+
+        // Loop through the repeating panels
+        repeatingPanels.forEach(function(panel) {
+            // Perform your desired operation on each repeating panel
+            panel.style.maxHeight = maxHeight + "px";
+        });
     }
 </script>

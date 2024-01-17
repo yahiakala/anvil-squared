@@ -104,7 +104,7 @@ input.anvil-component.anvil-role-naked:hover, input.anvil-component.anvil-role-n
     font-size: 14px;
 }
 
-.fixed-repeating-panel {
+.anvil-role-fixed-repeating-panel {
     max-height: 300px; /* Set the maximum height for the panel */
     overflow-y: auto; /* Add vertical scrollbar if content overflows */
     border: 1px solid #ccc; /* Add a border for styling */
