@@ -1,0 +1,9 @@
+container:
+  type: HtmlTemplate
+  properties: {html: <div anvil-slot="default"></div>}
+components:
+- name: chatbox_1
+  properties: {}
+  type: form:Chatbox
+  layout_properties: {slot: default}
+is_package: true

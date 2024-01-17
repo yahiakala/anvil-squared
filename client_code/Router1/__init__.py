@@ -1,11 +1,11 @@
-from ._anvil_designer import TemplateForm1Template
+from ._anvil_designer import Router1Template
 from anvil import *
 from anvil_extras import routing
 from ..Form1 import Form1
 
 
 @routing.template(path="", priority=0, condition=None)
-class TemplateForm1(TemplateForm1Template):
+class Router1(Router1Template):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)

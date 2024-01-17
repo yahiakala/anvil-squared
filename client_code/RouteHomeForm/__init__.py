@@ -1,14 +1,12 @@
-from ._anvil_designer import Form1Template
+from ._anvil_designer import RouteHomeFormTemplate
 from anvil import *
 from anvil_extras import routing
 
 
-@routing.route('form1', url_keys=['id'])
-class Form1(Form1Template):
+@routing.route('')
+class RouteHomeForm(RouteHomeFormTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
-        key1 = self.url_dict['id']
-        alert(key1)
 
         # Any code you write here will run before the form opens.
