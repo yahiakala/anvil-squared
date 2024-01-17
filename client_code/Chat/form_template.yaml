@@ -18,7 +18,7 @@ components:
   layout_properties: {slot: default}
   components:
   - name: rp_chatbubbles
-    properties: {item_template: ChatPage.ChatTemplate, role: fixed-repeating-panel}
+    properties: {item_template: ChatPage.ChatTemplate, role: null}
     type: RepeatingPanel
     layout_properties: {grid_position: 'GVKUMJ,HANFIW YOFLLJ,VDHPBQ'}
   - name: btn_flag
@@ -29,28 +29,29 @@ components:
     properties: {col_spacing: none, spacing_above: none, spacing_below: none, role: richtext-powered}
     type: ColumnPanel
     layout_properties: {grid_position: 'LBPXMO,ETSNQU'}
-    components: []
-  - name: fp_input
-    properties: {vertical_align: middle, border: '', background: 'theme:Surface Variant',
-      role: round-flow-panel, spacing_above: none, spacing_below: none, spacing: none}
-    type: FlowPanel
-    layout_properties: {grid_position: 'BUOTZN,AFEMGA'}
     components:
-    - name: tb_input
-      properties: {role: naked, bold: false, spacing_above: none, spacing_below: none}
-      type: TextBox
-      layout_properties: {expand: true}
-    - name: btn_send
-      properties: {text: '', icon: 'fa:send', align: center}
-      type: Button
-      layout_properties: {}
-  - name: rt_poweredby
-    properties: {role: richtext-powered, align: center, foreground: black, visible: true,
-      font_size: 12, content: '', spacing_above: none, spacing_below: none, format: restricted_html}
-    type: RichText
-    layout_properties: {grid_position: 'EXZSFD,TRKQAQ'}
-    components: []
-    data_bindings: []
+    - name: fp_input
+      properties: {vertical_align: middle, border: '', background: 'theme:Surface
+          Variant', role: round-flow-panel, spacing_above: none, spacing_below: none,
+        spacing: none}
+      type: FlowPanel
+      layout_properties: {grid_position: 'FIXBLS,FSFMBJ'}
+      components:
+      - name: tb_input
+        properties: {role: naked, bold: false, spacing_above: none, spacing_below: none}
+        type: TextBox
+        layout_properties: {expand: true}
+      - name: btn_send
+        properties: {text: '', icon: 'fa:send', align: center}
+        type: Button
+        layout_properties: {}
+    - name: rt_poweredby
+      properties: {role: richtext-powered, align: center, foreground: black, visible: true,
+        font_size: 12, content: '', spacing_above: none, spacing_below: none, format: restricted_html}
+      type: RichText
+      layout_properties: {grid_position: 'IBULOV,WOMGNY'}
+      components: []
+      data_bindings: []
 container:
   type: HtmlTemplate
   properties: {html: '@theme:chat.html'}
