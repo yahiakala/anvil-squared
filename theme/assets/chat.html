@@ -11,14 +11,32 @@
 <div anvil-drop-default anvil-drop-redirect=".placeholder" anvil-drop-container=".anvil-container"></div>
 
 <script>
-    function setChatHeight(maxHeight) {
+    function setChatHeight() {
         // Find all elements with the class "anvil-role-fixed-repeating-panel"
-        var repeatingPanels = document.querySelectorAll(".anvil-role-fixed-repeating-panel");
+        //var repeatingPanels = document.querySelectorAll(".anvil-role-fixed-repeating-panel");
 
         // Loop through the repeating panels
-        repeatingPanels.forEach(function(panel) {
+        //repeatingPanels.forEach(function(panel) {
             // Perform your desired operation on each repeating panel
-            panel.style.maxHeight = maxHeight + "px";
-        });
+        //    panel.style.maxHeight = maxHeight + "px";
+        //});
+
+        //var repeatingPanel = document.getElementById("myRepeatingPanel");
+        //repeatingPanel.style.maxHeight = maxHeight + "px";
+
+        // var html_element = component.v._anvil.element // jQuery Object
+        // var html_element = this.find("anvil-role-fixed-repeating-panel");
+        // html_element.css("max-height", maxHeight + "px");
+
+        // var repeatingPanel = document.querySelector("[role='fixed-repeating-panel']");
+
+        // // Check if the panel exists before setting the height
+        // if (repeatingPanel) {
+        //     repeatingPanel.style.height = "10px"; // Set the fixed height to 200 pixels
+        //     repeatingPanel.style.overflowY = "auto"; // Add vertical scrollbar if content overflows
+        // }
+        
+        var divs = this.find("div");
+        divs.css("background-color", "red")
     }
 </script>

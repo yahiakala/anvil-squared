@@ -129,6 +129,11 @@ class Chat(ChatTemplate):
         properties = _defaults | properties
         self.init_components(**properties)
 
+    def form_show(self, **event_args):
+        """This method is called when the HTML panel is shown on the screen"""
+        self.call_js('setChatHeight')
+        # pass
+        
     @property
     def message_history(self):
         return self.rp_chatbubbles.items
