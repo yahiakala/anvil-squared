@@ -55,6 +55,8 @@ roles:
 - {name: naked}
 - {name: round-flow-panel}
 - {name: richtext-powered}
+- {name: load-message}
+- {name: src-link}
 color_scheme:
   preset_groups:
   - name: Colour Scheme

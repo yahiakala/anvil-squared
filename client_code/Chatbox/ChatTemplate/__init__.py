@@ -1,21 +1,35 @@
 from ._anvil_designer import ChatTemplateTemplate
 import anvil
 
+from ...utils._component_helpers import _html_injector, _spacing_property
+
+
+_html_injector.css(
+    """
+    .anvil-role-src-link {
+        padding: 0px 10px 0px 10px;
+        border-radius: 20px;
+        font-size: 14px;
+    }
+    """
+)
 
 class ChatTemplate(ChatTemplateTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
-        self.primary = app.theme_colors['Primary']
+        self.primary = anvil.app.theme_colors['Primary']
         self.init_components(**properties)
 
         if 'img' in self.item and self.item['img']:
             self.link_loading.visible = True
+            self.lbl_message.visible = False
             self.link_loading.add_component(
                 anvil.Image(
                     source='_/theme/loading.gif',
                     role='load-message',
-                    width=28,
-                    height=14
+                    width=48,
+                    # height=14
+                    display_mode='fill_width'
                 ),
                 slot='img'
             )
