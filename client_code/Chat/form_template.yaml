@@ -54,7 +54,7 @@ components:
   - name: column_panel_1
     properties: {}
     type: ColumnPanel
-    layout_properties: {grid_position: 'LSREND,ZWDOOT'}
+    layout_properties: {grid_position: 'MYKNNE,BWBMRF'}
 container:
   type: HtmlTemplate
   properties: {html: '@theme:chat.html'}
