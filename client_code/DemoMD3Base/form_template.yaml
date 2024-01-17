@@ -3,19 +3,17 @@ container:
   properties: {html: '<link href="_/theme/theme_md3.css" rel="stylesheet" type=''text/css''>
 
 
-      <div anvil-slot="default"></div>'}
+      <div anvil-slot="default"></div>
+
+      '}
 components:
 - name: outlined_card_1
   properties: {role: outlined-card}
   type: ColumnPanel
   layout_properties: {slot: default}
   components:
-  - name: chatbox_1
-    properties: {}
-    type: form:Chatbox
-    layout_properties: {grid_position: 'DIVNYA,ZWXLDR'}
   - name: button_1
-    properties: {text: button_1}
+    properties: {text: button_1, role: outlined-button}
     type: Button
     layout_properties: {grid_position: 'HWSQDX,RBDXQX'}
 is_package: true
