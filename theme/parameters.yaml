@@ -57,6 +57,7 @@ roles:
 - {name: richtext-powered}
 - {name: load-message}
 - {name: src-link}
+- {name: fixed-repeating-panel}
 color_scheme:
   preset_groups:
   - name: Colour Scheme

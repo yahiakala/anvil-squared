@@ -99,7 +99,11 @@ from anvil.js import get_dom_node as _get_dom_node
 msg_hist = [
             {'from': 'bot', 'text': 'Hi, how can I help you?'},
             {'from': 'user', 'text': 'How do I do this thing?'},
-            {'from': 'bot', 'text': "Well that's easy. Just push the button."}
+            {'from': 'bot', 'text': "Well that's easy. Just push the button."},
+            {'from': 'user', 'text': "What button?"},
+            {'from': 'bot', 'text': "You know, the button!"},
+            {'from': 'user', 'text': "That's not helpful."},
+            {'from': 'bot', 'text': "Loading.", 'img': True}
 ]
 
 _defaults = {

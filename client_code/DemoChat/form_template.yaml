@@ -1,0 +1,12 @@
+container: {type: ColumnPanel}
+components:
+- name: chat_1
+  properties: {}
+  type: form:Chat
+  layout_properties: {grid_position: 'HBJCGT,NIKGRL'}
+- name: button_1
+  properties: {text: Change Height}
+  type: Button
+  layout_properties: {grid_position: 'UIYCIY,VXRAFI'}
+  event_bindings: {click: button_1_click}
+is_package: true
