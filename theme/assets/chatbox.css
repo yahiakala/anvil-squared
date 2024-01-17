@@ -67,7 +67,7 @@ input.anvil-component.anvil-role-naked:hover, input.anvil-component.anvil-role-n
 
 /* Custom Flow Panel */
 .anvil-role-round-flow-panel {
-    padding: 0px 0px 0px 15px;
+    padding: 5px 0px 5px 15px;
     border-radius: 5px;
     border: 1px solid #bcbcc3;
     margin-bottom: 0 !important;

@@ -9,4 +9,8 @@ components:
     properties: {}
     type: form:Chatbox
     layout_properties: {grid_position: 'QBQHGY,QYLXJP'}
+- name: button_1
+  properties: {text: button_1}
+  type: Button
+  layout_properties: {grid_position: 'TUZYHM,JZJOQP'}
 is_package: true

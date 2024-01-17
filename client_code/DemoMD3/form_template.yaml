@@ -1,0 +1,17 @@
+container:
+  type: HtmlTemplate
+  properties: {html: '<link href="_/theme/theme_md3.css" rel="stylesheet" type=''text/css''>
+
+
+      <div anvil-slot="default"></div>'}
+components:
+- name: outlined_card_1
+  properties: {role: outlined-card}
+  type: ColumnPanel
+  layout_properties: {slot: default}
+  components:
+  - name: chatbox_1
+    properties: {}
+    type: form:Chatbox
+    layout_properties: {grid_position: 'DIVNYA,ZWXLDR'}
+is_package: true
