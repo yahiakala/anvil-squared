@@ -4,6 +4,7 @@ from anvil.js import get_dom_node as _get_dom_node
 
 from ..utils._component_helpers import _html_injector, _spacing_property
 
+
 _html_injector.css(
     """
 .footer {
@@ -17,7 +18,7 @@ _html_injector.css(
     /*color: #fafafa;*/
     /*min-height: 40px; */
     text-align: center;
-    padding: 0 10px 0 10px;
+    padding: 0 10px 0 10px; /* padding on the footer as a whole */
     z-index: 1;
 }
 
@@ -56,6 +57,18 @@ footer a, .footer .anvil-component {
     border-radius: 10px;
 }
 
+/* Flag Button not working */
+.anvil-role-flag-button {
+    padding: 0 0 0 0 !important;
+    margin: 0 0 0 0 !important;
+}
+
+/* Column Panel Chat Bubbles */
+.anvil-role-cp-chatbubbles {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 /* New 'naked' role for text areas, text boxes, drop downs and date pickers */
 textarea.anvil-component.anvil-role-naked, input.anvil-component.anvil-role-naked,
 .anvil-component.anvil-role-naked select, .anvil-datepicker.anvil-role-naked input,
@@ -70,12 +83,12 @@ input.anvil-component.anvil-role-naked:hover, input.anvil-component.anvil-role-n
     box-shadow: none;
     outline: none;
     border-bottom: none;
-    padding: 9px 2px 0px 2px;
+    padding: 9px 2px 9px 2px;
 }
 
 /* Custom Flow Panel */
 .anvil-role-round-flow-panel {
-    padding: 0px 0px 0px 15px;
+    padding: 0px 0px 0px 15px; /* top right bottom left */
     border-radius: 5px;
     border: 1px solid #bcbcc3;
     margin-bottom: 0 !important;

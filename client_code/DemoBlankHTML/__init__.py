@@ -1,7 +1,7 @@
-from ._anvil_designer import DemoFullScreenTemplate
+from ._anvil_designer import DemoBlankHTMLTemplate
 from anvil import *
 
-class DemoFullScreen(DemoFullScreenTemplate):
+class DemoBlankHTML(DemoBlankHTMLTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
