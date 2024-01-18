@@ -110,6 +110,7 @@ _defaults = {
     "message_history": msg_hist,
     "show_branding": True,
     "brand_message": """Powered by <a href="https://Chatbeaver.ca">Placeholder</a>""",
+    "height": 300
 }
 
 
@@ -127,6 +128,7 @@ class Chat(ChatTemplate):
             "click", lambda **e: self.raise_event("flag_click")
         )
         properties = _defaults | properties
+        self.height = _defaults['height']
         self.init_components(**properties)
 
     def form_show(self, **event_args):
@@ -134,7 +136,17 @@ class Chat(ChatTemplate):
         print('showing form')
         self.call_js('setChatHeight', "300", self.rp_chatbubbles)
         self.btn_flag.scroll_into_view()
-        
+
+
+    @property
+    def height(self):
+        return self.height
+
+    @height.setter
+    def height(self, value):
+        self.height = value
+        self.call_js('setChatHeight', str(value), self.rp_chatbubbles)
+    
     @property
     def message_history(self):
         return self.rp_chatbubbles.items
@@ -172,4 +184,4 @@ class Chat(ChatTemplate):
         self.tb_input.text = value
 
     def scroll_bottom(self):
-        self.btn_flag.scroll_into_view()
+        self.call_js('scrollBottom', self.rp_chatbubbles)
