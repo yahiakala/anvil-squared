@@ -5,6 +5,7 @@ properties:
 - {name: brand_message, type: object, important: true, description: 'Brand message
     below the textbox, in HTML format.'}
 - {name: input_text, type: string, default_value: '', important: true, description: User input text in the textbox}
+- {name: height, type: number, important: true, description: Height of chat (not including text box)}
 is_package: true
 events:
 - {name: send_message, default_event: true, description: User pressed enter or hit send}

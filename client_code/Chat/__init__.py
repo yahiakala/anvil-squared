@@ -128,24 +128,23 @@ class Chat(ChatTemplate):
             "click", lambda **e: self.raise_event("flag_click")
         )
         properties = _defaults | properties
-        self.height = _defaults['height']
+        self._height = _defaults['height']
         self.init_components(**properties)
 
     def form_show(self, **event_args):
         """This method is called when the HTML panel is shown on the screen"""
         print('showing form')
-        self.call_js('setChatHeight', "300", self.rp_chatbubbles)
-        self.btn_flag.scroll_into_view()
+        self.call_js('setChatHeight', self._height, self.rp_chatbubbles)
 
 
     @property
     def height(self):
-        return self.height
+        return self._height
 
     @height.setter
     def height(self, value):
-        self.height = value
-        self.call_js('setChatHeight', str(value), self.rp_chatbubbles)
+        self._height = value
+        # self.call_js('setChatHeight', str(value), self.rp_chatbubbles)
     
     @property
     def message_history(self):
