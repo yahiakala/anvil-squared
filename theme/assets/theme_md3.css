@@ -101,8 +101,8 @@ body {
   font-family: Roboto, Noto, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.4286;
-  color: %color:On Surface%;
-  background-color: %color:Background%;
+  color: var(--onsurface);
+  background-color: var(--background);
   min-height: calc(100vh - 56px)
 }
 
@@ -114,11 +114,11 @@ body {
 
 a, a:focus {
   text-decoration: none;
-  color: %color:Primary%;
+  color: var(--primary);
 }
 
 a:hover, a:active {
-color: %color:On Primary Container%;
+color: var(--onprimarycontainer);
 }
 
 .anvil-role-display {
@@ -276,11 +276,11 @@ color: %color:On Primary Container%;
 .nav-holder .left-nav, .left-nav-placeholder {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(0deg, %color:Primary Overlay 1%, %color:Primary Overlay 1%), %color:Background%;
+  background: linear-gradient(0deg, var(--primaryoverlay1), var(--primaryoverlay1)), var(--background);
 /*   border-right: 1px solid #e0e0e0; */
   font-size: 14px;
   font-weight: 500;
-  color: %color:On Surface Variant%;
+  color: var(--onsurfacevariant);
   overflow-x: hidden;
   overflow-y: auto;
   position: fixed;
@@ -350,7 +350,7 @@ color: %color:On Primary Container%;
 */
 
 .left-nav a, .left-nav .anvil-label, .left-nav .anvil-label.left_edge-icon, .left-nav .anvil-label.right_edge-icon {
-  color: %color:On Surface Variant%;
+  color: var(--onsurfacevariant);
   margin: 0 -8px;
   padding: 4px 16px;
   border-radius: 100px;
@@ -361,17 +361,17 @@ color: %color:On Primary Container%;
 }
 
 .left-nav a:hover, .app-bar a:hover, .app-bar a:active {
-  background: linear-gradient(0deg, %color:Dark Overlay 1%, %color:Dark Overlay 1%), linear-gradient(0deg, %color:Primary Overlay 1%, %color:Primary Overlay 1%), %color:Background%;
+  background: linear-gradient(0deg, var(--darkoverlay1), var(--darkoverlay1)), linear-gradient(0deg, var(--primaryoverlay1), var(--primaryoverlay1)), var(--background);
   opacity: 100%;
 }
 
 .left-nav a.anvil-role-selected, .app-bar a.anvil-role-selected  {
-  background-color: %color:Secondary Container%;
-  color: %color:On Secondary Container%;
+  background-color: var(--secondarycontainer);
+  color: var(--onsecondarycontainer);
 }
 
 .left-nav a.anvil-role-selected:hover, .app-bar a.anvil-role-selected:hover {
-  background: linear-gradient(0deg, %color:Dark Overlay 1%, %color:Dark Overlay 1%), %color:Secondary Container%;
+  background: linear-gradient(0deg, var(--darkoverlay1), var(--darkoverlay1)), var(--secondarycontainer);
 }
 
 .designer .nav-holder .left-nav {
@@ -406,7 +406,7 @@ color: %color:On Primary Container%;
   line-height: 40px;
   font-size: 20px;
 
-  background-color: %color:Surface%;
+  background-color: var(--surface);
   transition: background-color 250ms;
   -webkit-transition: background-color 250ms;
   -moz-transition: background-color 250ms;
@@ -416,7 +416,7 @@ color: %color:On Primary Container%;
 }
 
 .app-bar.scrolled {
-  background: linear-gradient(0deg, %color:Primary Overlay 2%, %color:Primary Overlay 2%), %color:Background%;
+  background: linear-gradient(0deg, var(--primaryoverlay2), var(--primaryoverlay2)), var(--background);
   transition: background 250ms;
   -webkit-transition: background 250ms;
   -moz-transition: background 250ms;
@@ -439,7 +439,7 @@ color: %color:On Primary Container%;
 
 .app-bar a, .app-bar .anvil-component {
   display: block;
-  color: %color:On Surface%;
+  color: var(--onsurface);
   line-height: 30px;
   min-width: 30px;
   min-height: 30px;
@@ -503,7 +503,7 @@ color: %color:On Primary Container%;
 /* Component: Dialog (alert), Notification */
 .modal-content, body>div[data-notify="container"] {
   border-radius: 28px;
-  background: linear-gradient(0deg, %color:Primary Overlay 3%, %color:Primary Overlay 3%), %color:Background%;
+  background: linear-gradient(0deg, var(--primaryoverlay3), var(--primaryoverlay3)), var(--background);
   box-shadow: none;
   border: none;
 }
@@ -513,13 +513,13 @@ color: %color:On Primary Container%;
   font-size: 24px;
   line-height: 32px;
   border: 0;
-  color: %color:On Surface%;
+  color: var(--onsurface);
 }
 
 .modal-body {
   padding: 24px;
   font-size: 16px;
-  color: %color:On Surface Variant%;
+  color: var(--onsurfacevariant);
 }
 
 .modal-footer {
@@ -534,7 +534,7 @@ color: %color:On Primary Container%;
 
 /* Notifications */
 body>div[data-notify="container"] {
-  background: linear-gradient(0deg, %color:Primary Overlay 3%, %color:Primary Overlay 3%), %color:Background%;
+  background: linear-gradient(0deg, var(--primaryoverlay3), var(--primaryoverlay3)), var(--background);
   border: none;
   padding: 24px;
   /* 24dp */ box-shadow: 0 9px 46px 8px rgba(0, 0, 0, 0.14), 0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2);
@@ -544,14 +544,14 @@ body>div[data-notify="container"]>span[data-notify="title"] {
   display: block;
   font-size: 18px;
   font-weight: 500;
-  color: %color:On Surface%;
+  color: var(--onsurface);
 }
 
 body>div[data-notify="container"]>span[data-notify="message"] {
   display: block;
   padding: 20px 0 0;
   font-size: 16px;
-  color: %color:On Surface Variant%;  
+  color: var(--onsurfacevariant);  
 }
 
 body>div[data-notify="container"].alert-success{
@@ -579,8 +579,8 @@ body>div[data-notify="container"].alert-warning>span[data-notify="title"]{
 }
 
 button.close > span, button.close {
-  color:%color:On Background%;
-  text-shadow: 0 1px 0 %color:Background%;
+  color:var(--onbackground);
+  text-shadow: 0 1px 0 var(--background);
 }
 
 /* Component: Button */
@@ -596,7 +596,7 @@ button.close > span, button.close {
   border: 0;
   background-image: none;
   background-color: transparent;
-  color: %color:Primary%;
+  color: var(--primary);
   text-shadow: none;
   box-shadow: none;
   -webkit-box-shadow: none;
@@ -605,45 +605,45 @@ button.close > span, button.close {
 }
 
 .btn:hover,.file-loader>label:hover {
-  background-color: %color:Light Overlay 1%;
+  background-color: var(--lightoverlay1);
   background-image: none;
   outline: none;
-  color: %color:Primary%;
+  color: var(--primary);
 }
 
 .btn:active, .btn:focus, .btn:active:focus, .file-loader>label:active, .file-loader>label:focus, .file-loader>label:active:focus {
-  background-color: %color:Light Overlay 2%;
+  background-color: var(--lightoverlay2);
   background-image: none;
   outline: none;
   box-shadow: none;
-  color: %color:Primary%;
+  color: var(--primary);
 }
 
 
 .anvil-role-outlined-button > .btn, .anvil-role-outlined-button.file-loader>label {
-  color: %color:Primary%;
-  border: solid 1px %color:Outline%;
+  color: var(--primary);
+  border: solid 1px var(--outline);
 }
 
 .anvil-role-outlined-button > .btn:hover, .anvil-role-outlined-button.file-loader>label:hover {
-  background-color: %color:Light Overlay 1%;
+  background-color: var(--lightoverlay1);
 }
 
 .anvil-role-outlined-button > .btn:focus, .anvil-role-outlined-button > .btn:active, 
 .anvil-role-outlined-button.file-loader>label:focus, .anvil-role-outlined-button.file-loader>label:active{
-  background-color: %color:Light Overlay 2%;
-  color: %color:Primary%;
+  background-color: var(--lightoverlay2);
+  color: var(--primary);
 }
 
 .anvil-role-filled-button > .btn, .btn-primary, .anvil-role-filled-button.file-loader>label {
-  background-color: %color:Primary%;
-  color: %color:On Primary%; 
+  background-color: var(--primary);
+  color: var(--onprimary); 
 }
 
 .anvil-role-filled-button > .btn:hover, .btn-primary:hover, .anvil-role-filled-button.file-loader>label:hover {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
-  background: linear-gradient(0deg, %color:Light Overlay 1%, %color:Light Overlay 1%), %color:Primary%;
-  color: %color:On Primary%; 
+  background: linear-gradient(0deg, var(--lightoverlay1), var(--lightoverlay1)), var(--primary);
+  color: var(--onprimary); 
 }
 
 .anvil-role-filled-button > .btn:focus, .btn-primary:focus, .anvil-role-filled-button > .btn:active, 
@@ -651,49 +651,49 @@ button.close > span, button.close {
 .anvil-role-filled-button.file-loader>label:focus, .anvil-role-filled-button.file-loader>label:active, 
 .anvil-role-filled-button.file-loader>label:active:focus
 {
-  background: linear-gradient(0deg, %color:Light Overlay 2%, %color:Light Overlay 2%), %color:Primary%;
-  color: %color:On Primary%; 
+  background: linear-gradient(0deg, var(--lightoverlay2), var(--lightoverlay2)), var(--primary);
+  color: var(--onprimary); 
 }
 
 .anvil-role-elevated-button > .btn, .anvil-role-elevated-button.file-loader>label {
-  color: %color:Primary%;
-  background-color: %color:Surface%;
+  color: var(--primary);
+  background-color: var(--surface);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
 }
 
 .anvil-role-elevated-button > .btn:focus, .anvil-role-elevated-button > .btn:active, 
 .anvil-role-elevated-button > .btn:active:focus, .anvil-role-elevated-button.file-loader>label:focus, 
 .anvil-role-elevated-button.file-loader>label:active, .anvil-role-elevated-button.file-loader>label:active:focus {
-  background: linear-gradient(0deg, %color:Light Overlay 2%, %color:Light Overlay 2%), %color:Surface%;
-  color: %color:Primary%;
+  background: linear-gradient(0deg, var(--lightoverlay2), var(--lightoverlay2)), var(--surface);
+  color: var(--primary);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
 }
 
 .anvil-role-elevated-button > .btn:hover, .anvil-role-elevated-button.file-loader>label:hover {
-  background: linear-gradient(0deg, %color:Light Overlay 1%, %color:Light Overlay 1%), %color:Surface%;
+  background: linear-gradient(0deg, var(--lightoverlay1), var(--lightoverlay1)), var(--surface);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
 }
 
 .anvil-role-tonal-button > .btn, .anvil-role-tonal-button.file-loader>label {
-  color: %color:On Secondary Container%;
-  background-color: %color:Secondary Container%;
+  color: var(--onsecondarycontainer);
+  background-color: var(--secondarycontainer);
 }
 
 .anvil-role-tonal-button > .btn:focus, .anvil-role-tonal-button > .btn:active, .anvil-role-tonal-button > .btn:active:focus, 
 .anvil-role-tonal-button.file-loader>label:focus, .anvil-role-tonal-button.file-loader>label:active, .anvil-role-tonal-button.file-loader>label:focus:active {
-  background: linear-gradient(0deg, %color:Dark Overlay 2%, %color:Dark Overlay 2%), %color:Secondary Container%;
-  color: %color:On Secondary Container%;
+  background: linear-gradient(0deg, var(--darkoverlay2), var(--darkoverlay2)), var(--secondarycontainer);
+  color: var(--onsecondarycontainer);
 }
 
 .anvil-role-tonal-button > .btn:hover, .anvil-role-tonal-button.file-loader>label:hover{
-  background: linear-gradient(0deg, %color:Dark Overlay 1%, %color:Dark Overlay 1%), %color:Secondary Container%;
+  background: linear-gradient(0deg, var(--darkoverlay1), var(--darkoverlay1)), var(--secondarycontainer);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
-  color: %color:On Secondary Container%;
+  color: var(--onsecondarycontainer);
 }
 
 .btn-default[disabled], .btn-default[disabled]:hover, .file-loader.anvil-disabled>label, .file-loader.anvil-disabled>label:hover {
   background: transparent;
-  color: %color:On Disabled%;
+  color: var(--ondisabled);
 }
 
 .anvil-role-tonal-button > .btn[disabled], .anvil-role-tonal-button> .btn[disabled]:hover, 
@@ -702,13 +702,13 @@ button.close > span, button.close {
 .anvil-role-filled-button.file-loader.anvil-disabled>label, .anvil-role-filled-button.file-loader.anvil-disabled>label:hover, 
 .anvil-role-elevated-button > .btn[disabled], .anvil-role-elevated-button > .btn[disabled]:hover, 
 .anvil-role-elevated-button.file-loader.anvil-disabled>label, .anvil-role-elevated-button.file-loader.anvil-disabled>label:hover { 
-  background: %color:Disabled Container%;
-  color: %color:On Disabled%;
+  background: var(--disabledcontainer);
+  color: var(--ondisabled);
   box-shadow: none;
 }
 
 .anvil-role-outlined-button > .btn[disabled], .anvil-role-outlined-button.file-loader.anvil-disabled>label {
-  border-color: %color:On Disabled%;
+  border-color: var(--ondisabled);
   background-color: transparent;
 }
 
@@ -718,15 +718,15 @@ button.close > span, button.close {
 .anvil-role-outlined-card {
   overflow: hidden;
   border-radius: 12px;
-  background-color: %color:Surface%;
-  border: solid 1px %color:Outline%;
+  background-color: var(--surface);
+  border: solid 1px var(--outline);
   padding: 15px;
 }
 
 .anvil-role-elevated-card {
   overflow: hidden;
   border-radius: 12px;
-  background-color: %color:Surface%;
+  background-color: var(--surface);
   /* 2dp */  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
   padding: 15px;
 }
@@ -734,7 +734,7 @@ button.close > span, button.close {
 .anvil-role-tonal-card {
   overflow: hidden;
   border-radius: 12px;
-  background-color: %color:Surface Variant%;
+  background-color: var(--surfacevariant);
   padding: 15px;
 }
 
@@ -764,8 +764,8 @@ input.anvil-component, textarea.anvil-component, .anvil-component select, .anvil
   font-size: 16px;
   line-height: 1.5;
   border-radius: 4px 4px 0 0;
-  background-color: %color:Surface Variant%;
-  color: %color:On Surface Variant%;
+  background-color: var(--surfacevariant);
+  color: var(--onsurfacevariant);
   box-shadow: none;
 }
 
@@ -780,7 +780,7 @@ input.anvil-component, textarea.anvil-component, .anvil-component select, .anvil
 input.anvil-component, .anvil-component select, .anvil-datepicker input, textarea.anvil-component {
   padding: 8px 16px;
   border: 0;
-  border-bottom: 1px solid %color:Outline%;
+  border-bottom: 1px solid var(--outline);
 }
 
 .anvil-dropdown select.form-control {
@@ -804,7 +804,7 @@ input.anvil-component, .anvil-component select, .anvil-datepicker input, textare
     right: 0;
     font-size: 80%;
     line-height: calc(1.8em + 8px);
-    color: %color:Outline%;
+    color: var(--outline);
     pointer-events:none;
     padding: 4px 4px;
 }
@@ -816,28 +816,28 @@ input.anvil-component.anvil-spacing-below-medium { margin-bottom: 12px; }
 input.anvil-component.anvil-spacing-below-large { margin-bottom: 20px; }
 
 input.anvil-component::-webkit-input-placeholder, textarea.anvil-component::-webkit-input-placeholder {
-  color: %color:On Surface%;
+  color: var(--onsurface);
 }
 input.anvil-component::-moz-placeholder, textarea.anvil-component::-moz-placeholder {
-  color: %color:On Surface%;
+  color: var(--onsurface);
 }
 input.anvil-component::placeholder, textarea.anvil-component::placeholder  {
-  color: %color:On Surface%;
+  color: var(--onsurface);
 }
 
 .app-bar input.anvil-component::-webkit-input-placeholder, .app-bar textarea.anvil-component::-webkit-input-placeholder {
-  color: %color:On Surface%;
+  color: var(--onsurface);
 }
 .app-bar input.anvil-component::-moz-placeholder, .app-bar textarea.anvil-component::-moz-placeholder {
-  color: %color:On Surface%;
+  color: var(--onsurface);
 }
 .app-bar input.anvil-component::placeholder, .app-bar textarea.anvil-component::placeholder  {
-  color: %color:On Surface%;
+  color: var(--onsurface);
 }
 
 input.anvil-component:hover, input.anvil-component:focus, textarea.anvil-component:hover, textarea.anvil-component:focus, 
 .anvil-component select:hover, .anvil-component select:focus, .anvil-datepicker input:hover, .anvil-datepicker input:focus {
-  border-bottom: 2px solid %color:Primary%;
+  border-bottom: 2px solid var(--primary);
   padding-bottom: 7px;
   box-shadow: none;
 }
@@ -846,9 +846,9 @@ input.anvil-component:hover, input.anvil-component:focus, textarea.anvil-compone
 input.anvil-component[disabled], .anvil-component select[disabled], .anvil-datepicker input[disabled], textarea.anvil-component[disabled], 
 textarea.anvil-component.anvil-role-input-error[disabled], input.anvil-component.anvil-role-input-error[disabled], 
 .anvil-component.anvil-role-input-error select[disabled], .anvil-datepicker.anvil-role-input-error input[disabled] {
-  background-color: %color:Dark Overlay 1%;
-  color: %color:On Disabled%;
-  border-bottom: 1px solid %color:On Disabled%;
+  background-color: var(--darkoverlay1);
+  color: var(--ondisabled);
+  border-bottom: 1px solid var(--ondisabled);
   padding-bottom: 8px;
 }
 
@@ -860,16 +860,16 @@ textarea.anvil-component.anvil-role-input-error[disabled], input.anvil-component
 textarea.anvil-component.anvil-role-outlined, input.anvil-component.anvil-role-outlined, 
 .anvil-component.anvil-role-outlined select, .anvil-datepicker.anvil-role-outlined input {
   background-color: transparent;
-  border: 1px solid %color:Outline%;
+  border: 1px solid var(--outline);
   border-radius: 4px;
-  color: %color:On Surface%;
+  color: var(--onsurface);
 }
 
 textarea.anvil-component.anvil-role-outlined:hover, textarea.anvil-component.anvil-role-outlined:focus, 
 input.anvil-component.anvil-role-outlined:hover, input.anvil-component.anvil-role-outlined:focus,
 .anvil-component.anvil-role-outlined select:hover, .anvil-component.anvil-role-outlined select:focus,
 .anvil-datepicker.anvil-role-outlined input:hover, .anvil-datepicker.anvil-role-outlined input:focus{
-  border: 2px solid %color:Primary%;
+  border: 2px solid var(--primary);
   padding: 7px 15px;
 }
 
@@ -877,7 +877,7 @@ textarea.anvil-component.anvil-role-outlined-error:hover, textarea.anvil-compone
 input.anvil-component.anvil-role-outlined-error:hover, input.anvil-component.anvil-role-outlined-error:focus,
 .anvil-component.anvil-role-outlined-error select:hover, .anvil-component.anvil-role-outlined-error select:focus,
 .anvil-datepicker.anvil-role-outlined-error input:hover, .anvil-datepicker.anvil-role-outlined-error input:focus{
-  border: 2px solid %color:Error%;
+  border: 2px solid var(--error);
   padding-bottom: 6px;
 }
 
@@ -885,44 +885,44 @@ textarea.anvil-component.anvil-role-outlined[disabled], input.anvil-component.an
 .anvil-component.anvil-role-outlined select[disabled], .anvil-datepicker.anvil-role-outlined input[disabled], 
 textarea.anvil-component.anvil-role-outlined-error[disabled], input.anvil-component.anvil-role-outlined-error[disabled], 
 .anvil-component.anvil-role-outlined-error select[disabled], .anvil-datepicker.anvil-role-outlined-error input[disabled] {
-  border: 1px solid %color:On Disabled%;
-  color: %color:On Disabled%;
+  border: 1px solid var(--ondisabled);
+  color: var(--ondisabled);
   padding-bottom: 8px;
 }
 
 .daterangepicker td.active {
-  background: %color:Primary%;
+  background: var(--primary);
 }
 
 .daterangepicker td.available:hover {
-  background: %color:Dark Overlay 2%;
+  background: var(--darkoverlay2);
 }
 
 .daterangepicker td.active:hover {
-  background: linear-gradient(0deg, %color:Light Overlay 1%, %color:Light Overlay 1%), %color:Primary%;
+  background: linear-gradient(0deg, var(--lightoverlay1), var(--lightoverlay1)), var(--primary);
 }
 
 .daterangepicker td.off {
-  color: %color:On Disabled%;
+  color: var(--ondisabled);
 }
 
 textarea.anvil-component.anvil-role-outlined-error, input.anvil-component.anvil-role-outlined-error, 
 .anvil-component.anvil-role-outlined-error select, .anvil-datepicker.anvil-role-outlined-error input {
-  color: %color:Error%;
+  color: var(--error);
   background-color: transparent;
-  border: 1px solid %color:Error%;;
+  border: 1px solid var(--error);;
   border-radius: 4px;
 }
 
 textarea.anvil-component.anvil-role-input-error, input.anvil-component.anvil-role-input-error, 
 .anvil-component.anvil-role-input-error select, .anvil-datepicker.anvil-role-input-error input {
-  color: %color:Error%;
-  border-color: %color:Error%; 
+  color: var(--error);
+  border-color: var(--error); 
 }
 
 /*TODO: figure out what this is used for*/
 /* .daterangepicker .btn-success {
-  color: %color:Primary 500%;
+  color: var(--primary500);
 } */
 
 /* Component: CheckBox, RadioButton */
@@ -932,8 +932,8 @@ textarea.anvil-component.anvil-role-input-error, input.anvil-component.anvil-rol
   width: 15px;
   height: 15px;
   border-radius: 1px;
-  background-color: %color:Surface Variant%; 
-/*   color: %color:On Surface Variant%; */
+  background-color: var(--surfacevariant); 
+/*   color: var(--onsurfacevariant); */
 }
 
 .radio input {
@@ -941,7 +941,7 @@ textarea.anvil-component.anvil-role-input-error, input.anvil-component.anvil-rol
 }
 
 .checkbox input:hover, .radio input:hover {
-  background: linear-gradient(0deg, %color:Light Overlay 1%, %color:Light Overlay 1%), %color:Surface Variant%;
+  background: linear-gradient(0deg, var(--lightoverlay1), var(--lightoverlay1)), var(--surfacevariant);
 }
 
 .checkbox input:focus, .radio input:focus {
@@ -954,12 +954,12 @@ textarea.anvil-component.anvil-role-input-error, input.anvil-component.anvil-rol
 
 .checkbox input[type="checkbox"][disabled]:hover, .radio input[type="radio"][disabled]:hover, 
 .checkbox input[type="checkbox"][disabled], .radio input[type="radio"][disabled] {
-  background: %color:Disabled Container%; 
+  background: var(--disabledcontainer); 
 }
 
 input[disabled] ~ span {
   cursor: not-allowed;
-  color: %color:On Disabled%;
+  color: var(--ondisabled);
 }
 
 .checkbox input, .radio input {
@@ -969,8 +969,8 @@ input[disabled] ~ span {
 }
 
 .checkbox input:checked, .radio input:checked {
-  background-color: %color:Primary Container%;
-  color: %color:On Primary Container%;
+  background-color: var(--primarycontainer);
+  color: var(--onprimarycontainer);
 }
 
 .checkbox input:checked:before {
@@ -991,8 +991,8 @@ input[disabled] ~ span {
 
 /* Data Grids */
 .anvil-role-tonal-data-grid.anvil-data-grid > .data-grid-child-panel>div.auto-grid-header {
-  background: linear-gradient(0deg, %color:Primary Overlay 2%, %color:Primary Overlay 2%), %color:Background%;
-  border-bottom: 1px solid %color:Surface Variant%;
+  background: linear-gradient(0deg, var(--primaryoverlay2), var(--primaryoverlay2)), var(--background);
+  border-bottom: 1px solid var(--surfacevariant);
   border-radius: 24px 24px 0 0;
 }
 
@@ -1003,12 +1003,12 @@ input[disabled] ~ span {
 
 .anvil-role-tonal-data-grid.anvil-data-grid {
   border-radius: 24px;
-  border: 1px solid %color:Surface Variant%;
+  border: 1px solid var(--surfacevariant);
 }
 
 .anvil-role-tonal-data-grid.anvil-data-grid .data-grid-child-panel div.data-row-col {
-  border-left: 1px solid %color:Surface Variant%;
-  border-bottom: 1px solid %color:Surface Variant%;
+  border-left: 1px solid var(--surfacevariant);
+  border-bottom: 1px solid var(--surfacevariant);
 }
 
 .anvil-role-tonal-data-grid.anvil-data-grid .data-grid-child-panel div.data-row-col:first-child {
@@ -1025,7 +1025,7 @@ input[disabled] ~ span {
 /*Plots*/
 
 div.plot-container.plotly svg.main-svg {
-  border: 1px solid %color:Surface Variant%;
+  border: 1px solid var(--surfacevariant);
   border-radius: 12px;
 }
 
@@ -1034,9 +1034,9 @@ div.plot-container.plotly svg.main-svg {
 }
 
 .plot-container.plotly .main-svg .parcoords .y-axis .axis > path.domain {
-  stroke: %color:Outline%;
+  stroke: var(--outline);
 }
 
 .anvil-spinner {
-    --anvil-spinner-bg: %color:Surface Variant%;
+    --anvil-spinner-bg: var(--surfacevariant);
 }
