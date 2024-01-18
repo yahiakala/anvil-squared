@@ -1,0 +1,25 @@
+<link href="_/theme/chat.css" rel="stylesheet" type='text/css'>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" rel="preload" as="font" crossorigin="anonymous">
+
+<div class="structure">
+    <div class="content">
+        <div anvil-slot-repeat="default" class="anvil-measure-this"></div>
+        <div class="placeholder drop-here" anvil-if-slot-empty="default" anvil-drop-slot="default">Drop a ColumnPanel here.</div>
+    </div>
+</div>
+<div anvil-drop-default anvil-drop-redirect=".placeholder" anvil-drop-container=".anvil-container"></div>
+
+<script>
+    function setChatHeight(height, component) {
+        // Find all elements with the class "anvil-role-fixed-repeating-panel"
+
+        var html_element = component.v._anvil.element // jQuery Object
+        html_element.css("height", height + "px");
+        html_element.animate({ scrollTop: html_element.prop("scrollHeight") }, 500); // ms
+    }
+    function scrollBottom(component) {
+        var html_element = component.v._anvil.element
+        html_element.animate({scrollTop: html_element.prop("scrollHeight")}, 100);
+    }
+</script>

@@ -7,7 +7,7 @@ components:
   components:
   - name: chatbox_1
     properties: {}
-    type: form:Chatbox
+    type: form:ChatPage
     layout_properties: {grid_position: 'QBQHGY,QYLXJP'}
 - name: button_1
   properties: {text: button_1}

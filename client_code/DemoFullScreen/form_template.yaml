@@ -4,6 +4,6 @@ container:
 components:
 - name: chatbox_1
   properties: {}
-  type: form:Chatbox
+  type: form:ChatPage
   layout_properties: {slot: default}
 is_package: true
