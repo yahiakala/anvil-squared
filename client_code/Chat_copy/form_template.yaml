@@ -10,27 +10,32 @@ is_package: true
 events:
 - {name: send_message, default_event: true, description: User pressed enter or hit send}
 - {name: flag_click, description: User clicked the flag}
-toolbox_item: {title: Chat}
+toolbox_item: {title: Chatcopy}
 custom_component: true
 components:
 - name: cp_chatbubbles
-  properties: {role: cp-chatbubbles, col_spacing: none}
+  properties: {role: cp-chatbubbles}
   type: ColumnPanel
   layout_properties: {slot: default}
   components:
   - name: rp_chatbubbles
-    properties: {item_template: ChatPage.ChatTemplate, role: fixed-repeating-panel}
+    properties: {item_template: ChatPage.ChatTemplate}
     type: RepeatingPanel
-    layout_properties: {grid_position: 'PCOMNS,LRXBQR'}
+    layout_properties: {grid_position: 'GVKUMJ,HANFIW YOFLLJ,VDHPBQ'}
   - name: btn_flag
     properties: {text: '', visible: true, icon: 'fa:flag', align: left, role: flag-button}
     type: Button
-    layout_properties: {grid_position: 'EOWGSX,NQOMFN'}
+    layout_properties: {grid_position: 'BOJFJV,TXAVLM'}
+- name: cp_footer
+  properties: {col_spacing: none, spacing_above: none, spacing_below: none, role: cp-chatbubbles}
+  type: ColumnPanel
+  layout_properties: {slot: default}
+  components:
   - name: fp_input
     properties: {vertical_align: middle, border: '', background: 'theme:Surface Variant',
       role: round-flow-panel, spacing_above: none, spacing_below: none, spacing: none}
     type: FlowPanel
-    layout_properties: {grid_position: 'VXZZHE,DNBNNC'}
+    layout_properties: {grid_position: 'VWLIGT,YFKBXQ'}
     components:
     - name: tb_input
       properties: {role: naked, bold: false, spacing_above: none, spacing_below: none}
@@ -44,10 +49,11 @@ components:
     properties: {role: null, align: center, foreground: black, visible: true, font_size: 12,
       content: '', spacing_above: none, spacing_below: none, format: restricted_html}
     type: RichText
-    layout_properties: {grid_position: 'DTIFAO,ASNJPJ'}
-    components: []
+    layout_properties: {grid_position: 'PHJJUR,NKWPHV'}
     data_bindings: []
 container:
   type: HtmlTemplate
-  properties: {html: ''}
+  properties: {html: '<div anvil-slot="default"></div>
+
+      '}
   event_bindings: {show: form_show}

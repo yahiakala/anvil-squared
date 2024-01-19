@@ -16,8 +16,21 @@ components:
     properties: {text: button_1, role: outlined-button}
     type: Button
     layout_properties: {grid_position: 'HWSQDX,RBDXQX'}
+  - name: chat_copy_1
+    properties: {height: 300}
+    type: form:Chat_copy
+    layout_properties: {grid_position: 'VSJSRU,PAKBAM'}
 - name: outlined_card_2
-  properties: {role: outlined-card}
+  properties: {role: outlined-card, col_spacing: none}
   type: ColumnPanel
+  layout_properties: {slot: default}
+  components:
+  - name: chat_2
+    properties: {height: 300}
+    type: form:Chat
+    layout_properties: {grid_position: 'YMHZOC,PCJKJQ'}
+- name: chat_1
+  properties: {height: 300}
+  type: form:Chat
   layout_properties: {slot: default}
 is_package: true

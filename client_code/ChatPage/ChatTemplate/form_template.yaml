@@ -2,12 +2,12 @@ is_package: true
 container: {type: ColumnPanel}
 components:
 - name: cp_chat
-  properties: {}
+  properties: {col_spacing: none}
   type: ColumnPanel
   layout_properties: {grid_position: 'OCHCLD,NVYNPV'}
   components:
   - name: fp_chat
-    properties: {}
+    properties: {spacing: medium}
     type: FlowPanel
     layout_properties: {grid_position: 'STZDFZ,TIYCFQ'}
     components:
