@@ -47,6 +47,12 @@ class ChatPage(ChatPageTemplate):
         properties = _defaults | properties
         self.init_components(**properties)
 
+    def form_show(self, **event_args):
+        """This method is called when the HTML panel is shown on the screen"""
+        print('showing form')
+        self.btn_flag.scroll_into_view()
+
+    
     @property
     def message_history(self):
         return self.rp_chatbubbles.items

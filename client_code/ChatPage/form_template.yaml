@@ -54,3 +54,4 @@ components:
 container:
   type: HtmlTemplate
   properties: {html: '@theme:chatpage.html'}
+  event_bindings: {show: form_show}

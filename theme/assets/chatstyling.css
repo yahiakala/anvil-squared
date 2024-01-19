@@ -18,7 +18,7 @@
 
 .content{
     /*  adjusted for the footer  */
-    /*margin-bottom: 70px;*/
+    margin-bottom: 80px; /* need to adjust to be dynamic based on footer size */
 }
 
 .footer a, .footer a.anvil-component {
