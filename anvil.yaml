@@ -3,7 +3,7 @@ services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {}
-startup: {type: form, module: DemoMD3Base}
+startup: {type: form, module: DemoHTML}
 package_name: Chatbox
 allow_embedding: false
 name: Chatbox
