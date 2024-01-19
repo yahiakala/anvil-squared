@@ -26,7 +26,7 @@ components:
     type: Button
     layout_properties: {grid_position: 'BOJFJV,TXAVLM'}
 - name: cp_footer
-  properties: {col_spacing: none, spacing_above: none, spacing_below: none, role: richtext-powered}
+  properties: {col_spacing: none, spacing_above: none, spacing_below: none, role: null}
   type: ColumnPanel
   layout_properties: {slot: footer-slot}
   components:
@@ -45,8 +45,8 @@ components:
       type: Button
       layout_properties: {}
   - name: rt_poweredby
-    properties: {role: richtext-powered, align: center, foreground: black, visible: true,
-      font_size: 12, content: '', spacing_above: none, spacing_below: none, format: restricted_html}
+    properties: {role: null, align: center, foreground: black, visible: true, font_size: 12,
+      content: '', spacing_above: none, spacing_below: none, format: restricted_html}
     type: RichText
     layout_properties: {grid_position: 'PHJJUR,NKWPHV'}
     components: []

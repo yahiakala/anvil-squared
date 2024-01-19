@@ -60,6 +60,7 @@ roles:
 - {name: fixed-repeating-panel}
 - {name: cp-chatbubbles}
 - {name: flag-button}
+- {name: richtext-powered-small}
 color_scheme:
   preset_groups:
   - name: Colour Scheme

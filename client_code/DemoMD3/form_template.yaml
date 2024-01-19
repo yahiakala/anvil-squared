@@ -5,17 +5,8 @@ container:
 
       <div anvil-slot="default"></div>'}
 components:
-- name: outlined_card_1
-  properties: {role: outlined-card}
-  type: ColumnPanel
+- name: chat_page_1
+  properties: {}
+  type: form:ChatPage
   layout_properties: {slot: default}
-  components:
-  - name: chatbox_1
-    properties: {}
-    type: form:ChatPage
-    layout_properties: {grid_position: 'DIVNYA,ZWXLDR'}
-  - name: button_1
-    properties: {text: button_1}
-    type: Button
-    layout_properties: {grid_position: 'HWSQDX,RBDXQX'}
 is_package: true
