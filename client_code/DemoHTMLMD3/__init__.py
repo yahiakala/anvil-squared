@@ -1,7 +1,7 @@
-from ._anvil_designer import DemoBlankHTMLTemplate
+from ._anvil_designer import DemoHTMLMD3Template
 from anvil import *
 
-class DemoBlankHTML(DemoBlankHTMLTemplate):
+class DemoHTMLMD3(DemoHTMLMD3Template):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
