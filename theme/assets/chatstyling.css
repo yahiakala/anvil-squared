@@ -17,8 +17,8 @@
 .anvil-highlight .footer > .footer-slot > .placeholder { display:block; }
 
 .content{
-    /*  adjusted for the footer  */
-    margin-bottom: 80px; /* need to adjust to be dynamic based on footer size */
+    /*  adjusted for the footer  - adds some extra scroll in beginning */
+    margin-bottom: 80px; /* find another way to keep the chat above footer */
 }
 
 .footer a, .footer a.anvil-component {
