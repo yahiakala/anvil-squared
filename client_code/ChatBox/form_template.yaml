@@ -10,7 +10,7 @@ is_package: true
 events:
 - {name: send_message, default_event: true, description: User pressed enter or hit send}
 - {name: flag_click, description: User clicked the flag}
-toolbox_item: {title: Chatcopy}
+toolbox_item: {title: Chatbox}
 custom_component: true
 components:
 - name: cp_chatbubbles
@@ -53,7 +53,5 @@ components:
     data_bindings: []
 container:
   type: HtmlTemplate
-  properties: {html: '<div anvil-slot="default"></div>
-
-      '}
+  properties: {html: <div anvil-slot="default"></div>}
   event_bindings: {show: form_show}

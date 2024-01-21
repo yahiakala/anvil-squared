@@ -1,4 +1,4 @@
-from ._anvil_designer import ChatTemplate
+from ._anvil_designer import ChatBoxTemplate
 from anvil import HtmlPanel as _HtmlPanel
 from anvil.js import get_dom_node as _get_dom_node
 from ..utils._component_helpers import _html_injector, _spacing_property
@@ -11,7 +11,7 @@ _html_injector.script(
 
         var html_element = component.v._anvil.element // jQuery Object
         html_element.css("height", height + "px");
-        html_element.animate({ scrollTop: html_element.prop("scrollHeight") }, 500); // ms
+        html_element.animate({ scrollTop: html_element.prop("scrollHeight") }, 1000); // ms
     }
     function scrollBottom(component) {
         var html_element = component.v._anvil.element
@@ -40,7 +40,7 @@ _defaults = {
 }
 
 
-class Chat(ChatTemplate):
+class ChatBox(ChatBoxTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
 
@@ -60,7 +60,7 @@ class Chat(ChatTemplate):
     def form_show(self, **event_args):
         """This method is called when the HTML panel is shown on the screen"""
         print('showing form')
-        self.call_js('setChatHeight', self._height, self.rp_chatbubbles)
+        self.call_js('setChatHeight', str(self._height), self.rp_chatbubbles)
 
 
     @property
@@ -70,8 +70,7 @@ class Chat(ChatTemplate):
     @height.setter
     def height(self, value):
         self._height = value
-        # self.call_js('setChatHeight', str(value), self.rp_chatbubbles)
-    
+
     @property
     def message_history(self):
         return self.rp_chatbubbles.items
