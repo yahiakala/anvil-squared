@@ -10,24 +10,24 @@ is_package: true
 events:
 - {name: send_message, default_event: true, description: User pressed enter or hit send}
 - {name: flag_click, description: User clicked the flag}
-toolbox_item: {title: Chatcopy}
+toolbox_item: {title: Chattest}
 custom_component: true
 components:
 - name: cp_chatbubbles
-  properties: {role: cp-chatbubbles}
+  properties: {role: cp-chatbubbles, col_spacing: none}
   type: ColumnPanel
   layout_properties: {slot: default}
   components:
   - name: rp_chatbubbles
     properties: {item_template: ChatPage.ChatTemplate, role: fixed-repeating-panel}
     type: RepeatingPanel
-    layout_properties: {grid_position: 'GVKUMJ,HANFIW YOFLLJ,VDHPBQ'}
+    layout_properties: {grid_position: 'PCOMNS,LRXBQR'}
   - name: btn_flag
     properties: {text: '', visible: true, icon: 'fa:flag', align: left, role: flag-button}
     type: Button
-    layout_properties: {grid_position: 'BOJFJV,TXAVLM'}
+    layout_properties: {grid_position: 'EOWGSX,NQOMFN'}
 - name: cp_footer
-  properties: {col_spacing: none, spacing_above: none, spacing_below: none, role: cp-chatbubbles}
+  properties: {}
   type: ColumnPanel
   layout_properties: {slot: default}
   components:
@@ -35,7 +35,7 @@ components:
     properties: {vertical_align: middle, border: '', background: 'theme:Surface Variant',
       role: round-flow-panel, spacing_above: none, spacing_below: none, spacing: none}
     type: FlowPanel
-    layout_properties: {grid_position: 'VWLIGT,YFKBXQ'}
+    layout_properties: {grid_position: 'GHNLXB,FIDDGO'}
     components:
     - name: tb_input
       properties: {role: naked, bold: false, spacing_above: none, spacing_below: none}
@@ -49,7 +49,8 @@ components:
     properties: {role: null, align: center, foreground: black, visible: true, font_size: 12,
       content: '', spacing_above: none, spacing_below: none, format: restricted_html}
     type: RichText
-    layout_properties: {grid_position: 'PHJJUR,NKWPHV'}
+    layout_properties: {grid_position: 'MLGWDE,EDISSK'}
+    components: []
     data_bindings: []
 container:
   type: HtmlTemplate

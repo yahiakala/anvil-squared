@@ -1,4 +1,4 @@
-from ._anvil_designer import Chat_copyTemplate
+from ._anvil_designer import ChattestTemplate
 from anvil import HtmlPanel as _HtmlPanel
 from anvil.js import get_dom_node as _get_dom_node
 from ..utils._component_helpers import _html_injector, _spacing_property
@@ -40,7 +40,7 @@ _defaults = {
 }
 
 
-class Chat_copy(Chat_copyTemplate):
+class Chattest(ChattestTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
 
@@ -70,7 +70,7 @@ class Chat_copy(Chat_copyTemplate):
     @height.setter
     def height(self, value):
         self._height = value
-    
+
     @property
     def message_history(self):
         return self.rp_chatbubbles.items

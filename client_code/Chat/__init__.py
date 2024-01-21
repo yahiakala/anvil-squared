@@ -70,7 +70,6 @@ class Chat(ChatTemplate):
     @height.setter
     def height(self, value):
         self._height = value
-        # self.call_js('setChatHeight', str(value), self.rp_chatbubbles)
     
     @property
     def message_history(self):

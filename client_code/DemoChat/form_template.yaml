@@ -17,12 +17,20 @@ components:
     properties: {height: 200}
     type: form:Chat
     layout_properties: {grid_position: 'QOFUYO,ZZEHMF'}
-- name: button_2
-  properties: {text: button_2}
-  type: Button
-  layout_properties: {grid_position: 'GASWUU,ELHTVY'}
-- name: chatbox_1
+- name: label_2
+  properties: {text: Chattest}
+  type: Label
+  layout_properties: {grid_position: 'FCUUBW,GDCSDF'}
+- name: chattest_1
   properties: {height: 300}
-  type: form:Chatbox
-  layout_properties: {grid_position: 'HSIEKP,EBPZNC'}
+  type: form:Chattest
+  layout_properties: {grid_position: 'SEFYBF,AUVQWB'}
+- name: label_1
+  properties: {text: Chat_copy}
+  type: Label
+  layout_properties: {grid_position: 'URUXVH,LUJSYP'}
+- name: chat_copy_1
+  properties: {height: 300}
+  type: form:Chat_copy
+  layout_properties: {grid_position: 'UEWZBD,JVJGWE'}
 is_package: true
