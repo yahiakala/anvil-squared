@@ -25,4 +25,8 @@ components:
   type: ColumnPanel
   layout_properties: {slot: default}
   components: []
+- name: chat_box_1
+  properties: {height: 300}
+  type: form:ChatBox
+  layout_properties: {slot: default}
 is_package: true

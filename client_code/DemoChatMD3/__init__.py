@@ -1,7 +1,7 @@
-from ._anvil_designer import DemoMD3BaseTemplate
+from ._anvil_designer import DemoChatMD3Template
 from anvil import *
 
-class DemoMD3Base(DemoMD3BaseTemplate):
+class DemoChatMD3(DemoChatMD3Template):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)

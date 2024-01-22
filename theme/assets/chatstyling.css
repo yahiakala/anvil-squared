@@ -54,6 +54,7 @@ footer a, .footer .anvil-component {
 }
 
 /* Column Panel Chat Bubbles */
+/* Padding here as the chat bubbles can't pad themselves */
 .anvil-role-cp-chatbubbles {
     padding-left: 10px;
     padding-right: 10px;
@@ -106,7 +107,8 @@ input.anvil-component.anvil-role-naked:hover, input.anvil-component.anvil-role-n
 }
 
 .anvil-role-fixed-repeating-panel {
-    /*max-height: 300px;*/ /* Set the maximum height for the panel */
     overflow-y: auto; /* Add vertical scrollbar if content overflows */
-    /*padding: 10px;*/ /* Add padding for spacing */
+    /* Extra padding for scroll bar */
+    padding-left: 10px;
+    padding-right: 10px;
 # }
