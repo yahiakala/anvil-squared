@@ -1,9 +1,13 @@
-from ._anvil_designer import DemoHTMLMD3Template
+from ._anvil_designer import DemoTemplate
 from anvil import *
 
-class DemoHTMLMD3(DemoHTMLMD3Template):
+class Demo(DemoTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
         # Any code you write here will run before the form opens.
+
+    def button_1_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        pass

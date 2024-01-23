@@ -4,21 +4,21 @@ from anvil.js import get_dom_node as _get_dom_node
 from ..utils._component_helpers import _html_injector, _spacing_property
 
 
-_html_injector.script(
-    """
-    function setChatHeight(height, component) {
-        // Find all elements with the class "anvil-role-fixed-repeating-panel"
+# _html_injector.script(
+#     """
+#     function setChatHeight(height, component) {
+#         // Find all elements with the class "anvil-role-fixed-repeating-panel"
 
-        var html_element = component.v._anvil.element // jQuery Object
-        html_element.css("height", height + "px");
-        html_element.animate({ scrollTop: html_element.prop("scrollHeight") }, 1000); // ms
-    }
-    function scrollBottom(component) {
-        var html_element = component.v._anvil.element
-        html_element.animate({scrollTop: html_element.prop("scrollHeight")}, 100);
-    }
-    """
-)
+#         var html_element = component.v._anvil.element // jQuery Object
+#         html_element.css("height", height + "px");
+#         html_element.animate({ scrollTop: html_element.prop("scrollHeight") }, 1000); // ms
+#     }
+#     function scrollBottom(component) {
+#         var html_element = component.v._anvil.element
+#         html_element.animate({scrollTop: html_element.prop("scrollHeight")}, 100);
+#     }
+#     """
+# )
 
 _html_injector.cdn('_/theme/chatstyling.css')
 

@@ -3,10 +3,18 @@ services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {}
-startup: {type: form, module: DemoChatMD3}
-package_name: Chatbox
+startup: {type: form, module: DemoMD3}
+package_name: anvil_squared
 allow_embedding: false
-name: Chatbox
+name: Anvil Squared
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 startup_form: null
+native_deps: {head_html: "<script>\n    function setChatHeight(height, component)\
+    \ {\n        // Find all elements with the class \"anvil-role-fixed-repeating-panel\"\
+    \n\n        var html_element = component.v._anvil.element // jQuery Object\n \
+    \       html_element.css(\"height\", height + \"px\");\n        html_element.animate({\
+    \ scrollTop: html_element.prop(\"scrollHeight\") }, 1000); // ms\n    }\n    function\
+    \ scrollBottom(component) {\n        var html_element = component.v._anvil.element\n\
+    \        html_element.animate({scrollTop: html_element.prop(\"scrollHeight\")},\
+    \ 100);\n    }\n</script>"}
 renamed: true

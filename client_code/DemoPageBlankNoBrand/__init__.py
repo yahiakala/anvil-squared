@@ -1,7 +1,7 @@
-from ._anvil_designer import DemoBlankContNoBrandTemplate
+from ._anvil_designer import DemoPageBlankNoBrandTemplate
 from anvil import *
 
-class DemoBlankContNoBrand(DemoBlankContNoBrandTemplate):
+class DemoPageBlankNoBrand(DemoPageBlankNoBrandTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
