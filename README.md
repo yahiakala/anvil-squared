@@ -1,8 +1,10 @@
-# About This [Anvil](https://anvil.works/?utm_source=github:app_README) App
+# [Anvil](https://anvil.works/?utm_source=github:app_README) Squared
+
+This repository contains custom components that don't fit in [anvil-extras]([https://](https://github.com/anvilistas/anvil-extras) or [anvil-labs](https://github.com/anvilistas/anvil-labs).
 
 ### Build web apps with nothing but Python.
 
-The app in this repository is built with [Anvil](https://anvil.works?utm_source=github:app_README), the framework for building web apps with nothing but Python. You can clone this app into your own Anvil account to use and modify.
+You can clone this app into your own GitHub and Anvil account to use and modify.
 
 Below, you will find:
 - [How to open this app](#opening-this-app-in-anvil-and-getting-it-online) in Anvil and deploy it online
@@ -25,28 +27,6 @@ Finally, click "Clone App".
 
 This app will then be in your Anvil account, ready for you to run it or start editing it! **Any changes you make will be automatically pushed back to this repository, if you have permission!** You might want to [make a new branch](https://anvil.works/docs/version-control-new-ide?utm_source=github:app_README).
 
-### Running the app yourself:
-
-Find the **Run** button at the top-right of the Anvil editor:
-
-<img src="https://anvil.works/docs/img/run-button-new-ide.png"/>
-
-
-### Publishing the app on your own URL
-
-Now you've cloned the app, you can [deploy it on the internet with two clicks](https://anvil.works/docs/deployment/quickstart?utm_source=github:app_README)! Find the **Publish** button at the top-right of the editor:
-
-<img src="https://anvil.works/docs/deployment-new-ide/img/environments/publish-button.png"/>
-
-When you click it, you will see the Publish dialog:
-
-<img src="https://anvil.works/docs/deployment-new-ide/img/quickstart/empty-environments-dialog.png"/>
-
-Click **Publish This App**, and you will see that your app has been deployed at a new, public URL:
-
-<img src="https://anvil.works/docs/deployment-new-ide/img/quickstart/default-public-environment.png"/>
-
-That's it - **your app is now online**. Click the link and try it!
 
 ## About Anvil
 
