@@ -17,7 +17,7 @@ components:
     type: Button
     layout_properties: {grid_position: 'HWSQDX,RBDXQX'}
   - name: chat_copy_1
-    properties: {height: 300}
+    properties: {height: 150}
     type: form:ChatBox
     layout_properties: {grid_position: 'VSJSRU,PAKBAM'}
 - name: outlined_card_2

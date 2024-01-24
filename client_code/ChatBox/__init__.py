@@ -1,26 +1,6 @@
 from ._anvil_designer import ChatBoxTemplate
-from anvil import HtmlPanel as _HtmlPanel
-from anvil.js import get_dom_node as _get_dom_node
-from ..utils._component_helpers import _html_injector, _spacing_property
+import anvil
 
-
-# _html_injector.script(
-#     """
-#     function setChatHeight(height, component) {
-#         // Find all elements with the class "anvil-role-fixed-repeating-panel"
-
-#         var html_element = component.v._anvil.element // jQuery Object
-#         html_element.css("height", height + "px");
-#         html_element.animate({ scrollTop: html_element.prop("scrollHeight") }, 1000); // ms
-#     }
-#     function scrollBottom(component) {
-#         var html_element = component.v._anvil.element
-#         html_element.animate({scrollTop: html_element.prop("scrollHeight")}, 100);
-#     }
-#     """
-# )
-
-_html_injector.cdn('_/theme/chatstyling.css')
 
 msg_hist = [
             {'from': 'bot', 'text': 'Hi, how can I help you?'},
@@ -60,7 +40,13 @@ class ChatBox(ChatBoxTemplate):
     def form_show(self, **event_args):
         """This method is called when the HTML panel is shown on the screen"""
         print('showing form')
-        self.call_js('setChatHeight', str(self._height), self.rp_chatbubbles)
+        # self.call_js('setChatHeight', str(self._height), self.rp_chatbubbles)
+        dom = anvil.js.get_dom_node(self.rp_chatbubbles)
+        dom.style.height = str(self._height) + "px"
+        # print(dom.style)
+        print(dir(dom.style))
+        # print(dom.style['height'])
+        # print(' End')
 
 
     @property
