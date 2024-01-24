@@ -1,6 +1,6 @@
 # [Anvil](https://anvil.works/?utm_source=github:app_README) Squared
 
-This repository contains custom components that don't fit in [anvil-extras]([https://](https://github.com/anvilistas/anvil-extras) or [anvil-labs](https://github.com/anvilistas/anvil-labs).
+This repository contains custom components that don't fit in [anvil-extras](https://github.com/anvilistas/anvil-extras) or [anvil-labs](https://github.com/anvilistas/anvil-labs).
 
 ### Build web apps with nothing but Python.
 
