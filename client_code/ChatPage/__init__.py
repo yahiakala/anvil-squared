@@ -1,10 +1,5 @@
 from ._anvil_designer import ChatPageTemplate
-from anvil import HtmlPanel as _HtmlPanel
-from anvil.js import get_dom_node as _get_dom_node
 
-from ..utils._component_helpers import _html_injector, _spacing_property
-
-_html_injector.cdn('_/theme/chatstyling.css')
 
 msg_hist = [
             {'from': 'bot', 'text': 'Hi, how can I help you?'},

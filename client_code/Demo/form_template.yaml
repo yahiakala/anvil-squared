@@ -20,5 +20,14 @@ components:
 - name: chatbox_1
   properties: {height: 300}
   type: form:ChatBox
-  layout_properties: {grid_position: 'HSIEKP,EBPZNC'}
+  layout_properties: {grid_position: 'SHTLWE,FQHGUE'}
+- name: column_panel_1_copy
+  properties: {border: solid 1px black}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'HSIEKP,UNCNQB'}
+  components:
+  - name: chatbox_1_copy_copy
+    properties: {height: 300, show_branding: false}
+    type: form:ChatBox
+    layout_properties: {grid_position: 'AUSIQI,WBGUXY'}
 is_package: true
