@@ -19,8 +19,6 @@ unique_ids:
   modules:
     regular_startup: '1705423955497367585741285.3267'
     router_startup: '1705419636712253991425843.49832'
-    utils: '1705429110800220072455351.9323'
-    utils._component_helpers: '1705429127103727684106457.5991'
   server_modules: {}
   assets:
     notalone.png: '1705419013026400785042198.3478'
