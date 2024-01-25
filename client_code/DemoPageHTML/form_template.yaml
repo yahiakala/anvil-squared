@@ -6,4 +6,6 @@ components:
   properties: {}
   type: form:ChatPage
   layout_properties: {slot: default}
+  data_bindings:
+  - {property: message_history, code: self.msg_hist, writeback: false}
 is_package: true
