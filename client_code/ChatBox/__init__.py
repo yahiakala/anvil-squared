@@ -13,7 +13,7 @@ msg_hist = [
 ]
 
 _defaults = {
-    "message_history": msg_hist,
+    # "message_history": msg_hist,
     "show_branding": True,
     "brand_message": """Powered by <a href="https://Chatbeaver.ca">Placeholder</a>""",
     "height": 300

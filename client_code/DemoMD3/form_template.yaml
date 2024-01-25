@@ -20,6 +20,8 @@ components:
     properties: {height: 150}
     type: form:ChatBox
     layout_properties: {grid_position: 'VSJSRU,PAKBAM'}
+    data_bindings:
+    - {property: message_history, code: self.msg_hist, writeback: false}
 - name: outlined_card_2
   properties: {role: outlined-card, col_spacing: none}
   type: ColumnPanel
@@ -29,4 +31,6 @@ components:
   properties: {height: 300}
   type: form:ChatBox
   layout_properties: {slot: default}
+  data_bindings:
+  - {property: message_history, code: self.msg_hist, writeback: false}
 is_package: true
