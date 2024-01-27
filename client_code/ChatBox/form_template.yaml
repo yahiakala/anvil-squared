@@ -10,6 +10,8 @@ is_package: true
 events:
 - {name: send_message, default_event: true, description: User pressed enter or hit send}
 - {name: flag_click, description: User clicked the flag}
+- {name: show}
+- {name: hide}
 toolbox_item: {title: Chatbox}
 custom_component: true
 components:

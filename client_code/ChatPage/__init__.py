@@ -44,7 +44,7 @@ class ChatPage(ChatPageTemplate):
 
     def form_show(self, **event_args):
         """This method is called when the HTML panel is shown on the screen"""
-        print('showing form')
+        # print('showing form')
         self.btn_flag.scroll_into_view()
 
     
