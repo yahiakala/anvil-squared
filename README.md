@@ -2,6 +2,11 @@
 
 This repository contains custom components that don't fit in [anvil-extras](https://github.com/anvilistas/anvil-extras) or [anvil-labs](https://github.com/anvilistas/anvil-labs).
 
+These include:
+- Chatbox. A height-adjustable chatbox widget for chatting.
+- ChatPage. A full screen chatbox that has a sticky footer.
+- ClientTests. A user interface/dashboard for running your client test code (using unittest).
+
 ### Build web apps with nothing but Python.
 
 You can clone this app into your own GitHub and Anvil account to use and modify.
