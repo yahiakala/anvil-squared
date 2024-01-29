@@ -28,7 +28,7 @@ components:
 - name: column_panel_1_copy
   properties: {border: solid 1px black}
   type: ColumnPanel
-  layout_properties: {grid_position: 'HSIEKP,UNCNQB'}
+  layout_properties: {grid_position: 'OVEYMZ,DAYEJG'}
   components:
   - name: chatbox_1_copy_copy
     properties: {height: 300, show_branding: false}
@@ -36,4 +36,12 @@ components:
     layout_properties: {grid_position: 'AUSIQI,WBGUXY'}
     data_bindings:
     - {property: message_history, code: self.msg_hist, writeback: false}
+- name: label_1
+  properties: {text: ClientTestComponent}
+  type: Label
+  layout_properties: {grid_position: 'BPFSLC,MLRUWP'}
+- name: client_tests_1
+  properties: {}
+  type: form:ClientTests
+  layout_properties: {grid_position: 'ZKDFSP,UFFREG'}
 is_package: true

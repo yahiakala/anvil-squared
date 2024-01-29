@@ -8,6 +8,7 @@ properties:
 - {name: rp_panels, type: object, description: RepeatingPanel object}
 is_package: true
 events: []
+toolbox_item: {title: UnitTest}
 custom_component: true
 components:
 - type: ColumnPanel

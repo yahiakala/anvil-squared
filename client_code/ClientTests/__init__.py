@@ -5,14 +5,14 @@ import unittest
 
 import anvil
 
-from ._anvil_designer import ClientTestComponentTemplate
+from ._anvil_designer import ClientTestsTemplate
 from .ModuleTemplate import ModuleTemplate
 from ..UnitTestTemplate import UnitTestTemplate
 
 __version__ = "0.0.1"
 
 
-class ClientTestComponent(ClientTestComponentTemplate):
+class ClientTests(ClientTestsTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
