@@ -40,6 +40,7 @@ components:
       layout_properties: {grid_position: 'VSJSRU,PAKBAM'}
       data_bindings:
       - {property: message_history, code: self.msg_hist, writeback: false}
+      event_bindings: {thumbs_up_click: chat_copy_1_thumbs_up_click, thumbs_down_click: chat_copy_1_thumbs_down_click}
   - name: label_2
     properties: {text: Chatbox2}
     type: Label

@@ -35,6 +35,8 @@ class ChatBox(ChatBoxTemplate):
         )
         properties = _defaults | properties
         self._height = _defaults['height']
+        self.rp_chatbubbles.add_event_handler('x-thumbs-up', lambda **e: self.raise_event("thumbs_up_click"))
+        self.rp_chatbubbles.add_event_handler('x-thumbs-down', lambda **e: self.raise_event("thumbs_down_click"))
         self.init_components(**properties)
 
     def form_show(self, **event_args):

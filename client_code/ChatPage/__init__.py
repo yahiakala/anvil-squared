@@ -39,13 +39,19 @@ class ChatPage(ChatPageTemplate):
         self.btn_flag.set_event_handler(
             "click", lambda **e: self.raise_event("flag_click")
         )
+        self.rp_chatbubbles.add_event_handler('x-thumbs-up', lambda **e: self.raise_event("thumbs_up_click"))
+        self.rp_chatbubbles.add_event_handler('x-thumbs-down', lambda **e: self.raise_event("thumbs_down_click"))
         properties = _defaults | properties
         self.init_components(**properties)
+        
 
     def form_show(self, **event_args):
         """This method is called when the HTML panel is shown on the screen"""
         # print('showing form')
         self.btn_flag.scroll_into_view()
+
+    def thumbs_up_click_event(self, **event_args):
+        pass
 
     
     @property

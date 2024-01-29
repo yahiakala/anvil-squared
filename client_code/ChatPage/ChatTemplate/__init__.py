@@ -1,18 +1,6 @@
 from ._anvil_designer import ChatTemplateTemplate
 import anvil
 
-# from ...utils._component_helpers import _html_injector, _spacing_property
-
-
-# _html_injector.css(
-#     """
-#     .anvil-role-src-link {
-#         padding: 0px 10px 0px 10px;
-#         border-radius: 20px;
-#         font-size: 14px;
-#     }
-#     """
-# )
 
 class ChatTemplate(ChatTemplateTemplate):
     def __init__(self, **properties):
@@ -47,3 +35,16 @@ class ChatTemplate(ChatTemplateTemplate):
                     )
                 )
                 self.fp_source_links.add_component(self.src_labels[i])
+                
+        if 'from' in self.item and self.item['from'] == 'bot':
+            self.fp_actions.visible = True
+
+    def btn_thumbs_up_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        self.parent.raise_event('x-thumbs-up', message=self.item['text'])
+
+    def btn_thumbs_down_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        self.parent.raise_event('x-thumbs-down', message=self.item['text'])
+
+

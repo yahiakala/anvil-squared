@@ -11,6 +11,8 @@ events:
 - {name: flag_click, description: User clicked the flag}
 - {name: show}
 - {name: hide}
+- {name: thumbs_up_click}
+- {name: thumbs_down_click}
 toolbox_item: {title: ChatPage}
 custom_component: true
 components:

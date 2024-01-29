@@ -31,3 +31,11 @@ class DemoMD3(DemoMD3Template):
         self.client_tests_1.card_roles = ['outlined-card', 'tonal-card', 'elevated-card']
         self.client_tests_1.icon_size = 30
         self.client_tests_1.btn_role = 'filled-button'
+
+    def chat_copy_1_thumbs_up_click(self, **event_args):
+        print(event_args)
+        alert('thumbs up! ')
+
+    def chat_copy_1_thumbs_down_click(self, **event_args):
+        print(event_args)
+        alert('thumbs down!')
