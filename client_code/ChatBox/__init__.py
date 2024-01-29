@@ -22,8 +22,6 @@ _defaults = {
 
 class ChatBox(ChatBoxTemplate):
     def __init__(self, **properties):
-        # Set Form properties and Data Bindings.
-
         self.tb_input.set_event_handler(
             "pressed_enter", lambda **e: self.raise_event("send_message")
         )
@@ -35,17 +33,18 @@ class ChatBox(ChatBoxTemplate):
         )
         properties = _defaults | properties
         self._height = _defaults['height']
-        self.rp_chatbubbles.add_event_handler('x-thumbs-up', lambda **e: self.raise_event("thumbs_up_click"))
-        self.rp_chatbubbles.add_event_handler('x-thumbs-down', lambda **e: self.raise_event("thumbs_down_click"))
+        self.rp_chatbubbles.add_event_handler('x-thumbs-up', lambda **e: self.raise_event("thumbs_up_click", **e))
+        self.rp_chatbubbles.add_event_handler('x-thumbs-down', lambda **e: self.raise_event("thumbs_down_click", **e))
         self.init_components(**properties)
 
     def form_show(self, **event_args):
         """This method is called when the HTML panel is shown on the screen"""
-        # print('showing form')
         dom = anvil.js.get_dom_node(self.rp_chatbubbles)
         dom.style.height = str(self._height) + "px"
         self.call_js('scrollBottom', self.rp_chatbubbles)
 
+    def scroll_bottom(self):
+        self.call_js('scrollBottom', self.rp_chatbubbles)
 
     @property
     def height(self):
@@ -91,5 +90,10 @@ class ChatBox(ChatBoxTemplate):
     def input_text(self, value):
         self.tb_input.text = value
 
-    def scroll_bottom(self):
-        self.call_js('scrollBottom', self.rp_chatbubbles)
+    @property
+    def show_flag(self):
+        return self.btn_flag.visible
+
+    @show_flag.setter
+    def show_flag(self, value):
+        self.btn_flag.visible = value

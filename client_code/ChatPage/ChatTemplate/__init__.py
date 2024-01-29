@@ -36,7 +36,7 @@ class ChatTemplate(ChatTemplateTemplate):
                 )
                 self.fp_source_links.add_component(self.src_labels[i])
                 
-        if 'from' in self.item and self.item['from'] == 'bot':
+        if 'from' in self.item and self.item['from'] == 'bot' and 'show_thumbs' in self.item:
             self.fp_actions.visible = True
 
     def btn_thumbs_up_click(self, **event_args):

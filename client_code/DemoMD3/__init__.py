@@ -33,9 +33,7 @@ class DemoMD3(DemoMD3Template):
         self.client_tests_1.btn_role = 'filled-button'
 
     def chat_copy_1_thumbs_up_click(self, **event_args):
-        print(event_args)
-        alert('thumbs up! ')
+        alert('thumbs up! ' + event_args['message'])
 
     def chat_copy_1_thumbs_down_click(self, **event_args):
-        print(event_args)
-        alert('thumbs down!')
+        alert('thumbs down! ' + event_args['message'])

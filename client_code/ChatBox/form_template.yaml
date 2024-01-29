@@ -6,6 +6,7 @@ properties:
     below the textbox, in HTML format.'}
 - {name: input_text, type: string, default_value: '', important: true, description: User input text in the textbox}
 - {name: height, type: number, important: true, description: Height of chat (not including text box)}
+- {name: show_flag, type: boolean, default_value: false, important: true}
 is_package: true
 events:
 - {name: send_message, default_event: true, description: User pressed enter or hit send}
@@ -27,7 +28,7 @@ components:
     type: RepeatingPanel
     layout_properties: {grid_position: 'GVKUMJ,HANFIW YOFLLJ,VDHPBQ'}
   - name: btn_flag
-    properties: {text: '', visible: true, icon: 'fa:flag', align: left, role: flag-button}
+    properties: {text: '', visible: false, icon: 'fa:flag', align: left, role: flag-button}
     type: Button
     layout_properties: {grid_position: 'BOJFJV,TXAVLM'}
 - name: cp_footer

@@ -28,8 +28,6 @@ _defaults = {
 
 class ChatPage(ChatPageTemplate):
     def __init__(self, **properties):
-        # Set Form properties and Data Bindings.
-        
         self.tb_input.set_event_handler(
             "pressed_enter", lambda **e: self.raise_event("send_message")
         )
@@ -39,21 +37,18 @@ class ChatPage(ChatPageTemplate):
         self.btn_flag.set_event_handler(
             "click", lambda **e: self.raise_event("flag_click")
         )
-        self.rp_chatbubbles.add_event_handler('x-thumbs-up', lambda **e: self.raise_event("thumbs_up_click"))
-        self.rp_chatbubbles.add_event_handler('x-thumbs-down', lambda **e: self.raise_event("thumbs_down_click"))
+        self.rp_chatbubbles.add_event_handler('x-thumbs-up', lambda **e: self.raise_event("thumbs_up_click", **e))
+        self.rp_chatbubbles.add_event_handler('x-thumbs-down', lambda **e: self.raise_event("thumbs_down_click", **e))
         properties = _defaults | properties
         self.init_components(**properties)
         
-
     def form_show(self, **event_args):
         """This method is called when the HTML panel is shown on the screen"""
-        # print('showing form')
+        self.btn_flag.scroll_into_view()
+    
+    def scroll_bottom(self):
         self.btn_flag.scroll_into_view()
 
-    def thumbs_up_click_event(self, **event_args):
-        pass
-
-    
     @property
     def message_history(self):
         return self.rp_chatbubbles.items
@@ -90,5 +85,10 @@ class ChatPage(ChatPageTemplate):
     def input_text(self, value):
         self.tb_input.text = value
 
-    def scroll_bottom(self):
-        self.btn_flag.scroll_into_view()
+    @property
+    def show_flag(self):
+        return self.btn_flag.visible
+
+    @show_flag.setter
+    def show_flag(self, value):
+        self.btn_flag.visible = value
