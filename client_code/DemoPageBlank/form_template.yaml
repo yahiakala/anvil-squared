@@ -6,7 +6,7 @@ components:
   layout_properties: {grid_position: 'MKWLSW,ZFIBHG'}
   components:
   - name: chatbox_1
-    properties: {}
+    properties: {show_flag: false}
     type: form:ChatPage
     layout_properties: {grid_position: 'QBQHGY,QYLXJP'}
     data_bindings:

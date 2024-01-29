@@ -44,10 +44,15 @@ class ChatPage(ChatPageTemplate):
         
     def form_show(self, **event_args):
         """This method is called when the HTML panel is shown on the screen"""
-        self.btn_flag.scroll_into_view()
+        self.scroll_bottom()
     
     def scroll_bottom(self):
-        self.btn_flag.scroll_into_view()
+        if self.btn_flag.visible:
+            # print('button is visible')
+            self.btn_flag.scroll_into_view()
+        else:
+            # print(self.rp_chatbubbles.get_components()[-1])
+            self.rp_chatbubbles.get_components()[-1].scroll_into_view()
 
     @property
     def message_history(self):

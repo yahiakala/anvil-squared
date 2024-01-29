@@ -25,6 +25,7 @@ class DemoPageBlank(DemoPageBlankTemplate):
         # Set Form properties and Data Bindings.
         self.msg_hist = msg_hist
         self.init_components(**properties)
+        # self.chatbox_1.scroll_bottom()
 
         # Any code you write here will run before the form opens.
 
