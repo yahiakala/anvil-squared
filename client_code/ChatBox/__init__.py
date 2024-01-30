@@ -41,7 +41,7 @@ class ChatBox(ChatBoxTemplate):
         """This method is called when the HTML panel is shown on the screen"""
         dom = anvil.js.get_dom_node(self.rp_chatbubbles)
         dom.style.height = str(self._height) + "px"
-        self.call_js('scrollBottom', self.rp_chatbubbles)
+        self.scroll_bottom()
 
     def scroll_bottom(self):
         self.call_js('scrollBottom', self.rp_chatbubbles)
