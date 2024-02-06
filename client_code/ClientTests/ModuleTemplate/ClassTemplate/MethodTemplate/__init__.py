@@ -22,7 +22,7 @@ class MethodTemplate(MethodTemplateTemplate):
             test_desc=self.item["ref"].__doc__,
             icon_size=self.item["icon_size"],
             item = self.item,
-            btn_run_function=self.run_test
+            btn_run_function=self.btn_run_test_click
         )
         self.add_component(self.test_method)
         self.add_event_handler('x-run', self.run_try_except)
@@ -43,12 +43,15 @@ class MethodTemplate(MethodTemplateTemplate):
             self.test_method.pass_fail_icon_change(self.success)
         except Exception:
             self.success = False
+            unitclass = self.item['classref']()
+            unitclass.tearDown()
             self.test_method.pass_fail_icon_change(self.success)
 
-    def run_test(self, **event_args):
-        """Run tests."""
-        if self.item['debug']:
-            self.btn_run_test_click()
-        else:
-            self.run_try_except()
+    # def run_test(self, **event_args):
+    #     """Run tests."""
+    #     if self.test_method.cb_debug.checked:
+    #         print('Running in debug mode.')
+    #         self.btn_run_test_click()
+    #     else:
+    #         self.run_try_except()
             

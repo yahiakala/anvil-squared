@@ -9,11 +9,7 @@ properties:
 is_package: true
 toolbox_item: {title: ClientTests}
 custom_component: true
-components:
-- name: cb_debug
-  properties: {text: Debug Mode, checked: true}
-  type: CheckBox
-  layout_properties: {grid_position: 'LNSEKU,XTQFEN'}
+components: []
 container:
   type: ColumnPanel
   properties: {col_widths: '{}'}
