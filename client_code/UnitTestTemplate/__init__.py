@@ -22,6 +22,8 @@ class UnitTestTemplate(UnitTestTemplateTemplate):
         self.lbl_fail.font_size = self.icon_size
         if self.rp_panels:
             self.btn_expand.visible = True
+            if self.rp_panels.visible:
+                self.btn_expand.icon = 'fa:chevron-down'
             self.cp_1.add_component(self.rp_panels)
         # self.add_event_handler('x-run', self.btn_run_click)
 
