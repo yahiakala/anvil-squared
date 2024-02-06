@@ -21,6 +21,7 @@ class UnitTestTemplate(UnitTestTemplateTemplate):
         self.lbl_success.font_size = self.icon_size
         self.lbl_fail.font_size = self.icon_size
         if self.rp_panels:
+            self.btn_expand.visible = True
             self.cp_1.add_component(self.rp_panels)
         # self.add_event_handler('x-run', self.btn_run_click)
 
@@ -37,3 +38,12 @@ class UnitTestTemplate(UnitTestTemplateTemplate):
             self.lbl_success.visible = True
         else:
             self.lbl_fail.visible = True
+
+    def btn_expand_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        if self.btn_expand.icon == 'fa:chevron-right' and self.rp_panels:
+            self.rp_panels.visible = True
+            self.btn_expand.icon = 'fa:chevron-down'
+        elif self.rp_panels:
+            self.rp_panels.visible = False
+            self.btn_expand.icon = 'fa:chevron-right'

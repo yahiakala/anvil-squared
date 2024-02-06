@@ -17,6 +17,7 @@ class ClassTemplate(ClassTemplateTemplate):
         self.success = True
         self.rp_panels = anvil.RepeatingPanel(item_template=MethodTemplate)
         self.rp_panels.items = self.item["children"]
+        self.rp_panels.visible = False
         
         self.test_obj = UnitTestTemplate(
             cp_role=self.item["card_role"],

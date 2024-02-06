@@ -21,6 +21,11 @@ components:
     name: fp_runs
     layout_properties: {grid_position: 'JPJUYT,DYGFQP'}
     components:
+    - name: btn_expand
+      properties: {text: '', icon: 'fa:chevron-right', visible: false}
+      type: Button
+      layout_properties: {}
+      event_bindings: {click: btn_expand_click}
     - type: Button
       properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
         foreground: '', visible: true, text: Run Tests, font_size: null, font: '',
