@@ -1,0 +1,9 @@
+container: {type: ColumnPanel}
+components:
+- name: lbl_feature
+  properties: {icon: 'fa:check-circle'}
+  type: Label
+  layout_properties: {grid_position: 'HQCFUX,LMDFHR'}
+  data_bindings:
+  - {property: text, code: self.item, writeback: false}
+is_package: true

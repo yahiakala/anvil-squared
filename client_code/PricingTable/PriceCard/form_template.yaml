@@ -1,0 +1,56 @@
+container: {type: ColumnPanel}
+components:
+- name: cp_price
+  properties: {border: 1px solid black}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'AFZZON,XJEKAW'}
+  components:
+  - name: lbl_title
+    properties: {}
+    type: Label
+    layout_properties: {grid_position: 'JQMEIM,VLHRUU'}
+    data_bindings:
+    - {property: text, code: 'self.item[''title'']', writeback: false}
+  - name: fp_price
+    properties: {}
+    type: FlowPanel
+    layout_properties: {grid_position: 'ICIYXB,MIFFRS'}
+    components:
+    - name: lbl_oldprice
+      properties: {}
+      type: Label
+      data_bindings:
+      - {property: text, code: 'self.item[''old_price'']', writeback: false}
+    - name: lbl_price
+      properties: {}
+      type: Label
+      data_bindings:
+      - {property: text, code: 'self.item[''price'']', writeback: false}
+    - name: lbl_frequency
+      properties: {text: /mo}
+      type: Label
+      layout_properties: {}
+  - name: lbl_billedannually
+    properties: {text: billed annually}
+    type: Label
+    layout_properties: {grid_position: 'RBYNBH,OBEQSE'}
+  - name: btn_signup
+    properties: {text: Subscribe}
+    type: Button
+    layout_properties: {grid_position: 'NOHYLN,VDFVRG'}
+    event_bindings: {click: btn_signup_click}
+  - name: link_hidden
+    properties: {visible: false}
+    type: Link
+    layout_properties: {grid_position: 'KZKVAO,AWCUVR'}
+    data_bindings:
+    - {property: url, code: 'self.item[''url'']', writeback: false}
+  - name: lbl_everything
+    properties: {bold: true}
+    type: Label
+    layout_properties: {grid_position: 'QOHHBI,JRCBIZ'}
+  - name: rp_features
+    properties: {item_template: PricingTable.FeatureList}
+    type: RepeatingPanel
+    layout_properties: {grid_position: 'SUPBVR,FJVZZQ'}
+is_package: true
