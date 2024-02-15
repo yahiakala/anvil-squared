@@ -28,7 +28,8 @@ unique_ids:
     regular_startup: '1705423955497367585741285.3267'
     router_startup: '1705419636712253991425843.49832'
     client_unittest: NTFMPJWVVELVER4BR3AP3ZGCVTSSQBR3
-  server_modules: {}
+  server_modules:
+    helpers: '1708027676608172378203046.10373'
   assets:
     notalone.png: '1705419013026400785042198.3478'
     theme.css: '1705608232395634671029919.1001'
