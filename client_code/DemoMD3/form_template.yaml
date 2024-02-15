@@ -51,4 +51,8 @@ components:
     layout_properties: {grid_position: 'VNXOGG,GNIKBH'}
     data_bindings:
     - {property: message_history, code: self.msg_hist, writeback: false}
+  - name: pricing_table_1
+    properties: {}
+    type: form:PricingTable
+    layout_properties: {grid_position: 'MZVBUD,DMVDEG'}
 is_package: true

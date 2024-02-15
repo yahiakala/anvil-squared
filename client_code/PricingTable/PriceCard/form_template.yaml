@@ -1,18 +1,18 @@
 container: {type: ColumnPanel}
 components:
 - name: cp_price
-  properties: {border: 1px solid black}
+  properties: {border: ''}
   type: ColumnPanel
   layout_properties: {grid_position: 'AFZZON,XJEKAW'}
   components:
   - name: lbl_title
-    properties: {}
+    properties: {role: title}
     type: Label
     layout_properties: {grid_position: 'JQMEIM,VLHRUU'}
     data_bindings:
     - {property: text, code: 'self.item[''title'']', writeback: false}
   - name: fp_price
-    properties: {}
+    properties: {vertical_align: middle}
     type: FlowPanel
     layout_properties: {grid_position: 'ICIYXB,MIFFRS'}
     components:
@@ -22,12 +22,13 @@ components:
       data_bindings:
       - {property: text, code: 'self.item[''old_price'']', writeback: false}
     - name: lbl_price
-      properties: {}
+      properties: {role: title, bold: true, font_size: 40}
       type: Label
       data_bindings:
       - {property: text, code: 'self.item[''price'']', writeback: false}
+      layout_properties: {}
     - name: lbl_frequency
-      properties: {text: /mo}
+      properties: {text: per month}
       type: Label
       layout_properties: {}
   - name: lbl_billedannually
@@ -45,10 +46,12 @@ components:
     layout_properties: {grid_position: 'KZKVAO,AWCUVR'}
     data_bindings:
     - {property: url, code: 'self.item[''url'']', writeback: false}
-  - name: lbl_everything
+  - name: lbl_includes
     properties: {bold: true}
     type: Label
     layout_properties: {grid_position: 'QOHHBI,JRCBIZ'}
+    data_bindings:
+    - {property: text, code: 'self.item[''includes'']', writeback: false}
   - name: rp_features
     properties: {item_template: PricingTable.FeatureList}
     type: RepeatingPanel
