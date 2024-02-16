@@ -1,7 +1,9 @@
-container: {type: ColumnPanel}
+container:
+  type: ColumnPanel
+  event_bindings: {show: form_show}
 components:
 - name: lbl_feature
-  properties: {icon: 'fa:check-circle'}
+  properties: {icon: 'fa:check-circle', spacing_above: none, spacing_below: none}
   type: Label
   layout_properties: {grid_position: 'HQCFUX,LMDFHR'}
   data_bindings:

@@ -1,23 +1,39 @@
-container: {type: ColumnPanel}
+container:
+  type: ColumnPanel
+  event_bindings: {show: form_show}
 components:
 - name: cp_price
   properties: {border: ''}
   type: ColumnPanel
   layout_properties: {grid_position: 'AFZZON,XJEKAW'}
   components:
+  - name: sp_1
+    properties: {height: '15', visible: false}
+    type: Spacer
+    layout_properties: {grid_position: 'ZOHBTF,KQWRPK'}
+  - name: fp_sup
+    properties: {align: center}
+    type: FlowPanel
+    layout_properties: {grid_position: 'FWGXBJ,ESWPMN'}
+    components:
+    - name: lbl_suptitle
+      properties: {align: center, visible: true, foreground: '', border: ''}
+      type: Label
+      layout_properties: {}
+      data_bindings: []
   - name: lbl_title
-    properties: {role: title}
+    properties: {role: title, align: center}
     type: Label
     layout_properties: {grid_position: 'JQMEIM,VLHRUU'}
     data_bindings:
     - {property: text, code: 'self.item[''title'']', writeback: false}
   - name: fp_price
-    properties: {vertical_align: middle}
+    properties: {vertical_align: bottom, align: center, spacing: small}
     type: FlowPanel
     layout_properties: {grid_position: 'ICIYXB,MIFFRS'}
     components:
     - name: lbl_oldprice
-      properties: {}
+      properties: {align: center}
       type: Label
       data_bindings:
       - {property: text, code: 'self.item[''old_price'']', writeback: false}
@@ -27,18 +43,20 @@ components:
       data_bindings:
       - {property: text, code: 'self.item[''price'']', writeback: false}
       layout_properties: {}
-    - name: lbl_frequency
-      properties: {text: per month}
+    - name: lbl_mo
+      properties: {spacing_below: none}
       type: Label
+      data_bindings:
+      - {property: text, code: '''per\nmonth''', writeback: false}
       layout_properties: {}
   - name: lbl_billedannually
-    properties: {text: billed annually}
+    properties: {text: billed annually, align: center}
     type: Label
     layout_properties: {grid_position: 'RBYNBH,OBEQSE'}
   - name: btn_signup
-    properties: {text: Subscribe}
+    properties: {text: Subscribe, align: full}
     type: Button
-    layout_properties: {grid_position: 'NOHYLN,VDFVRG'}
+    layout_properties: {grid_position: 'NOHYLN,VDFVRG', full_width_row: false}
     event_bindings: {click: btn_signup_click}
   - name: link_hidden
     properties: {visible: false}
@@ -47,13 +65,27 @@ components:
     data_bindings:
     - {property: url, code: 'self.item[''url'']', writeback: false}
   - name: lbl_includes
-    properties: {bold: true}
+    properties: {bold: true, align: center}
     type: Label
     layout_properties: {grid_position: 'QOHHBI,JRCBIZ'}
     data_bindings:
     - {property: text, code: 'self.item[''includes'']', writeback: false}
-  - name: rp_features
-    properties: {item_template: PricingTable.FeatureList}
-    type: RepeatingPanel
-    layout_properties: {grid_position: 'SUPBVR,FJVZZQ'}
+  - name: fp_features
+    properties: {align: center, spacing: small}
+    type: FlowPanel
+    layout_properties: {grid_position: 'DGVXVE,GTYFIR'}
+    components:
+    - name: rp_features
+      properties: {item_template: PricingTable.FeatureList, spacing_above: none, spacing_below: none}
+      type: RepeatingPanel
+      layout_properties: {}
+  - name: lbl_suptitle_copy
+    properties: {align: center, visible: true, foreground: '', border: ''}
+    type: Label
+    layout_properties: {grid_position: 'ZZGFPZ,EZDALG'}
+    data_bindings: []
+  - name: sp_2
+    properties: {height: '15', visible: false}
+    type: Spacer
+    layout_properties: {grid_position: 'MUMESZ,LVUCSX'}
 is_package: true
