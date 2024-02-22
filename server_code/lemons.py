@@ -92,26 +92,51 @@ def lemon_1():
     signature = anvil.server.request.headers.get('x-signature')
 
     if not signature:
-        return anvil.server.HttpResponse("Missing signature", status=400)
+        return anvil.server.HttpResponse(body="Missing signature", status=400)
 
     event = anvil.server.request.headers.get('x-event-name')
     secret = anvil.secrets.get_secret('lemon_signing')
     
     payload = anvil.server.request.body.get_bytes()
     
+    
     # Compute the HMAC digest
     digest = hmac.new(secret.encode(), payload, hashlib.sha256).hexdigest()
     
     # Compare the computed digest with the provided signature
     if not hmac.compare_digest(digest, signature):
-        return anvil.server.HttpResponse("Invalid signature", status=403)  # Return a 403 Forbidden status code if the signature is invalid
+        return anvil.server.HttpResponse(body="Invalid signature", status=403)  # Return a 403 Forbidden status code if the signature is invalid
 
+    payload_dict = json.loads(payload.decode('utf-8'))
+    print(event)
+    print(anvil.server.request.body)
     print(payload)
+
+    if event == 'subscription_created' or event == 'subscription_updated':
+        # Returns subscription object.
+        sub_id = payload_dict['data']['id']
+        store_id = payload_dict['data']['attributes']['store_id']
+        cust_id = payload_dict['data']['attributes']['customer_id']
+        prod_id = payload_dict['data']['attributes']['product_id']
+        variant_id = payload_dict['data']['attributes']['variant_id']
+        user_email = payload_dict['data']['attributes']['user_email']
+        status = payload_dict['data']['attributes']['status'] # only care about 'active' and 'expired'
+        paused = payload_dict['data']['attributes']['pause']
+        cancelled = payload_dict['data']['attributes']['cancelled']
+    elif event == 'subscription_payment_success':
+        # Returns a subscription invoice object
+        store_id = payload_dict['data']['attributes']['store_id']
+        sub_id = payload_dict['data']['attributes']['subscription_id']
+        user_email = payload_dict['data']['attributes']['user_email']
+        cust_id = payload_dict['data']['attributes']['customer_id']
+    elif event == 'subscription_updated':
+        pass
+    
     # Process the request further if the signature is valid
     # For example, you can parse the JSON body and process the data
     # request_data = anvil.server.request.json()
     
-    return anvil.server.HttpResponse("Signature verified", status=200)
+    return anvil.server.HttpResponse(body="Signature verified", status=200)
     # except Exception as e:
         # return anvil.server.HttpResponse(f"Error processing request: {str(e)}", status=500)
     pass
