@@ -88,30 +88,30 @@ def lemon_1():
     # subscription_payment_success
     # subscription_updated
 
-    try:
-        signature = anvil.http.request.headers.get('x-signature')
+    # try:
+    signature = anvil.server.request.headers.get('x-signature')
 
-        if not signature:
-            return anvil.server.HttpResponse("Missing signature", status=400)
+    if not signature:
+        return anvil.server.HttpResponse("Missing signature", status=400)
 
-        event = anvil.http.request.headers.get('x-event-name')
-        secret = anvil.secrets.get_secret('lemon_signing')
-        
-        payload = anvil.server.request.body.get_bytes()
-        
-        # Compute the HMAC digest
-        digest = hmac.new(secret.encode(), payload, hashlib.sha256).hexdigest()
-        
-        # Compare the computed digest with the provided signature
-        if not hmac.compare_digest(digest, signature):
-            return anvil.server.HttpResponse("Invalid signature", status=403)  # Return a 403 Forbidden status code if the signature is invalid
+    event = anvil.server.request.headers.get('x-event-name')
+    secret = anvil.secrets.get_secret('lemon_signing')
+    
+    payload = anvil.server.request.body.get_bytes()
+    
+    # Compute the HMAC digest
+    digest = hmac.new(secret.encode(), payload, hashlib.sha256).hexdigest()
+    
+    # Compare the computed digest with the provided signature
+    if not hmac.compare_digest(digest, signature):
+        return anvil.server.HttpResponse("Invalid signature", status=403)  # Return a 403 Forbidden status code if the signature is invalid
 
-        print(payload)
-        # Process the request further if the signature is valid
-        # For example, you can parse the JSON body and process the data
-        # request_data = anvil.server.request.json()
-        
-        return anvil.server.HttpResponse("Signature verified", status=200)
-    except Exception as e:
-        return anvil.server.HttpResponse(f"Error processing request: {str(e)}", status=500)
+    print(payload)
+    # Process the request further if the signature is valid
+    # For example, you can parse the JSON body and process the data
+    # request_data = anvil.server.request.json()
+    
+    return anvil.server.HttpResponse("Signature verified", status=200)
+    # except Exception as e:
+        # return anvil.server.HttpResponse(f"Error processing request: {str(e)}", status=500)
     pass
