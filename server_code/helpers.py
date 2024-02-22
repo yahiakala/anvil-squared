@@ -171,3 +171,12 @@ def user_table_auth(permissions):
                 return func(*args, **kwargs)
         return wrapped
     return auth_required_decorator
+
+
+def sep_table_auth(permissions):
+    """
+    Checks user auth in separate 'Permissions' table.
+    
+    Use this as a decorator below @anvil.server.callable
+    """
+    pass
