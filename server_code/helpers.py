@@ -138,6 +138,7 @@ def check_user_auth(user, permissions):
 def user_table_auth(permissions):
     """
     Decorator that ensures the callable is seen by autocomplete.
+    Checks for boolean columns in the Users table with the permission names.
     
     Use this as a decorator below @anvil.server.callable
     """
@@ -180,3 +181,41 @@ def sep_table_auth(permissions):
     Use this as a decorator below @anvil.server.callable
     """
     pass
+
+
+def user_simple_auth(permissions):
+    """
+    Checks user auth in a simple object column called 'permissions'
+    
+    Use this as a decorator below @anvil.server.callable
+    """
+    def auth_required_decorator(func):
+        @wraps(func)
+        def wrapped(*args, **kwargs):
+            user = anvil.users.get_user()
+            if not user:
+                raise ValueError("No user logged in.")
+            
+            #  Handle the fact that permissions might be a string or a list
+            if isinstance(permissions, str):
+                required_permissions = set([permissions])
+            else:
+                required_permissions = set(permissions)
+            
+            try:
+                user_permissions = set(
+                    [
+                        permission
+                        for permission in required_permissions
+                        if permission in user['permissions'].keys()
+                    ]
+                )
+            except Exception:
+                raise ValueError("Permission required.")
+                
+            if len(user_permissions) == 0:
+                raise ValueError("Permission required.") 
+            else:
+                return func(*args, **kwargs)
+        return wrapped
+    return auth_required_decorator
