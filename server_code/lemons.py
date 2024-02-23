@@ -82,3 +82,17 @@ def create_checkout(api_key=None, variants=[], store_id=None,
     print(response['data']['id'])  # checkout id
     print(response['data']['attributes']['url'])
     return response['data']['attributes']['url']
+
+
+def get_customer(api_key=None, customer_id=None):
+    if not api_key:
+        api_key = anvil.secrets.get_secret('lemon_api_key')
+    if not customer_id:
+        customer_id = '2348771'
+
+    cust_url = 'https://api.lemonsqueezy.com/v1/customers/1'
+    headers = {
+        'Accept': 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json',
+        'Authorization': f'Bearer {api_key}'
+    }
