@@ -68,7 +68,7 @@ def create_checkout(api_key=None, variants=[], store_id=None,
             }
         }
     }
-    json_data = json.dumps(data)
+    # json_data = json.dumps(data)
     # response = anvil.http.request(url=url, method="POST", data=json_data, headers=headers)
 
     try:
@@ -85,14 +85,19 @@ def create_checkout(api_key=None, variants=[], store_id=None,
 
 
 def get_customer(api_key=None, customer_id=None):
+    """Get customer object and portal link."""
     if not api_key:
         api_key = anvil.secrets.get_secret('lemon_api_key')
     if not customer_id:
         customer_id = '2348771'
 
-    cust_url = 'https://api.lemonsqueezy.com/v1/customers/1'
+    cust_url = f'https://api.lemonsqueezy.com/v1/customers/{customer_id}'
     headers = {
         'Accept': 'application/vnd.api+json',
         'Content-Type': 'application/vnd.api+json',
         'Authorization': f'Bearer {api_key}'
     }
+    response = anvil.http.request(url=cust_url, method="GET", json=True, headers=headers)
+    cust_portal = response['data']['attributes']['urls']['customer_portal']
+    print(cust_portal)
+    return cust_portal, response
