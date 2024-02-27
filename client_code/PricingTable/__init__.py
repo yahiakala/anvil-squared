@@ -42,3 +42,12 @@ class PricingTable(PricingTableTemplate):
     @show_branding.setter
     def show_branding(self, value):
         self.rt_poweredby.visible = value
+
+    @property
+    def visible(self):
+        return self.fp_pricing.visible
+
+    @visible.setter
+    def visible(self, value):
+        self.fp_pricing.visible = value
+        self.rt_poweredby.visible = value

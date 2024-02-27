@@ -59,4 +59,12 @@ components:
     properties: {}
     type: form:PricingTable
     layout_properties: {grid_position: 'MZVBUD,DMVDEG'}
+  - name: label_3_copy
+    properties: {text: Pricing Table 2, role: title}
+    type: Label
+    layout_properties: {grid_position: 'TTVMPU,JDYDZG'}
+  - name: pricing_table_2
+    properties: {}
+    type: form:PricingTable
+    layout_properties: {grid_position: 'FKAKKZ,KCHXOO'}
 is_package: true

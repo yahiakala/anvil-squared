@@ -82,6 +82,9 @@ class DemoMD3(DemoMD3Template):
         self.pricing_table_1.items = pricing_tiers
         self.pricing_table_1.brand_message = pricing_branding
 
+        self.pricing_table_2.items = pricing_tiers
+        self.pricing_table_2.brand_message = pricing_branding
+
     def chat_copy_1_thumbs_up_click(self, **event_args):
         alert('thumbs up! ' + event_args['message'])
 
