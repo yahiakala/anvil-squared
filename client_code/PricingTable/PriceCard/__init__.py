@@ -6,16 +6,17 @@ class PriceCard(PriceCardTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
-        
-        self.optional_attr(self.cp_price, 'role', 'cp_role')
-        self.optional_attr(self.cp_price, 'background')
-        self.cp_price.background = self.item['background']
-        # self.optional_attr(self.cp_price, 'background', 'background')
+
+        if self.item['border_color']:
+            self.item['border'] = '1px solid ' + self.item['border_color']
+        self.optional_attr(self.cp_price, 'background', 'background_color')
         self.optional_attr(self.cp_price, 'border', 'border')
+        
 
     def form_show(self, **event_args):
         cp_dom = anvil.js.get_dom_node(self.cp_price)
         cp_dom.style.width = '300px'
+        self.optional_attr(cp_dom.style, 'borderRadius', 'border_radius')
         # cp_dom.style.height = '600px'
 
         
@@ -34,12 +35,12 @@ class PriceCard(PriceCardTemplate):
             self.lbl_suptitle.foreground = app.theme_colors['On Primary']  # TODO: move to settings
         else:
             self.lbl_suptitle.text = 'Back'
-            self.lbl_suptitle.background = self.item['background']
-            self.lbl_suptitle.foreground = self.item['background']
+            self.lbl_suptitle.background = self.item['background_color']
+            self.lbl_suptitle.foreground = self.item['background_color']
 
         self.lbl_suptitle_copy.text = 'Back'
-        self.lbl_suptitle_copy.background = self.item['background']
-        self.lbl_suptitle_copy.foreground = self.item['background']
+        self.lbl_suptitle_copy.background = self.item['background_color']
+        self.lbl_suptitle_copy.foreground = self.item['background_color']
 
         self.optional_attr(self.btn_signup, 'role', 'btn_role')
         self.optional_attr(self.btn_signup, 'background', 'btn_background')
