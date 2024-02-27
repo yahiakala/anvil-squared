@@ -17,7 +17,7 @@ class PriceCard(PriceCardTemplate):
         cp_dom.style.width = '300px'
         # cp_dom.style.height = '600px'
 
-        self.lbl_suptitle.role = 'squared-highlighted-text'
+        
         self.optional_attr(self.lbl_suptitle, 'text', 'sup_text')
         # self.optional_attr(self.lbl_suptitle, 'role', 'sup_role')
         self.optional_attr(self.lbl_suptitle, 'background', 'sup_background')
@@ -29,6 +29,8 @@ class PriceCard(PriceCardTemplate):
         if self.lbl_suptitle.text:
             self.sp_1.visible = True
             self.sp_2.visible = True
+            self.lbl_suptitle.role = 'squared-highlighted-text'  # TODO: move to settings
+            self.lbl_suptitle.foreground = app.theme_colors['On Primary']  # TODO: move to settings
         else:
             self.lbl_suptitle.text = 'Back'
             self.lbl_suptitle.background = self.item['background']
@@ -43,7 +45,7 @@ class PriceCard(PriceCardTemplate):
         self.optional_attr(self.btn_signup, 'border', 'btn_border')
         self.optional_attr(self.btn_signup, 'text', 'btn_text')
 
-        self.lbl_oldprice.role = 'anvil-squared-strikethrough'
+        self.lbl_oldprice.role = 'anvil-squared-strikethrough'  # TODO: move to settings
         self.rp_features.items = self.item['features']
 
     def btn_signup_click(self, **event_args):

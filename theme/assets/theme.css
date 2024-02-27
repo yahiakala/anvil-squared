@@ -33,8 +33,8 @@
 .anvil-role-squared-highlighted-text {
     padding: 0px 10px 0px 10px;
     border-radius: 10px;
-    background-color: var(--onsurfacevariant);
-    foreground-color: var(--onprimary);
+    background-color: var(--onsurfacevariant) !important;
+/*     foreground-color: var(--onprimary); */
 }
 
 /* .anvil-role-squared-highlighted-text .label-text {
