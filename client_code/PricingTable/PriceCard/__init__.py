@@ -8,6 +8,7 @@ class PriceCard(PriceCardTemplate):
         self.init_components(**properties)
         
         self.optional_attr(self.cp_price, 'role', 'cp_role')
+        self.optional_attr(self.cp_price, 'background')
         self.cp_price.background = self.item['background']
         # self.optional_attr(self.cp_price, 'background', 'background')
         self.optional_attr(self.cp_price, 'border', 'border')
@@ -52,7 +53,9 @@ class PriceCard(PriceCardTemplate):
         """This method is called when the button is clicked"""
         self.link_hidden.raise_event('click')
 
-    def optional_attr(self, target_obj, attr_name, item_key):
+    def optional_attr(self, target_obj, attr_name, item_key, default_value=None):
         if item_key in self.item:
             setattr(target_obj, 'visible', True)
             setattr(target_obj, attr_name, self.item[item_key])
+        elif default_value:
+            setattr(target_obj, attr_name, default_value)

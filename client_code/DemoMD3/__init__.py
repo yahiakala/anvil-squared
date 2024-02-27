@@ -20,37 +20,52 @@ msg_hist = [
             {'from': 'bot', 'text': "Well that's easy. Just push the button."}
 ]
 
-cardconfig = {
-    'title': 'Price 1',
-    'old_price': 'CA$10'
-}
 features = [
     ['Feature 1', 'Feature 2', 'Feature 3'],
     ['Feature 4', 'Feature 5', 'Feature 6'],
     ['Feature 7', 'Feature 8', 'Feature 9', 'Feature 10']
 ]
-pricing_tiers = [
-    {
-        'title': 'Price 1', 'old_price': 'CA$10', 'price': 'CA$9', 'url': 'example.com',
-        'btn_role': 'filled-button', 'check_icon': 'fa:check-circle', 'title_role': 'title',
-        'background': 'white',
-        'includes': 'This includes:', 'cp_role': 'outlined-card', 'features': features[0]
-    },
-    {
-        'title': 'Price 2', 'old_price': 'CA$10', 'price': 'CA$9', 'url': 'example.com',
-        'btn_role': 'filled-button', 'check_icon': 'fa:check-circle', 'title_role': 'title',
-        'background': 'var(--surfacevariant)',
-        'sup_role': 'squared-highlighted-text', 'sup_text': 'Most popular', 'sup_background': 'white', 'sup_foreground': 'black', 'sup_border': '1px solid black',
-        'includes': 'This includes:', 'cp_role': 'outlined-card', 'features': features[1]
-    },
-    {
-        'title': 'Price 3', 'old_price': 'CA$10', 'price': 'CA$9', 'url': 'example.com',
-        'btn_role': 'filled-button', 'check_icon': 'fa:check-circle', 'title_role': 'title',
-        'background': 'white',
-        'includes': 'This includes:', 'cp_role': 'outlined-card', 'features': features[2]
-    }
-]
-pricing_branding = """Powered by <a href="https://Chatbeaver.ca">Placeholder</a>"""
+
+cardconfig1 = {
+    'background_color': 'white',
+    'border_radius': '10px',
+    'border_color': 'black',
+    'enlarge': False,
+    'text_color': 'black',
+    'text_font': 'arial',
+    'text_size': 14,
+    'title_text': 'Price 1',
+    'title_text_size': 30,
+    'old_price': 'CA$10',
+    'price': 'CA$9',
+    'price_text_size': 24,
+    'includes': 'This includes:',
+    'features': features[0],
+    'feature_icon': 'fa:check-circle',
+    'btn_text': 'Subscribe',
+    'btn_text_size': 24,
+    'btn_border_radius': '10px',
+    'btn_text_color': 'white',
+    'btn_background_color': 'var(--primary)',
+    'btn_border_color': 'black',
+    'btn_position': 'middle',
+    'btn_url': 'example.com',
+    'suptitle_text': None,
+    'suptitle_text_size': 30,
+    'suptitle_color': 'white',
+    'suptitle_background_color': 'black',
+    'suptitle_border_radius': '30px',
+    'suptitle_border_color': 'black'
+}
+
+cardconfig2 = cardconfig1.copy()
+cardconfig2['suptitle_text'] = 'Most Popular'
+cardconfig2['features'] = features[1]
+cardconfig3 = cardconfig1.copy()
+cardconfig3['features'] = features[2]
+
+pricing_tiers = [cardconfig1, cardconfig2, cardconfig3]
+pricing_branding = """Powered by <a href="https://dreamprice.ca">DreamPrice</a>"""
 
 
 class DemoMD3(DemoMD3Template):
