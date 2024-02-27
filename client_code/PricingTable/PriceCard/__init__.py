@@ -24,11 +24,22 @@ class PriceCard(PriceCardTemplate):
 
         self.optional_attr(self.lbl_title, 'font_size', 'title_text_size')
         self.optional_attr(self.lbl_price, 'font_size', 'price_text_size')
+
+        if 'btn_position' in self.item and 'btn_position' == 'bottom':
+            self.btn_signup_bottom.visible = True
+            self.btn_signup.visible = False
         
+        self.btn_signup.role = 'filled-button'  # Just to get the hover behavior
         self.optional_attr(self.btn_signup, 'text', 'btn_text')
         self.optional_attr(self.btn_signup, 'foreground', 'btn_text_color')
         self.optional_attr(self.btn_signup, 'font_size', 'btn_text_size')
         self.optional_attr(self.btn_signup, 'background', 'btn_background_color')
+
+        # self.btn_signup_bottom.role = 'filled-button'  # Just to get the hover behavior
+        # self.optional_attr(self.btn_signup, 'text', 'btn_text')
+        # self.optional_attr(self.btn_signup, 'foreground', 'btn_text_color')
+        # self.optional_attr(self.btn_signup, 'font_size', 'btn_text_size')
+        # self.optional_attr(self.btn_signup, 'background', 'btn_background_color')
 
 
         if self.item['enlarge']:

@@ -51,6 +51,14 @@ components:
     layout_properties: {grid_position: 'VNXOGG,GNIKBH'}
     data_bindings:
     - {property: message_history, code: self.msg_hist, writeback: false}
+  - name: button_1
+    properties: {text: button_1, role: filled-button}
+    type: Button
+    layout_properties: {grid_position: 'OWUKTG,VQKRBI'}
+  - name: button_2
+    properties: {text: button_2, role: filled-button, foreground: '', background: 'theme:Error'}
+    type: Button
+    layout_properties: {grid_position: 'OWUKTG,ILHSPU'}
   - name: label_3
     properties: {text: Pricing Table, role: title}
     type: Label

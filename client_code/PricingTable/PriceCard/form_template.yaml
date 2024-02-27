@@ -80,6 +80,12 @@ components:
       properties: {item_template: PricingTable.FeatureList, spacing_above: none, spacing_below: none}
       type: RepeatingPanel
       layout_properties: {}
+  - name: btn_signup_bottom
+    properties: {text: Subscribe, align: full, border: ''}
+    type: Button
+    layout_properties: {grid_position: 'XAJASR,TVHWQC'}
+    event_bindings: {click: btn_signup_click}
+    data_bindings: []
   - name: fp_sup_copy
     properties: {align: center}
     type: FlowPanel

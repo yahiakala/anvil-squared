@@ -48,13 +48,13 @@ cardconfig1 = {
     'btn_border_radius': '10px',
     'btn_text_color': 'white',
     'btn_background_color': 'var(--primary)',
-    'btn_border_color': 'black',
+    'btn_border_color': 'var(--primary)',
     'btn_position': 'middle',
-    'btn_url': 'example.com',
+    'btn_url': 'https://example.com',
     'suptitle_text': None,
     'suptitle_text_size': 30,
     'suptitle_color': 'white',
-    'suptitle_background_color': 'black',
+    'suptitle_background_color': 'var(--onsurfacevariant)',
     'suptitle_border_radius': '10px',
     'suptitle_border_color': 'black'
 }
@@ -62,10 +62,22 @@ cardconfig1 = {
 cardconfig2 = cardconfig1.copy()
 cardconfig2['suptitle_text'] = 'Most Popular'
 cardconfig2['features'] = features[1]
+cardconfig2['background_color'] = 'var(--surfacevariant)'
 cardconfig3 = cardconfig1.copy()
 cardconfig3['features'] = features[2]
 
+cardconfig4 = cardconfig1.copy()
+cardconfig4['billed_annually'] = False
+cardconfig4['old_price'] = None
+cardconfig5 = cardconfig4.copy()
+cardconfig5['suptitle_text'] = 'Best Value'
+cardconfig5['features'] = features[1]
+cardconfig5['background_color'] = 'var(--surfacevariant)'
+cardconfig6 = cardconfig4.copy()
+cardconfig6['features'] = features[2]
+
 pricing_tiers = [cardconfig1, cardconfig2, cardconfig3]
+pricing_tier2 = [cardconfig4, cardconfig5, cardconfig6]
 pricing_branding = """Powered by <a href="https://dreamprice.ca">DreamPrice</a>"""
 
 
@@ -82,7 +94,7 @@ class DemoMD3(DemoMD3Template):
         self.pricing_table_1.items = pricing_tiers
         self.pricing_table_1.brand_message = pricing_branding
 
-        self.pricing_table_2.items = pricing_tiers
+        self.pricing_table_2.items = pricing_tier2
         self.pricing_table_2.brand_message = pricing_branding
 
     def chat_copy_1_thumbs_up_click(self, **event_args):
