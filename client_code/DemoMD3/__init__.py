@@ -31,6 +31,7 @@ cardconfig1 = {
     'border_radius': '10px',
     'border_color': 'black',
     'enlarge': False,
+    'billed_annually': True,
     'text_color': 'black',
     'text_font': 'arial',
     'text_size': 14,
@@ -38,12 +39,12 @@ cardconfig1 = {
     'title_text_size': 30,
     'old_price': 'CA$10',
     'price': 'CA$9',
-    'price_text_size': 24,
+    'price_text_size': 36,
     'includes': 'This includes:',
     'features': features[0],
     'feature_icon': 'fa:check-circle',
     'btn_text': 'Subscribe',
-    'btn_text_size': 24,
+    'btn_text_size': 14,
     'btn_border_radius': '10px',
     'btn_text_color': 'white',
     'btn_background_color': 'var(--primary)',
@@ -54,7 +55,7 @@ cardconfig1 = {
     'suptitle_text_size': 30,
     'suptitle_color': 'white',
     'suptitle_background_color': 'black',
-    'suptitle_border_radius': '30px',
+    'suptitle_border_radius': '10px',
     'suptitle_border_color': 'black'
 }
 

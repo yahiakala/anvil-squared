@@ -2,6 +2,7 @@ properties:
 - {name: items, type: object, important: true, default_binding_prop: true, description: List of dicts of pricing tiers}
 - {name: brand_message, type: object, important: true}
 - {name: show_branding, type: boolean, default_value: true, important: true}
+- {name: visible, type: boolean, default_value: true, important: true}
 is_package: true
 events:
 - {name: show, default_event: true}
