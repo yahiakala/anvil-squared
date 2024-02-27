@@ -31,6 +31,8 @@ cardconfig1 = {
     'border_radius': '10px',
     'border_color': 'black',
     'enlarge': False,
+    'shrink': False,
+    'align': True,
     'billed_annually': True,
     'text_color': 'black',
     'text_font': 'arial',
@@ -69,10 +71,14 @@ cardconfig3['features'] = features[2]
 cardconfig4 = cardconfig1.copy()
 cardconfig4['billed_annually'] = False
 cardconfig4['old_price'] = None
+cardconfig4['btn_position'] = 'bottom'
+cardconfig4['shrink'] = True
+cardconfig4['align'] = False
 cardconfig5 = cardconfig4.copy()
 cardconfig5['suptitle_text'] = 'Best Value'
 cardconfig5['features'] = features[1]
 cardconfig5['background_color'] = 'var(--surfacevariant)'
+cardconfig5['shrink'] = False
 cardconfig6 = cardconfig4.copy()
 cardconfig6['features'] = features[2]
 

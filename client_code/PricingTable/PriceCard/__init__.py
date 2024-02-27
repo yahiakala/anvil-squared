@@ -2,6 +2,7 @@ from ._anvil_designer import PriceCardTemplate
 from anvil import *
 import anvil.js
 
+
 class PriceCard(PriceCardTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
@@ -25,9 +26,7 @@ class PriceCard(PriceCardTemplate):
         self.optional_attr(self.lbl_title, 'font_size', 'title_text_size')
         self.optional_attr(self.lbl_price, 'font_size', 'price_text_size')
 
-        if 'btn_position' in self.item and 'btn_position' == 'bottom':
-            self.btn_signup_bottom.visible = True
-            self.btn_signup.visible = False
+
         
         self.btn_signup.role = 'filled-button'  # Just to get the hover behavior
         self.optional_attr(self.btn_signup, 'text', 'btn_text')
@@ -35,17 +34,35 @@ class PriceCard(PriceCardTemplate):
         self.optional_attr(self.btn_signup, 'font_size', 'btn_text_size')
         self.optional_attr(self.btn_signup, 'background', 'btn_background_color')
 
-        # self.btn_signup_bottom.role = 'filled-button'  # Just to get the hover behavior
-        # self.optional_attr(self.btn_signup, 'text', 'btn_text')
-        # self.optional_attr(self.btn_signup, 'foreground', 'btn_text_color')
-        # self.optional_attr(self.btn_signup, 'font_size', 'btn_text_size')
-        # self.optional_attr(self.btn_signup, 'background', 'btn_background_color')
-
+        self.btn_signup_bottom.role = 'filled-button'  # Just to get the hover behavior
+        self.optional_attr(self.btn_signup_bottom, 'text', 'btn_text')
+        self.optional_attr(self.btn_signup_bottom, 'foreground', 'btn_text_color')
+        self.optional_attr(self.btn_signup_bottom, 'font_size', 'btn_text_size')
+        self.optional_attr(self.btn_signup_bottom, 'background', 'btn_background_color')
+        
+        if 'btn_position' in self.item and self.item['btn_position'] == 'bottom':
+            self.btn_signup_bottom.visible = True
+            self.btn_signup.visible = False
+        else:
+            self.btn_signup_bottom.visible = False
 
         if self.item['enlarge']:
             self.sp_1.visible = True
             self.sp_2.visible = True
 
+        if self.item['shrink']:
+            self.lbl_suptitle.visible = False
+            self.lbl_suptitle_copy.visible = False
+
+        if 'align' in self.item and self.item['align'] == False:
+            if 'suptitle_text' in self.item and self.item['suptitle_text']:
+                self.lbl_suptitle.visible = True
+            else:
+                self.lbl_suptitle.visible = False
+            self.lbl_suptitle_copy.visible = False
+            # self.item['features'] = [i for i in self.item['features'] if i != 'Blank']
+            
+            
         # Supertitle
         if self.item['suptitle_text']:
             self.lbl_suptitle.text = self.item['suptitle_text']
@@ -82,7 +99,12 @@ class PriceCard(PriceCardTemplate):
         lbl_suptitle_dom.style.padding = '0px 10px 0px 10px'
         self.optional_attr(lbl_suptitle_dom.style, 'borderRadius', 'suptitle_border_radius')
 
-        btn_signup_dom = anvil.js.get_dom_node(self.btn_signup)
+        
+        if 'btn_position' in self.item and self.item['btn_position'] == 'bottom':
+            btn_signup_dom = anvil.js.get_dom_node(self.btn_signup_bottom)
+        else:
+            btn_signup_dom = anvil.js.get_dom_node(self.btn_signup)
+
         btn_signup_btn = btn_signup_dom.querySelector('.btn')
         self.optional_attr(btn_signup_btn.style, 'borderRadius', 'btn_border_radius')
         if self.item['btn_border_color']:
@@ -91,8 +113,7 @@ class PriceCard(PriceCardTemplate):
 
     def btn_signup_click(self, **event_args):
         """This method is called when the button is clicked"""
-        # TODO: Fix, this doesn't work.
-        self.link_hidden.raise_event('click')
+        anvil.js.window.location.href = self.item['btn_url']
 
     def optional_attr(self, target_obj, attr_name, item_key, default_value=None):
         if item_key in self.item:

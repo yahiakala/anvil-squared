@@ -81,7 +81,7 @@ components:
       type: RepeatingPanel
       layout_properties: {}
   - name: btn_signup_bottom
-    properties: {text: Subscribe, align: full, border: ''}
+    properties: {text: Subscribe, align: full, border: '', visible: false}
     type: Button
     layout_properties: {grid_position: 'XAJASR,TVHWQC'}
     event_bindings: {click: btn_signup_click}
