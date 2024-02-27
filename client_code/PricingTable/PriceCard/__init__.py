@@ -61,7 +61,7 @@ class PriceCard(PriceCardTemplate):
                 self.lbl_suptitle.visible = False
             self.lbl_suptitle_copy.visible = False
             # self.item['features'] = [i for i in self.item['features'] if i != 'Blank']
-            
+
             
         # Supertitle
         if self.item['suptitle_text']:

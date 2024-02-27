@@ -9,15 +9,17 @@ class PricingTable(PricingTableTemplate):
 
     def form_show(self, **event_args):
         max_len = 0
-        max_len = max([max(max_len, len(i['features'])) for i in self.items])
-        for i in self.items:
-            # print(i)
-            if len(i['features']) < max_len:
-                filler_features = ['Blank' for j in range(max_len - len(i['features']))]
-                i['features'] += filler_features
-        
-        for i in self.items:
-            self.fp_pricing.add_component(PriceCard(item=i))
+        if self.items:
+            max_len = max([max(max_len, len(i['features'])) for i in self.items])
+
+            for i in self.items:
+                # print(i)
+                if len(i['features']) < max_len:
+                    filler_features = ['Blank' for j in range(max_len - len(i['features']))]
+                    i['features'] += filler_features
+            
+            for i in self.items:
+                self.fp_pricing.add_component(PriceCard(item=i))
 
     @property
     def items(self):
