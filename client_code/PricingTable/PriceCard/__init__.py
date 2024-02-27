@@ -12,18 +12,15 @@ class PriceCard(PriceCardTemplate):
         self.optional_attr(self.cp_price, 'background', 'background_color')
         self.optional_attr(self.cp_price, 'border', 'border')
         self.optional_attr(self.lbl_suptitle, 'text', 'suptitle_text', 'Blank')
+        self.optional_attr(self.lbl_suptitle, 'background', 'suptitle_background_color')
+        self.optional_attr(self.lbl_suptitle, 'foreground', 'suptitle_color')
 
 
     def form_show(self, **event_args):
         cp_dom = anvil.js.get_dom_node(self.cp_price)
         cp_dom.style.width = '300px'
         self.optional_attr(cp_dom.style, 'borderRadius', 'border_radius')
-        # cp_dom.style.height = '600px'
 
-        
-        # self.optional_attr(self.lbl_suptitle, 'role', 'sup_role')
-        self.optional_attr(self.lbl_suptitle, 'background', 'sup_background')
-        self.optional_attr(self.lbl_suptitle, 'foreground', 'sup_foreground')
         self.optional_attr(self.lbl_suptitle, 'border', 'sup_border')
         # self.lbl_suptitle.border = '1px solid black'
         # self.lbl_suptitle.foreground = 'red'
