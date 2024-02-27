@@ -24,19 +24,3 @@
     --primary500: %color:Primary 500%;
     --primarycontainer: %color:Primary Container%;
 }
-
-/* .anvil-role-anvil-squared-strikethrough .label-text {
-    text-decoration-line: line-through;
-    text-decoration: line-through;
-}
-
-.anvil-role-squared-highlighted-text {
-    padding: 0px 10px 0px 10px;
-    border-radius: 10px;
-    background-color: var(--onsurfacevariant) !important;
-    foreground-color: var(--onprimary);
-} */
-
-/* .anvil-role-squared-highlighted-text .label-text {
-    color: var(--onprimary);
-} */
