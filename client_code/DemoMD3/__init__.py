@@ -20,6 +20,10 @@ msg_hist = [
             {'from': 'bot', 'text': "Well that's easy. Just push the button."}
 ]
 
+cardconfig = {
+    'title': 'Price 1',
+    'old_price': 'CA$10'
+}
 features = [
     ['Feature 1', 'Feature 2', 'Feature 3'],
     ['Feature 4', 'Feature 5', 'Feature 6'],
