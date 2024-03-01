@@ -79,7 +79,7 @@ def create_checkout(api_key=None, variants=[], store_id=None,
 
     print(response)
     # print(response['links']['self'])
-    print(response['data']['id'])  # checkout id
+    # print(response['data']['id'])  # checkout id
     print(response['data']['attributes']['url'])
     return response['data']['attributes']['url']
 
@@ -101,3 +101,69 @@ def get_customer(api_key=None, customer_id=None):
     cust_portal = response['data']['attributes']['urls']['customer_portal']
     print(cust_portal)
     return cust_portal, response
+
+
+def get_stores(api_key=None, all_info=False):
+    """List all stores."""
+    if not api_key:
+        api_key = anvil.secrets.get_secret('lemon_api_key')
+    store_url = "https://api.lemonsqueezy.com/v1/stores"
+    headers = {
+        'Accept': 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json',
+        'Authorization': f'Bearer {api_key}'
+    }
+    response = anvil.http.request(url=store_url, method="GET", json=True, headers=headers)
+    if 'next' in response['links'].keys():
+        raise ValueError('More than 10 stores listed - please email support.')
+    store_list = [store for store in response['data']]
+
+    if all_info:
+        data = []
+        store_counter = 0
+        for store in response['data']:
+            data.append(store)
+            resp_products = anvil.http.request(
+                url=store['relationships']['products']['links']['related'],
+                method="GET",
+                json=True,
+                headers=headers
+            )
+
+            data[store_counter]['products'] = []
+            product_counter = 0
+            for product in resp_products['data']:
+                data[store_counter]['products'].append(product)
+                resp_variants = anvil.http.request(
+                    url=product['relationships']['variants']['links']['related'],
+                    method="GET",
+                    json=True,
+                    headers=headers
+                )
+                data[store_counter]['products'][product_counter]['variants'] = [variant for variant in resp_variants['data']]
+                product_counter += 1
+
+            store_counter += 1
+        # print(json.dumps(data))
+        # print('----------------')
+        return data
+    return store_list
+
+
+def get_products(api_key=None, store_id=None):
+    """Get list of products in a store."""
+    if not api_key:
+        api_key = anvil.secrets.get_secret('lemon_api_key')
+    if not store_id:
+        store_id = '71134'
+    products_url = f"https://api.lemonsqueezy.com/v1/products?filter[store_id]={store_id}"
+    headers = {
+        'Accept': 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json',
+        'Authorization': f'Bearer {api_key}'
+    }
+    response = anvil.http.request(url=store_url, method="GET", json=True, headers=headers)
+    if 'next' in response['links'].keys():
+        raise ValueError('More than 10 products listed - please email support.')
+    product_list = [prod for prod in response['data']]
+    return product_list
