@@ -216,3 +216,25 @@ def user_simple_auth(permissions):
                 return func(*args, **kwargs)
         return wrapped
     return auth_required_decorator
+
+
+@anvil.server.callable(require_user=True)
+def user_bk_running(table_name, bk_name):
+    """Check if a particular background task is running on this user."""
+    user = anvil.users.get_user(allow_remembered=True)
+    print_timestamp('user_bk_running: ' + user['email'] + ' bk_name: ' + bk_name)
+
+    row = getattr(app_tables, table_name).get(user=user)
+    
+    if not row['bk_tasks']:
+        return False
+    for i in row['bk_tasks']:
+        if i['task_name'] == bk_name:
+            print_timestamp('Found bk task')
+            task = anvil.server.get_background_task(i['task_id'])
+            if task.is_completed():
+                print_timestamp('Task is complete')
+                return False
+            else:
+                return True
+    return False
