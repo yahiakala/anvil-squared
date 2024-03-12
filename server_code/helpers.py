@@ -50,10 +50,14 @@ def proceed_or_wait(row, taskid, func_name=None):
     # TODO: abort if the same task on the same row is already running.
     import time
     print_timestamp('proceed_or_wait: ' + str(taskid) + ': ' + func_name)
+    task_name = anvil.server.get_background_task(taskid).get_task_name()
+
     if not row['bk_tasks']:
+        # Add this task in the queue and start it.
+        row['bk_tasks'] = [{'task_id': taskid, 'task_name': task_name}]
+        print_timestamp(f"\nA new bk task {taskid} was added: {row['bk_tasks']}")
         return row
-    # bk_tasks = row['bk_tasks']
-    
+
     if taskid in [i['task_id'] for i in row['bk_tasks']]:
         print_timestamp(f"\nYou called this bk task {func_name} as a function within another bk task: {taskid}. Proceed.")
         return row
@@ -61,24 +65,17 @@ def proceed_or_wait(row, taskid, func_name=None):
     print_timestamp(f"\n{func_name} ({taskid}) Possibly waiting on some background tasks: {row['bk_tasks']}")
 
     # Add this task to the queue
-    task_name = anvil.server.get_background_task(taskid).get_task_name()
     row['bk_tasks'] = row['bk_tasks'] + [{'task_id': taskid, 'task_name': task_name}]
-    # bk_tasks.append({'task_id': taskid, 'task_name': task_name})
-    # row['bk_tasks'] = bk_tasks
     print_timestamp(f"\nA new bk task {taskid} was added: {row['bk_tasks']}")
-    
+
+    # While there is a queue and the current taskid is not at bat yet
     while row['bk_tasks'] and taskid != row['bk_tasks'][0]['task_id']:
-        # bk_tasks = row['bk_tasks']  # Refresh just in case.
-        
-        # running_task = row['bk_tasks'][0]
         # print(f"\nCurrently running task: {running_task}")
         task = anvil.server.get_background_task(row['bk_tasks'][0]['task_id'])
         if not task.is_running():
             print_timestamp(f"\nTask {row['bk_tasks'][0]} is no longer running")
             # Remove task and update db.
             row['bk_tasks'] = row['bk_tasks'][1:]  # TODO: might cause an error
-            # bk_tasks.pop(0)
-            # row['bk_tasks'] = bk_tasks
             print_timestamp(f"\nRemoval check: {row['bk_tasks']}")
 
         time.sleep(1)
