@@ -218,7 +218,6 @@ def user_simple_auth(permissions):
     return auth_required_decorator
 
 
-@anvil.server.callable(require_user=True)
 def user_bk_running(table_name, bk_name):
     """Check if a particular background task is running on this user."""
     user = anvil.users.get_user(allow_remembered=True)
