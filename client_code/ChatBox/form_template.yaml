@@ -58,5 +58,8 @@ components:
     data_bindings: []
 container:
   type: HtmlTemplate
-  properties: {html: <div anvil-slot="default"></div>}
+  properties: {html: '<link rel="stylesheet" href="_/theme/chatstyling.css">
+
+
+      <div anvil-slot="default"></div>'}
   event_bindings: {show: form_show}
