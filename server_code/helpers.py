@@ -245,7 +245,7 @@ def user_bk_running(table_name, bk_name):
         if i['task_name'] == bk_name:
             print_timestamp('Found bk task')
             task = anvil.server.get_background_task(i['task_id'])
-            if task.is_completed():
+            if not task.is_running():  # Ignore errors
                 print_timestamp('Task is complete')
                 return False
             else:
