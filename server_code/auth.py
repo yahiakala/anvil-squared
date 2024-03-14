@@ -3,10 +3,12 @@ from anvil.tables import app_tables
 import anvil.users
 import anvil.email
 
+from .helpers import run_callable
 
 @anvil.server.callable
 def login_with_email_squared(email, password):
     """Try to log user in without MFA. Return exception if user has MFA configured."""
+    run_callable()
     import bcrypt
     user = app_tables.users.get(email=email)
     if user:
@@ -30,6 +32,7 @@ def login_with_email_squared(email, password):
 @anvil.server.callable
 def signup_with_email_squared(email, password, app_name='App'):
     """Signup a new user. Require them to confirm email before logging in."""
+    run_callable()
     if app_tables.users.get(email=email):
         raise anvil.users.UserExists('User already exists')
     if is_password_pwned(password) or len(password) < 8:
@@ -147,6 +150,7 @@ Thank you."""
 @anvil.server.callable(require_user=True)
 def add_mfa_method_squared(password, mfa_method):
     """Add an mfa method."""
+    run_callable()
     import bcrypt
     user = anvil.users.get_user(allow_remembered=True)
     if bcrypt.checkpw(password.encode('utf-8'), user['password_hash'].encode('utf-8')):
@@ -164,6 +168,7 @@ def add_mfa_method_squared(password, mfa_method):
 @anvil.server.callable(require_user=True)
 def delete_mfa_method_squared(password, id):
     """Delete mfa method if the password is correct."""
+    run_callable()
     import bcrypt
     user = anvil.users.get_user(allow_remembered=True)
     if bcrypt.checkpw(password.encode('utf-8'), user['password_hash'].encode('utf-8')):

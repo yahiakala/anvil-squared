@@ -12,9 +12,9 @@ def run_callable():
     """
     if anvil.server.context.client.type:
         try:
-            anvil.secrets.get_secret('SQUARED_SECRET')
-        except Exception as e:
-            pass
+            _ = anvil.secrets.get_secret('SQUARED')
+        except anvil.secrets.SecretError as e:
+            print_timestamp(str(e.args[0]))
 
 
 @anvil.server.callable

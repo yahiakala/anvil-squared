@@ -26,6 +26,7 @@ unique_ids:
     StartupStandardPage: '1705423989412485951093493.29156'
   modules:
     regular_startup: '1705423955497367585741285.3267'
+    utils: '1710377495050332398276203.6812'
     router_startup: '1705419636712253991425843.49832'
     client_unittest: NTFMPJWVVELVER4BR3AP3ZGCVTSSQBR3
   server_modules:
