@@ -1,10 +1,21 @@
+import anvil.server
+import anvil.users
 
-def signup_with_email(email, password, app_name, lbl_error):
-    proceed = tb_password_repeat_lost_focus()
+
+def print_timestamp(input_str):
+    print(input_str, " : ", dt.datetime.now().strftime("%H:%M:%S.%f"))
+
+
+def signup_with_email(tb_email, tb_password, tb_password_repeat, app_name, callable_name, lbl_error=None):
+    """Custom signup flow."""
+    proceed = signup_with_email_checker(tb_email.text, tb_password.text, tb_password_repeat.text, lbl_error)
     user = None
     if proceed:
         try:
-            user = anvil.server.call('signup_with_email_squared', email, password, app_name=app_name)
+            user = anvil.server.call(callable_name, tb_email.text, tb_password.text, app_name=app_name)
+        except anvil.users.MFARequired:
+            mfa_method, _ = anvil.users.mfa._configure_mfa(tb_email.text, None, False, [("Cancel", None)], "Sign up")
+            user = anvil.server.call("anvil.private.users.signup_with_email", tb_email.text, tb_password.text, mfa_method=mfa_method, remember=True)
         except anvil.users.UserExists as e:
             lbl_error.text = str(e.args[0])
             lbl_error.visible = True
@@ -13,16 +24,17 @@ def signup_with_email(email, password, app_name, lbl_error):
             lbl_error.visible = True
 
     if user:
-        self.tb_email.text = ''
-        self.tb_password.text = ''
-        self.tb_password_repeat.text = ''
-        self.lbl_error.text = (
+        tb_email.text = ''
+        tb_password.text = ''
+        tb_password_repeat.text = ''
+        lbl_error.text = (
             "We've sent a confirmation email to " + email + ". Open your inbox and click the link to complete your signup."
         )
-        self.lbl_error.visible = True
+        lbl_error.visible = True
+    return user
 
 
-def signup_with_email_checker(email, password, password_repeat, lbl_error):
+def signup_with_email_checker(email, password, password_repeat, lbl_error=None):
     """This method is called when the TextBox loses focus."""
     if len(email) < 5 or "@" not in email or "." not in email:
         lbl_error.text = "Enter an email address"
