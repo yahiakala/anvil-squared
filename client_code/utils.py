@@ -24,13 +24,13 @@ def signup_with_email(tb_email, tb_password, tb_password_repeat, app_name, calla
             lbl_error.visible = True
 
     if user:
+        lbl_error.text = (
+            "We've sent a confirmation email to " + tb_email.text + ". Open your inbox and click the link to complete your signup."
+        )
+        lbl_error.visible = True
         tb_email.text = ''
         tb_password.text = ''
         tb_password_repeat.text = ''
-        lbl_error.text = (
-            "We've sent a confirmation email to " + email + ". Open your inbox and click the link to complete your signup."
-        )
-        lbl_error.visible = True
     return user
 
 
