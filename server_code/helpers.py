@@ -3,6 +3,20 @@ from anvil.tables import app_tables
 from functools import wraps, partial
 
 
+def run_callable():
+    """
+    Make sure a special secret is defined when calling any callable from Anvil Squared.
+
+    This avoids any unintended server calls of callables in this app
+    when using this app as a dependency.
+    """
+    if anvil.server.context.client.type:
+        try:
+            anvil.secrets.get_secret('SQUARED_SECRET')
+        except Exception as e:
+            pass
+
+
 @anvil.server.callable
 def ping():
     print_timestamp("ping")
