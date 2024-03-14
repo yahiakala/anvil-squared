@@ -96,7 +96,8 @@ def create_new_user(email, password, confirm_email=False, require_mfa=False, mfa
         password_hash=password_hash,
         confirmed_email=False,
         email_confirmation_key=confirmation_key,
-        mfa=mfa
+        mfa=mfa,
+        n_password_failures=0
     )
 
     if remember and not confirm_email:
