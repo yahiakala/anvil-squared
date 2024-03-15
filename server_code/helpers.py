@@ -244,10 +244,10 @@ def user_bk_running(table_name, bk_name):
     for i in row['bk_tasks']:
         if i['task_name'] == bk_name:
             print_timestamp('Found bk task')
-            task = anvil.server.get_background_task(i['task_id'])
-            if not task.is_running():  # Ignore errors
-                print_timestamp('Task is complete')
-                return False
-            else:
+            try:
+                task = anvil.server.get_background_task(i['task_id'])
+            except anvil.server.BackgroundTaskNotFound:
+                pass
+            if task.is_running():  # Ignore errors
                 return True
     return False
