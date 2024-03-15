@@ -85,11 +85,15 @@ def proceed_or_wait(row, taskid, func_name=None):
     # While there is a queue and the current taskid is not at bat yet
     while row['bk_tasks'] and taskid != row['bk_tasks'][0]['task_id']:
         # print(f"\nCurrently running task: {running_task}")
-        task = anvil.server.get_background_task(row['bk_tasks'][0]['task_id'])
-        if not task.is_running():
-            print_timestamp(f"\nTask {row['bk_tasks'][0]} is no longer running")
-            # Remove task and update db.
-            row['bk_tasks'] = row['bk_tasks'][1:]  # TODO: might cause an error
+        try:
+            task = anvil.server.get_background_task(row['bk_tasks'][0]['task_id'])
+            if not task.is_running():
+                print_timestamp(f"\nTask {row['bk_tasks'][0]} is no longer running")
+                # Remove task and update db.
+                row['bk_tasks'] = row['bk_tasks'][1:]  # TODO: might cause an error
+                print_timestamp(f"\nRemoval check: {row['bk_tasks']}")
+        except anvil.server.BackgroundTaskNotFound:
+            row['bk_tasks'] = row['bk_tasks'][1:]
             print_timestamp(f"\nRemoval check: {row['bk_tasks']}")
 
         time.sleep(1)
