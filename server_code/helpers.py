@@ -78,7 +78,10 @@ def proceed_or_abort(row, taskid, func_name=None):
         return proceed_or_wait(row, taskid, func_name)
     
     if bk_task:
-        task = anvil.server.get_background_task(bk_task['task_id'])
+        try:
+            task = anvil.server.get_background_task(bk_task['task_id'])
+        except anvil.server.BackgroundTaskNotFound:
+            return proceed_or_wait(row, taskid, func_name)
         if task.is_running():
             print(f'proceed_or_abort: aborting background task {func_name}')
             return False
