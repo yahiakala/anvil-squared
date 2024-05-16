@@ -71,7 +71,11 @@ def proceed_or_abort(row, taskid, func_name=None):
     if not row['bk_tasks']:
         return proceed_or_wait(row, taskid, func_name)
         
-    bk_task = [i for i in row['bk_tasks'] if i['task_name'] == func_name]
+    bk_tasks = [i for i in row['bk_tasks'] if i['task_name'] == func_name]
+    if len(bk_tasks) > 0:
+        bk_task = bk_tasks[0]
+    else:
+        return proceed_or_wait(row, taskid, func_name)
     
     if bk_task and bk_task.is_running():
         print(f'proceed_or_abort: aborting background task {func_name}')
