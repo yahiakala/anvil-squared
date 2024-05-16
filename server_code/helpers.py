@@ -67,6 +67,7 @@ def proceed_or_abort(row, taskid, func_name=None):
     call other background tasks as functions, which makes func_name
     distinct from the background task.
     """
+    print_timestamp(f'proceed_or_abort : {func_name}')
 
     if not row['bk_tasks']:
         return proceed_or_wait(row, taskid, func_name)
