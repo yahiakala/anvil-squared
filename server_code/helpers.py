@@ -67,7 +67,6 @@ def proceed_or_abort(row, taskid, func_name=None):
     call other background tasks as functions, which makes func_name
     distinct from the background task.
     """
-    # task_name = anvil.server.get_background_task(taskid).get_task_name()
 
     if not row['bk_tasks']:
         return proceed_or_wait(row, taskid, func_name)
