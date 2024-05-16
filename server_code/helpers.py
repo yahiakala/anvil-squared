@@ -60,13 +60,19 @@ def proceed_or_abort_scheduled(taskid):
 
 
 def proceed_or_abort(row, taskid, func_name=None):
-    """Abort any duplicate background tasks."""
-    task_name = anvil.server.get_background_task(taskid).get_task_name()
+    """
+    Abort any duplicate background tasks.
+
+    func_name is provided separately as sometimes background tasks
+    call other background tasks as functions, which makes func_name
+    distinct from the background task.
+    """
+    # task_name = anvil.server.get_background_task(taskid).get_task_name()
 
     if not row['bk_tasks']:
         return proceed_or_wait(row, taskid, func_name)
         
-    bk_task = [i for i in row['bk_tasks'] if i['task_name'] == task_name]
+    bk_task = [i for i in row['bk_tasks'] if i['task_name'] == func_name]
     
     if bk_task and bk_task.is_running():
         print(f'proceed_or_abort: aborting background task {func_name}')
