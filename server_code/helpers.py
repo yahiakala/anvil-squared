@@ -33,7 +33,7 @@ def print_timestamp(input_str, verbose=True):
         print(f"{input_str} : {formatted_time}")
 
 
-def proceed_or_abort(taskid):
+def proceed_or_abort_scheduled(taskid):
     """Abort any duplicate scheduled tasks."""
     task_name = anvil.server.get_background_task(taskid).get_task_name()
 
@@ -43,7 +43,7 @@ def proceed_or_abort(taskid):
         try:
             existing_running_tasks = anvil.server.get_background_task(existing_tasks['task_id'])
             if existing_running_tasks.is_running():
-                print(f"\n This scheduled task is already running. Abort.")
+                print("\n This scheduled task is already running. Abort.")
                 return False
             else:
                 existing_tasks['task_id'] = taskid
@@ -59,9 +59,26 @@ def proceed_or_abort(taskid):
     return True
 
 
+def proceed_or_abort(row, taskid, func_name=None):
+    """Abort any duplicate background tasks."""
+    task_name = anvil.server.get_background_task(taskid).get_task_name()
+
+    if not row['bk_tasks']:
+        return proceed_or_wait(row, taskid, func_name)
+        
+    bk_task = [i for i in row['bk_tasks'] if i['task_name'] == task_name]
+    
+    if bk_task and bk_task.is_running():
+        print(f'proceed_or_abort: aborting background task {func_name}')
+        return False
+    else:
+        # This background task name is not running. So you can run it.
+        return proceed_or_wait(row, taskid, func_name)
+
+    
+
 def proceed_or_wait(row, taskid, func_name=None):
-    """Helper function to queue up background tasks to run sequentially."""
-    # TODO: abort if the same task on the same row is already running.
+    """Helper function to queue up duplicate background tasks to run sequentially."""
     import time
     print_timestamp('proceed_or_wait: ' + str(taskid) + ': ' + func_name)
     task_name = anvil.server.get_background_task(taskid).get_task_name()
