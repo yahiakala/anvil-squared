@@ -1,5 +1,6 @@
 import anvil.server
 import anvil.users
+import datetime as dt
 
 
 def print_timestamp(input_str):
@@ -63,7 +64,7 @@ def signin_with_email(tb_email, tb_password, callable_name, lbl_error):
             anvil.users.mfa.send_mfa_reset_email(tb_email.text)
             lbl_error.text = "Requested 2-factor authentication reset for " + tb_email.text + ". Check your email."
             lbl_error.visible = True
-        elif r == None:
+        elif r is None:
             lbl_error.text = "Cancelled login."
             lbl_error.visible = True
         else:
