@@ -91,15 +91,20 @@ def proceed_or_abort(row, taskid, func_name=None):
 
     
 
-def proceed_or_wait(row, taskid, func_name=None):
+def proceed_or_wait(row, taskid, func_name=None, extra_keys=None):
     """Helper function to queue up duplicate background tasks to run sequentially."""
     import time
     print_timestamp('proceed_or_wait: ' + str(taskid) + ': ' + func_name)
     task_name = anvil.server.get_background_task(taskid).get_task_name()
+    task_dict = {'task_id': taskid, 'task_name': task_name}
+    
+    if extra_keys:
+        for key, val in extra_keys.items():
+            task_dict[key] = val
 
     if not row['bk_tasks']:
         # Add this task in the queue and start it.
-        row['bk_tasks'] = [{'task_id': taskid, 'task_name': task_name}]
+        row['bk_tasks'] = [task_dict]
         print_timestamp(f"\nA new bk task {taskid} was added: {row['bk_tasks']}")
         return row
 
@@ -110,7 +115,7 @@ def proceed_or_wait(row, taskid, func_name=None):
     print_timestamp(f"\n{func_name} ({taskid}) Possibly waiting on some background tasks: {row['bk_tasks']}")
 
     # Add this task to the queue
-    row['bk_tasks'] = row['bk_tasks'] + [{'task_id': taskid, 'task_name': task_name}]
+    row['bk_tasks'] = row['bk_tasks'] + [task_dict]
     print_timestamp(f"\nA new bk task {taskid} was added: {row['bk_tasks']}")
 
     # While there is a queue and the current taskid is not at bat yet
