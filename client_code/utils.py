@@ -133,3 +133,9 @@ class GlobalCache:
     def clear_global_attributes(self):
         for name in list(self._global_dict.keys()):
             self._global_dict[name] = None
+
+    def get_no_call(self, name):
+        """Get a global value but don't call the server if None."""
+        if name in self._global_dict:
+            return self._global_dict[name]
+        raise AttributeError(f"Attribute {name} not found")
