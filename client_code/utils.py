@@ -80,3 +80,18 @@ def signin_with_email(tb_email, tb_password, callable_name, lbl_error):
         lbl_error.visible = True
 
     return user
+
+
+def reset_password(tb_email, lbl_error):
+    """Reset a user's password."""
+    if not tb_email.text:
+        lbl_error.text = 'Please enter a valid email.'
+        lbl_error.visible = True
+    else:
+        try:
+            anvil.users.send_password_reset_email(tb_email.text)
+            lbl_error.text = f'Please check your email ({tb_email.text}) for a password reset link.'
+            lbl_error.visible = True
+        except anvil.users.AuthenticationFailed:
+            lbl_error.text = 'No user with this matching email was found.'
+            lbl_error.visible = True

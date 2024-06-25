@@ -1,11 +1,10 @@
 container:
   type: HtmlTemplate
-  properties: {html: '<link href="_/theme/theme_md3.css" rel="stylesheet" type=''text/css''>
-
+  properties:
+    html: |
+      <link href="_/theme/theme_md3.css" rel="stylesheet" type='text/css'>
 
       <div anvil-slot="default"></div>
-
-      '}
 components:
 - name: content_panel
   properties: {}

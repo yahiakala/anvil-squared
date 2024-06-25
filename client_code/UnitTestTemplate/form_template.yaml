@@ -27,10 +27,7 @@ components:
       layout_properties: {}
       event_bindings: {click: btn_expand_click}
     - type: Button
-      properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
-        foreground: '', visible: true, text: Run Tests, font_size: null, font: '',
-        spacing_above: small, icon_align: left, spacing_below: small, italic: false,
-        background: '', bold: false, underline: false, icon: ''}
+      properties: {role: null, align: left, tooltip: '', border: '', enabled: true, foreground: '', visible: true, text: Run Tests, font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: ''}
       name: btn_run
       layout_properties: {grid_position: 'MMJWAK,BVSGMD'}
       event_bindings: {click: btn_run_click}
@@ -43,17 +40,11 @@ components:
       name: lbl_doc
       layout_properties: {}
     - type: Label
-      properties: {role: null, align: left, tooltip: '', border: '', foreground: '#4f7a28',
-        visible: false, text: '', font_size: 20, font: '', spacing_above: small, icon_align: left,
-        spacing_below: small, italic: false, background: '', bold: false, underline: false,
-        icon: 'fa:check-circle'}
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '#4f7a28', visible: false, text: '', font_size: 20, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: 'fa:check-circle'}
       name: lbl_success
       layout_properties: {}
     - type: Label
-      properties: {role: null, align: left, tooltip: '', border: '', foreground: '#9e1e15',
-        visible: false, text: '', font_size: 20, font: '', spacing_above: small, icon_align: left,
-        spacing_below: small, italic: false, background: '', bold: false, underline: false,
-        icon: 'fa:exclamation-circle'}
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '#9e1e15', visible: false, text: '', font_size: 20, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: 'fa:exclamation-circle'}
       name: lbl_fail
       layout_properties: {}
 container:
