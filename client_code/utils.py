@@ -38,7 +38,7 @@ def signup_with_email(tb_email, tb_password, tb_password_repeat, app_name, calla
 
 
 def signup_with_email_checker(email, password, password_repeat, lbl_error):
-    """This method is called when the TextBox loses focus."""
+    """Validate the signup form submission."""
     if len(email) < 5 or "@" not in email or "." not in email:
         lbl_error.text = "Enter an email address"
     elif password == '' or password is None:
