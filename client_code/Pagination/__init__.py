@@ -29,9 +29,7 @@ class Pagination(PaginationTemplate):
 
     def btn_next_arrow_click(self, **event_args):
         """This method is called when the button is clicked"""
-        print_timestamp('home_next_arrow_click')
-        self.dg_1.next_page()
-        self.refresh_pagination()
+        tablemod.btn_next_arrow_click(self)
 
     def btn_prev_arrow_click(self, **event_args):
         """This method is called when the button is clicked"""
