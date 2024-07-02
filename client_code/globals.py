@@ -67,6 +67,9 @@ class GlobalCache:
             raise AttributeError(f"Attribute {name} not found")
 
     def get_bk_single(self, name):
+        if self._global_dict[name] is not None:
+            return self._global_dict[name]
+    
         if not self.task:
             self.task = anvil.server.call('get_data_call_bk')
 
@@ -85,17 +88,19 @@ class GlobalCache:
                         data = states[name]
                 else:
                     data = states[name]
-                self._global_dict[name] = data
+                return data
             else:
-                self._global_dict[name] = None
-        return self._global_dict[name]
+                return None
     
     def get_bk_tenanted(self, name):
+        if self._tenanted_dict[name] is not None:
+            return self._tenanted_dict[name]
+        
         if not self.task_tenanted:
             self.task_tenanted = anvil.server.call('get_tenanted_data_call_bk', self._global_dict['tenant_id'])
 
         if self.task_tenanted.is_completed():
-            all_data = self.task.get_return_value()
+            all_data = self.task_tenanted.get_return_value()
             for key, val in all_data.items():
                 self._tenanted_dict[key] = val
         else:
@@ -109,7 +114,6 @@ class GlobalCache:
                         data = states[name]
                 else:
                     data = states[name]
-                self._tenanted_dict[name] = data
+                return data
             else:
-                self._tenanted_dict[name] = None
-        return self._tenanted_dict[name]
+                return None
