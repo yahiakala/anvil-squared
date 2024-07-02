@@ -60,9 +60,9 @@ class GlobalCache:
 
     def get_bk(self, name):
         if name in self._global_dict:
-            return self.get_bk_single()
+            return self.get_bk_single(name)
         elif name in self._tenanted_dict:
-            return self.get_bk_tenanted()
+            return self.get_bk_tenanted(name)
         else:
             raise AttributeError(f"Attribute {name} not found")
 
