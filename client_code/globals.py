@@ -85,7 +85,9 @@ class GlobalCache:
                     if diff_len > 0:
                         data = states[name] + [None] * diff_len
                     else:
+                        # This part of the load is complete
                         data = states[name]
+                        self._global_dict[name] = data
                 else:
                     data = states[name]
                 return data
@@ -111,7 +113,9 @@ class GlobalCache:
                     if diff_len > 0:
                         data = states[name] + [None] * diff_len
                     else:
+                        # This part of the load is complete
                         data = states[name]
+                        self._tenanted_dict[name] = data
                 else:
                     data = states[name]
                 return data
