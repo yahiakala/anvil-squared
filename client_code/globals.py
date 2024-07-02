@@ -32,9 +32,7 @@ class GlobalCache:
                 self._tenanted_dict[name] = anvil.server.call('get_tenanted_data', self._global_dict['tenant_id'], name)
             print_timestamp(f'Global.get_tenanted after: {name}')
             return self._tenanted_dict[name]
-        else:
-            raise AttributeError(f"Attribute {name} not found")
-        return self._global_dict[name]
+        raise AttributeError(f"Attribute {name} not found")
 
     def __setattr__(self, name, value):
         if name.startswith('_'):
