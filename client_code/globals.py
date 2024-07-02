@@ -62,16 +62,36 @@ class GlobalCache:
 
     def get_bk(self, name):
         if name in self._global_dict:
-            data_dict = self._global_dict
-            call_bk = 'get_data_call_bk'
-            task = self.task
+            return self.get_bk_single()
         elif name in self._tenanted_dict:
-            data_dict = self._tenanted_dict
-            call_bk = 'get_tenanted_data_call_bk'
-            task = self.task_tenanted
+            return self.get_bk_tenanted()
         else:
             raise AttributeError(f"Attribute {name} not found")
 
+    def get_bk_single(self, name):
+        if not self.task:
+            self.task = anvil.server.call('get_data_call_bk')
+
+        if self.task.is_completed():
+            all_data = self.task.get_return_value()
+            for key, val in all_data.items():
+                self._global_dict[key] = val
+        else:
+            states = self.task.get_state()
+            if name in states:
+                if name + '_len' in states:
+                    diff_len = states[name + '_len'] - len(states[name])
+                    if diff_len > 0:
+                        data = states[name] + [None] * diff_len
+                    else:
+                        data = states[name]
+                else:
+                    data = states[name]
+                self._global_dict[name] = data
+            else:
+                self._global_dict[name] = None
+        return self._global_dict[name]
+    
     def get_bk_tenanted(self, name):
         if not self.task_tenanted:
             self.task_tenanted = anvil.server.call('get_tenanted_data_call_bk', self._global_dict['tenant_id'])
@@ -79,7 +99,6 @@ class GlobalCache:
         if self.task_tenanted.is_completed():
             all_data = self.task.get_return_value()
             for key, val in all_data.items():
-                    print_timestamp(f"task_done: setting value for {key}")
                 self._tenanted_dict[key] = val
         else:
             states = self.task_tenanted.get_state()
@@ -95,4 +114,4 @@ class GlobalCache:
                 self._tenanted_dict[name] = data
             else:
                 self._tenanted_dict[name] = None
-            
+        return self._tenanted_dict[name]
