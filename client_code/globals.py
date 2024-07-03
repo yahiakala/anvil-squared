@@ -98,7 +98,7 @@ class GlobalCache:
     def get_bk_tenanted(self, name):
         if self._tenanted_dict[name] is not None:
             return self._tenanted_dict[name]
-        
+
         if not self.task_tenanted:
             self.task_tenanted = anvil.server.call('get_tenanted_data_call_bk', self._global_dict['tenant_id'])
 
