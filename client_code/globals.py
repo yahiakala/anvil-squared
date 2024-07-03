@@ -109,7 +109,8 @@ class GlobalCache:
             return self._tenanted_dict[name]
             
         print_timestamp(f'GlobalCache.get_bk_tenanted {name}')
-        
+        if 'task_tenanted' not in dir(self):
+            print(dir(self))
         if not self.task_tenanted:
             print_timestamp('GlobalCache launching background task tenanted')
             self.task_tenanted = anvil.server.call('get_tenanted_data_call_bk', self._global_dict['tenant_id'])
