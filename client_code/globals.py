@@ -10,6 +10,7 @@ class GlobalCache:
         self._tenanted_dict = tenanted_dict
         self.task = task
         self.task_tenanted = task_tenanted
+        self._task = None
         print_timestamp('GlobalCache: init')
 
     def __getattr__(self, name):
