@@ -8,9 +8,8 @@ class GlobalCache:
     def __init__(self, global_dict, tenanted_dict=None, task=None, task_tenanted=None):
         self._global_dict = global_dict
         self._tenanted_dict = tenanted_dict
-        self.task = task
-        self.task_tenanted = task_tenanted
-        self._task = None
+        self._task = task
+        self._task_tenanted = task_tenanted
         print_timestamp('GlobalCache: init')
 
     def __getattr__(self, name):
@@ -80,16 +79,16 @@ class GlobalCache:
             return self._global_dict[name]
 
         print_timestamp(f'GlobalCache.get_bk_single {name}')
-        if not self.task:
+        if not self._task:
             print_timestamp('GlobalCache launching background task')
-            self.task = anvil.server.call('get_data_call_bk')
+            self._task = anvil.server.call('get_data_call_bk')
 
-        if self.task.is_completed():
-            all_data = self.task.get_return_value()
+        if self._task.is_completed():
+            all_data = self._task.get_return_value()
             for key, val in all_data.items():
                 self._global_dict[key] = val
         else:
-            states = self.task.get_state()
+            states = self._task.get_state()
             if name in states:
                 if name + '_len' in states:
                     diff_len = states[name + '_len'] - len(states[name])
@@ -112,16 +111,16 @@ class GlobalCache:
         print_timestamp(f'GlobalCache.get_bk_tenanted {name}')
         if 'task_tenanted' not in dir(self):
             print(dir(self))
-        if not self.task_tenanted:
+        if not self._task_tenanted:
             print_timestamp('GlobalCache launching background task tenanted')
-            self.task_tenanted = anvil.server.call('get_tenanted_data_call_bk', self._global_dict['tenant_id'])
+            self._task_tenanted = anvil.server.call('get_tenanted_data_call_bk', self._global_dict['tenant_id'])
 
-        if self.task_tenanted.is_completed():
-            all_data = self.task_tenanted.get_return_value()
+        if self._task_tenanted.is_completed():
+            all_data = self._task_tenanted.get_return_value()
             for key, val in all_data.items():
                 self._tenanted_dict[key] = val
         else:
-            states = self.task_tenanted.get_state()
+            states = self._task_tenanted.get_state()
             if name in states:
                 if name + '_len' in states:
                     diff_len = states[name + '_len'] - len(states[name])
