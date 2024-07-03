@@ -14,22 +14,24 @@ class GlobalCache:
 
     def __getattr__(self, name):
         if name == 'user':
-            self._global_dict[name] = self._global_dict[name] or anvil.users.get_user()
-            print_timestamp('GlobalCache: user')
+            if self._global_dict[name] is None:
+                self._global_dict[name] = anvil.users.get_user()
+                print_timestamp('GlobalCache: user')
             return self._global_dict[name]
         elif name == 'is_mobile':
-            self._global_dict[name] = self._global_dict[name] or anvil.js.window.navigator.userAgent.lower().find("mobi") > -1
-            print_timestamp('GlobalCache: is_mobile')
+            if self._global_dict[name] is None:
+                self._global_dict[name] = anvil.js.window.navigator.userAgent.lower().find("mobi") > -1       
+                print_timestamp('GlobalCache: is_mobile')
             return self._global_dict[name]
         elif name in self._global_dict:
             if self._global_dict[name] is None:  # Only check None condition.
                 self._global_dict[name] = anvil.server.call('get_data', name)
-            print_timestamp(f'GlobalCache: {name}')
+                print_timestamp(f'GlobalCache: {name}')
             return self._global_dict[name]
         elif name in self._tenanted_dict:
             if self._tenanted_dict[name] is None:  # Only check None condition.
                 self._tenanted_dict[name] = anvil.server.call('get_tenanted_data', self._global_dict['tenant_id'], name)
-            print_timestamp(f'GlobalCache: {name}')
+                print_timestamp(f'GlobalCache: {name}')
             return self._tenanted_dict[name]
         raise AttributeError(f"Attribute {name} not found")
 
@@ -48,6 +50,8 @@ class GlobalCache:
     def clear_global_attributes(self):
         for name in list(self._global_dict.keys()):
             self._global_dict[name] = None
+        for name in list(self._tenanted_dict.keys()):
+            self._tenanted_dict[name] = None
 
     def get_s(self, name):
         """Get a global value but don't call the server if None."""
@@ -98,7 +102,7 @@ class GlobalCache:
                 return None
     
     def get_bk_tenanted(self, name):
-        print_timestamp(f'get_bk_tenanted {name}')
+        print_timestamp(f'GlobalCache.get_bk_tenanted {name}')
         if self._tenanted_dict[name] is not None:
             return self._tenanted_dict[name]
 
