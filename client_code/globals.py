@@ -10,27 +10,26 @@ class GlobalCache:
         self._tenanted_dict = tenanted_dict
         self.task = task
         self.task_tenanted = task_tenanted
+        print_timestamp('GlobalCache: init')
 
     def __getattr__(self, name):
         if name == 'user':
             self._global_dict[name] = self._global_dict[name] or anvil.users.get_user()
-            print_timestamp('Global: user')
+            print_timestamp('GlobalCache: user')
             return self._global_dict[name]
         elif name == 'is_mobile':
             self._global_dict[name] = self._global_dict[name] or anvil.js.window.navigator.userAgent.lower().find("mobi") > -1
-            print_timestamp('Global: is_mobile')
+            print_timestamp('GlobalCache: is_mobile')
             return self._global_dict[name]
         elif name in self._global_dict:
-            print_timestamp(f'Global before: {name}')
             if self._global_dict[name] is None:  # Only check None condition.
                 self._global_dict[name] = anvil.server.call('get_data', name)
-            print_timestamp(f'Global after: {name}')
+            print_timestamp(f'GlobalCache: {name}')
             return self._global_dict[name]
         elif name in self._tenanted_dict:
-            print_timestamp(f'Global.get_tenanted before: {name}')
             if self._tenanted_dict[name] is None:  # Only check None condition.
                 self._tenanted_dict[name] = anvil.server.call('get_tenanted_data', self._global_dict['tenant_id'], name)
-            print_timestamp(f'Global.get_tenanted after: {name}')
+            print_timestamp(f'GlobalCache: {name}')
             return self._tenanted_dict[name]
         raise AttributeError(f"Attribute {name} not found")
 
@@ -52,6 +51,7 @@ class GlobalCache:
 
     def get_s(self, name):
         """Get a global value but don't call the server if None."""
+        print_timestamp(f'GlobalCache.get_s {name}')
         if name in self._global_dict:
             return self._global_dict[name]
         if name in self._tenanted_dict:
@@ -68,12 +68,12 @@ class GlobalCache:
                 raise AttributeError(f"Attribute {name} not found")
 
     def get_bk_single(self, name):
-        print_timestamp(f'get_bk_single {name}')
+        print_timestamp(f'GlobalCache.get_bk_single {name}')
         if self._global_dict[name] is not None:
             return self._global_dict[name]
     
         if not self.task:
-            print_timestamp('launching background task')
+            print_timestamp('GlobalCache launching background task')
             self.task = anvil.server.call('get_data_call_bk')
 
         if self.task.is_completed():
@@ -103,7 +103,7 @@ class GlobalCache:
             return self._tenanted_dict[name]
 
         if not self.task_tenanted:
-            print_timestamp('launching background task tenanted')
+            print_timestamp('GlobalCache launching background task tenanted')
             self.task_tenanted = anvil.server.call('get_tenanted_data_call_bk', self._global_dict['tenant_id'])
 
         if self.task_tenanted.is_completed():
