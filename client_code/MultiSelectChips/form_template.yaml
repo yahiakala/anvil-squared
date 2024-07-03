@@ -1,0 +1,43 @@
+container: {type: ColumnPanel}
+components:
+- name: fp_bottom
+  properties: {align: justify, vertical_align: middle}
+  type: FlowPanel
+  layout_properties: {grid_position: 'ZBDJKV,ZGDCYA'}
+  components:
+  - name: fp_chips_left
+    properties: {vertical_align: middle}
+    type: FlowPanel
+    layout_properties: {}
+    components:
+    - name: btn_filter
+      properties: {text: Filters, icon: 'fa:filter', background: '#F5F5F5', foreground: '#4E5666', visible: false}
+      type: Button
+      layout_properties: {}
+      event_bindings: {click: btn_filter_click}
+    - name: dd_prompts
+      properties:
+        role: [outlined, dropdown-clean]
+        include_placeholder: true
+        placeholder: Select prompt
+        align: left
+        spacing_below: none
+      type: DropDown
+      layout_properties: {expand: true}
+      event_bindings: {change: dd_prompts_change}
+  - name: fp_right
+    properties: {align: right}
+    type: FlowPanel
+    layout_properties: {expand: true}
+    components:
+    - name: btn_save_apply
+      properties:
+        text: Save
+        role: [primary-button, wide-button]
+        align: right
+        icon: ''
+      type: Button
+      layout_properties: {}
+      event_bindings: {click: btn_save_apply_click}
+      data_bindings: []
+is_package: true
