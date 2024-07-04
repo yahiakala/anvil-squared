@@ -76,6 +76,7 @@ class GlobalCache:
                 raise AttributeError(f"Attribute {name} not found")
 
     def update_bk(self):
+        print_timestamp('GlobalCache: update_bk')
         bk_complete = self._task.is_completed()
         if bk_complete:
             all_data = self._task.get_return_value()
