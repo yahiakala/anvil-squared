@@ -82,6 +82,7 @@ class GlobalCache:
         self._task = res
         
     def launch_bk_tenanted(self):
+        print_timestamp('Launching get_tenanted_data_call_bk')
         call_async('get_tenanted_data_call_bk', self._global_dict['tenant_id']).on_result(self.launch_bk_tenanted_result)
 
     def launch_bk_tenanted_result(self, res):
