@@ -1,7 +1,7 @@
 from .utils import print_timestamp
 import anvil.js
 import anvil.server
-from anvil_extras.non_blocking import call_async
+# from anvil_extras.non_blocking import call_async
 
 
 class GlobalCache:
@@ -101,17 +101,11 @@ class GlobalCache:
         return all(bk_complete, bk_tenanted_complete)
 
     def launch_bk(self):
-        call_async('get_data_call_bk').on_result(self.launch_bk_result)
-
-    def launch_bk_result(self, res):
-        self._task = res
+        self._task = anvil.server.call('get_data_call_bk')
         
     def launch_bk_tenanted(self):
         print_timestamp('Launching get_tenanted_data_call_bk')
-        call_async('get_tenanted_data_call_bk', self._global_dict['tenant_id']).on_result(self.launch_bk_tenanted_result)
-
-    def launch_bk_tenanted_result(self, res):
-        self._task_tenanted = res
+        self._task_tenanted = anvil.server.call('get_tenanted_data_call_bk', self._global_dict['tenant_id'])
         
     def get_bk_single(self, name):
         if self._global_dict[name] is not None:
