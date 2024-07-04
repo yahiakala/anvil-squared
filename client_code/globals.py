@@ -75,8 +75,8 @@ class GlobalCache:
             else:
                 raise AttributeError(f"Attribute {name} not found")
 
-    def update_bk(self):
-        print_timestamp('GlobalCache: update_bk')
+    def update_bk_single(self):
+        print_timestamp('GlobalCache: update_bk_single')
         bk_complete = self._task.is_completed()
         if bk_complete:
             all_data = self._task.get_return_value()
@@ -87,7 +87,9 @@ class GlobalCache:
         #     for key, val in self._global_dict.items():
         #         if self._global_dict[key] is None:
         #             self._global_dict[key] = self.get_bk_single(key)
+        return bk_complete
 
+    def update_bk_tenanted(self):
         bk_tenanted_complete = self._task_tenanted.is_completed()
         if bk_tenanted_complete:
             all_data = self._task_tenanted.get_return_value()
@@ -98,8 +100,7 @@ class GlobalCache:
         #     for key, val in self._tenanted_dict.items():
         #         if self._tenanted_dict[key] is None:
         #             self._tenanted_dict[key] = self.get_bk_tenanted(key)
-
-        return all(bk_complete, bk_tenanted_complete)
+        return bk_tenanted_complete
 
     def launch_bk(self):
         if not self._task:
