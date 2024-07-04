@@ -75,6 +75,31 @@ class GlobalCache:
             else:
                 raise AttributeError(f"Attribute {name} not found")
 
+    def update_bk(self):
+        bk_complete = self._task.is_completed()
+        if bk_complete:
+            all_data = self._task.get_return_value()
+            for key, val in all_data.items():
+                if self._global_dict[key] is None:
+                    self._global_dict[key] = val
+        # else:
+        #     for key, val in self._global_dict.items():
+        #         if self._global_dict[key] is None:
+        #             self._global_dict[key] = self.get_bk_single(key)
+
+        bk_tenanted_complete = self._task_tenanted.is_completed()
+        if bk_tenanted_complete:
+            all_data = self._task_tenanted.get_return_value()
+            for key, val in all_data.items():
+                if self._tenanted_dict[key] is None:
+                    self._tenanted_dict[key] = val
+        # else:
+        #     for key, val in self._tenanted_dict.items():
+        #         if self._tenanted_dict[key] is None:
+        #             self._tenanted_dict[key] = self.get_bk_tenanted(key)
+
+        return all(bk_complete, bk_tenanted_complete)
+
     def launch_bk(self):
         call_async('get_data_call_bk').on_result(self.launch_bk_result)
 
@@ -100,7 +125,8 @@ class GlobalCache:
         if self._task.is_completed():
             all_data = self._task.get_return_value()
             for key, val in all_data.items():
-                self._global_dict[key] = val
+                if self._global_dict[key] is None:
+                    self._global_dict[key] = val
         else:
             states = self._task.get_state()
             if name in states:
@@ -132,7 +158,8 @@ class GlobalCache:
         if self._task_tenanted.is_completed():
             all_data = self._task_tenanted.get_return_value()
             for key, val in all_data.items():
-                self._tenanted_dict[key] = val
+                if self._tenanted_dict[key] is None:
+                    self._tenanted_dict[key] = val
         else:
             states = self._task_tenanted.get_state()
             if name in states:
