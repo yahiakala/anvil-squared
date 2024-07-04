@@ -101,11 +101,14 @@ class GlobalCache:
         return all(bk_complete, bk_tenanted_complete)
 
     def launch_bk(self):
-        self._task = anvil.server.call('get_data_call_bk')
+        if not self._task:
+            print_timestamp('Launching get_data_call_bk')
+            self._task = anvil.server.call('get_data_call_bk')
         
     def launch_bk_tenanted(self):
-        print_timestamp('Launching get_tenanted_data_call_bk')
-        self._task_tenanted = anvil.server.call('get_tenanted_data_call_bk', self._global_dict['tenant_id'])
+        if not self._task_tenanted:
+            print_timestamp('Launching get_tenanted_data_call_bk')
+            self._task_tenanted = anvil.server.call('get_tenanted_data_call_bk', self._global_dict['tenant_id'])
         
     def get_bk_single(self, name):
         if self._global_dict[name] is not None:
