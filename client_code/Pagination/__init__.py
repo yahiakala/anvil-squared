@@ -1,6 +1,7 @@
 from ._anvil_designer import PaginationTemplate
 from anvil import *
 from .. import tablemod
+import anvil.server
 
 
 class Pagination(PaginationTemplate):
@@ -29,7 +30,10 @@ class Pagination(PaginationTemplate):
 
     def btn_next_arrow_click(self, **event_args):
         """This method is called when the button is clicked"""
-        tablemod.btn_next_arrow_click(self)
+        # TODO: set the items to nones equal to page size first
+        # Somehow preserve the items and current page somewhere
+        with anvil.server.no_loading_indicator:
+            tablemod.btn_next_arrow_click(self)
 
     def btn_prev_arrow_click(self, **event_args):
         """This method is called when the button is clicked"""
