@@ -30,8 +30,9 @@ class Pagination(PaginationTemplate):
 
     def btn_next_arrow_click(self, **event_args):
         """This method is called when the button is clicked"""
-        # TODO: set the items to nones equal to page size first
-        # Somehow preserve the items and current page somewhere
+        # items = self._repeating_panel.items
+        # self._repeating_panel.items = [None] * self._data_grid.rows_per_page
+        # curr_page = self._data_grid.get_page()
         with anvil.server.no_loading_indicator:
             tablemod.btn_next_arrow_click(self)
 
