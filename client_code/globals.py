@@ -15,7 +15,6 @@ class GlobalCache:
 
     def __getattr__(self, name):
         if name == 'user':
-            print(self._global_dict)
             if self._global_dict[name] is None:
                 self._global_dict[name] = anvil.users.get_user()
                 print_timestamp('GlobalCache: user')
