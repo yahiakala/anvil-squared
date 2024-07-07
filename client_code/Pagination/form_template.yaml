@@ -9,11 +9,12 @@ components:
     role: [page-button, gray-text]
     font_size: 14
     align: right
+    visible: true
   type: Button
   layout_properties: {grid_position: 'SXQBFT,BIFXSP'}
   event_bindings: {click: btn_prev_arrow_click}
 - name: fp_pagination
-  properties: {align: center, spacing: none}
+  properties: {align: center, spacing: none, visible: false}
   type: FlowPanel
   layout_properties: {grid_position: 'SXQBFT,OSHDJC'}
   components:
@@ -80,6 +81,7 @@ components:
     role: [page-button, gray-text]
     font_size: 14
     align: left
+    visible: true
   type: Button
   layout_properties: {grid_position: 'SXQBFT,KLWXIV'}
   event_bindings: {click: btn_next_arrow_click}

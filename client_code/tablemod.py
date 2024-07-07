@@ -91,3 +91,8 @@ def btn_next_click(self, **event_args):
     print_timestamp('home_next_click')
     self.data_grid.next_page()
     self.refresh_pagination()
+
+def set_page(self, page_num, **event_args):
+    print_timestamp('set_page')
+    self.data_grid.set_page(page_num)
+    self.refresh_pagination()
