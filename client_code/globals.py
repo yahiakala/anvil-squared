@@ -15,6 +15,7 @@ class GlobalCache:
 
     def __getattr__(self, name):
         if name == 'user':
+            print(self._global_dict)
             if self._global_dict[name] is None:
                 self._global_dict[name] = anvil.users.get_user()
                 print_timestamp('GlobalCache: user')
@@ -41,12 +42,7 @@ class GlobalCache:
             # This allows initialization and internal attributes to be set.
             super().__setattr__(name, value)
         else:
-            if value is None:
-                # If setting an attribute to None, remove it to force repopulation on next access.
-                self._global_dict.pop(name, None)
-            else:
-                # For all other assignments, update the global dictionary normally.
-                self._global_dict[name] = value
+            self._global_dict[name] = value
 
     def clear_global_attributes(self):
         for name in list(self._global_dict.keys()):
