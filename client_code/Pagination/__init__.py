@@ -2,6 +2,7 @@ from ._anvil_designer import PaginationTemplate
 from anvil import *
 from .. import tablemod
 import anvil.server
+from ..utils import print_timestamp
 
 
 class Pagination(PaginationTemplate):

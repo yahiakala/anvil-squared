@@ -1,4 +1,6 @@
-container: {type: ColumnPanel}
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{"BIFXSP":10,"OSHDJC":40,"KLWXIV":10}'}
 components:
 - name: btn_prev_arrow
   properties:
