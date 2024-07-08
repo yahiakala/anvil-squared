@@ -19,7 +19,7 @@ components:
       properties:
         role: [outlined, dropdown-clean]
         include_placeholder: true
-        placeholder: Select prompt
+        placeholder: Select
         align: left
         spacing_below: none
       type: DropDown
@@ -33,7 +33,7 @@ components:
     - name: btn_save_apply
       properties:
         text: Save
-        role: [primary-button, wide-button]
+        role: [filled-button]
         align: right
         icon: ''
       type: Button

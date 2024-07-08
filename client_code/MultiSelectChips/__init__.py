@@ -12,7 +12,7 @@ class MultiSelectChips(MultiSelectChipsTemplate):
         print_timestamp('MultiSelectChips')
         self.init_components(**properties)
         self.fp_chips_left.add_event_handler('x-remove', self.remove_item)
-        self._selected = properties['selected'] or []
+        self._selected = []
         # self._filters = properties['filters'] or {'profession': [], 'author': [], 'language': [], 'note_type': []}
 
     @property

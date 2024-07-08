@@ -1,7 +1,7 @@
 container: {type: ColumnPanel}
 components:
 - name: btn_chip
-  properties: {text: Chip, icon: 'fa:window-close-o', icon_align: right, role: secondary-button}
+  properties: {text: Chip, icon: 'fa:window-close-o', icon_align: right, role: outlined-button}
   type: Button
   layout_properties: {grid_position: 'CATHHN,JXSORY'}
   event_bindings: {click: btn_chip_click}
