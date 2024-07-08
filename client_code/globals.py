@@ -40,8 +40,12 @@ class GlobalCache:
         if name.startswith('_'):
             # This allows initialization and internal attributes to be set.
             super().__setattr__(name, value)
-        else:
+        elif name in list(self._global_dict.keys()):
             self._global_dict[name] = value
+        elif name in list(self._tenanted_dict.keys()):
+            self._tenanted_dict[name] = value
+        else:
+            raise AttributeError(f"Attribute {name} not found")
 
     def clear_global_attributes(self):
         for name in list(self._global_dict.keys()):
