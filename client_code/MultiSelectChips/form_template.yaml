@@ -41,3 +41,9 @@ components:
       event_bindings: {click: btn_save_apply_click}
       data_bindings: []
 is_package: true
+custom_component: true
+properties:
+- {name: items, type: object, important: true, default_binding_prop: true}
+- {name: selected, type: object, important: true}
+- {name: show_save, type: boolean, default_value: false, important: true}
+- {name: filters, type: object, important: true}
