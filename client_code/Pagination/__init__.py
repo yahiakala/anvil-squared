@@ -33,14 +33,12 @@ class Pagination(PaginationTemplate):
 
     def btn_next_arrow_click(self, **event_args):
         """This method is called when the button is clicked"""
+        self.btn_curr_page.visible = False
+        self.img_load.visible = True
         with anvil.server.no_loading_indicator:
-            # items = self._repeating_panel.items
-            # curr_page = self._data_grid.get_page()
-            # self._repeating_panel.items = [None] * self._data_grid.rows_per_page
-            # _ = items[(curr_page+1)*self._data_grid.rows_per_page]
-            # self._repeating_panel.items = items
-            # tablemod.set_page(self, curr_page + 1)
             tablemod.btn_next_arrow_click(self)
+        self.img_load.visible = False
+        self.btn_curr_page.visible = True
 
     def btn_prev_arrow_click(self, **event_args):
         """This method is called when the button is clicked"""
@@ -54,12 +52,16 @@ class Pagination(PaginationTemplate):
 
     def btn_last_click(self, **event_args):
         """This method is called when the button is clicked"""
+        self.btn_curr_page.visible = False
+        self.img_load.visible = True
         with anvil.server.no_loading_indicator:
             items = self._repeating_panel.items
             self._repeating_panel.items = [None] * 3
             _ = items[len(items)-1]
             self._repeating_panel.items = items
             tablemod.btn_last_click(self)
+        self.img_load.visible = False
+        self.btn_curr_page.visible = True
             
 
     def btn_prev_click(self, **event_args):
@@ -69,5 +71,9 @@ class Pagination(PaginationTemplate):
 
     def btn_next_click(self, **event_args):
         """This method is called when the button is clicked"""
+        self.btn_curr_page.visible = False
+        self.img_load.visible = True
         with anvil.server.no_loading_indicator:
             tablemod.btn_next_click(self)
+        self.img_load.visible = False
+        self.btn_curr_page.visible = True
