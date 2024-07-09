@@ -6,23 +6,23 @@ components:
   layout_properties: {grid_position: 'GCXVZQ,ZYSCVD'}
   components:
   - name: tb_secret
-    properties: {role: outlined, hide_text: true, spacing_below: none}
+    properties: {role: outlined, hide_text: true, spacing_below: none, spacing_above: none}
     type: TextBox
     layout_properties: {expand: true, width: 300}
   - name: btn_view
-    properties: {text: '', icon: 'fa:eye', role: filled-button, tooltip: View key}
+    properties: {text: '', icon: 'fa:eye', role: filled-button, tooltip: View key, spacing_above: none, spacing_below: none}
     type: Button
     layout_properties: {}
   - name: btn_edit
-    properties: {text: '', icon: 'fa:pencil', role: filled-button, tooltip: Reset key}
+    properties: {text: '', icon: 'fa:pencil', role: filled-button, tooltip: Reset key, spacing_above: none, spacing_below: none}
     type: Button
     layout_properties: {}
   - name: btn_reset
-    properties: {text: '', icon: 'fa:refresh', role: filled-button, tooltip: Reset key}
+    properties: {text: '', icon: 'fa:refresh', role: filled-button, tooltip: Reset key, spacing_above: none, spacing_below: none}
     type: Button
     layout_properties: {}
   - name: btn_copy
-    properties: {text: '', icon: 'fa:copy', role: filled-button, tooltip: Reset key}
+    properties: {text: '', icon: 'fa:copy', role: filled-button, tooltip: Reset key, spacing_above: none, spacing_below: none}
     type: Button
     layout_properties: {}
 is_package: true
