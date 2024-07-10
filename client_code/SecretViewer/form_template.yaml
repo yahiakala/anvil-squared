@@ -39,12 +39,12 @@ components:
     layout_properties: {}
     event_bindings: {click: btn_copy_click}
   - name: btn_confirm
-    properties: {text: '', icon: 'fa:check', role: filled-button, tooltip: Reset key, spacing_above: none, spacing_below: none, visible: false}
+    properties: {text: '', icon: 'fa:check', role: filled-button, tooltip: Reset key, spacing_above: none, spacing_below: none, visible: false, background: green}
     type: Button
     layout_properties: {}
     event_bindings: {click: btn_confirm_click}
   - name: btn_cancel
-    properties: {text: '', icon: 'fa:close', role: filled-button, tooltip: Reset key, spacing_above: none, spacing_below: none, visible: false}
+    properties: {text: '', icon: 'fa:close', role: filled-button, tooltip: Reset key, spacing_above: none, spacing_below: none, visible: false, background: red}
     type: Button
     layout_properties: {}
     event_bindings: {click: btn_cancel_click}
