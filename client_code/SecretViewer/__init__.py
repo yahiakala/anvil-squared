@@ -1,8 +1,6 @@
 from ._anvil_designer import SecretViewerTemplate
 from anvil import *
 from anvil.js.window import navigator
-import secrets
-import string
 
 
 class SecretViewer(SecretViewerTemplate):
@@ -71,8 +69,3 @@ class SecretViewer(SecretViewerTemplate):
         self.btn_edit.enabled = True
         self.btn_reset.enabled = True
         self.btn_view.enabled = True
-
-
-def generate_secure_key(length=20):
-    characters = string.ascii_letters + string.digits
-    return ''.join(secrets.choice(characters) for _ in range(length))
