@@ -1,6 +1,12 @@
-container:
-  type: ColumnPanel
-  properties: {spacing_above: none, spacing_below: none}
+properties:
+- {name: secret, type: string, default_value: '', important: true, default_binding_prop: true}
+is_package: true
+events:
+- {name: reset, default_event: true}
+- {name: copy}
+- {name: view}
+- {name: edit}
+custom_component: true
 components:
 - name: fp_secret
   properties: {align: right, vertical_align: middle, spacing_below: none, spacing_above: small}
@@ -8,26 +14,29 @@ components:
   layout_properties: {grid_position: 'GCXVZQ,ZYSCVD'}
   components:
   - name: tb_secret
-    properties: {role: outlined, hide_text: true, spacing_below: none, spacing_above: small}
+    properties: {role: outlined, hide_text: true, spacing_below: none, spacing_above: small, enabled: false}
     type: TextBox
     layout_properties: {expand: true, width: 300}
   - name: btn_view
     properties: {text: '', icon: 'fa:eye', role: filled-button, tooltip: View key, spacing_above: none, spacing_below: none}
     type: Button
     layout_properties: {}
+    event_bindings: {click: btn_view_click}
   - name: btn_edit
     properties: {text: '', icon: 'fa:pencil', role: filled-button, tooltip: Reset key, spacing_above: none, spacing_below: none}
     type: Button
     layout_properties: {}
+    event_bindings: {click: btn_edit_click}
   - name: btn_reset
     properties: {text: '', icon: 'fa:refresh', role: filled-button, tooltip: Reset key, spacing_above: none, spacing_below: none}
     type: Button
     layout_properties: {}
+    event_bindings: {click: btn_reset_click}
   - name: btn_copy
     properties: {text: '', icon: 'fa:copy', role: filled-button, tooltip: Reset key, spacing_above: none, spacing_below: none}
     type: Button
     layout_properties: {}
-is_package: true
-custom_component: true
-properties:
-- {name: secret, type: string, default_value: '', important: true, default_binding_prop: true}
+    event_bindings: {click: btn_copy_click}
+container:
+  type: ColumnPanel
+  properties: {spacing_above: none, spacing_below: none}
