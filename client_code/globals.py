@@ -1,7 +1,6 @@
 from .utils import print_timestamp
 import anvil.js
 import anvil.server
-# from anvil_extras.non_blocking import call_async
 
 
 class GlobalCache:

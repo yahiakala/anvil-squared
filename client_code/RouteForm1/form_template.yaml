@@ -1,7 +1,0 @@
-container: {type: ColumnPanel}
-components:
-- name: image_1
-  properties: {source: _/theme/bubble_icon.png, height: 393}
-  type: Image
-  layout_properties: {grid_position: 'JHBQZU,BTIMFS'}
-is_package: true

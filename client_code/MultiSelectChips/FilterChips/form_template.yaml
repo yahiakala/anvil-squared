@@ -4,10 +4,6 @@ components:
   properties: {text: Filter Category 1}
   type: Label
   layout_properties: {grid_position: 'ASCUOD,LCYZRD'}
-- name: msdd_1
-  properties: {}
-  type: form:dep_9rn7rttl9396md:MultiSelectDropDown
-  layout_properties: {grid_position: 'ASCUOD,XJZXGV'}
 - name: btn_clear
   properties: {text: Clear, role: secondary-button, align: left}
   type: Button
