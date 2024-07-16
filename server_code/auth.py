@@ -13,7 +13,7 @@ def login_with_email_squared(email, password):
             raise anvil.users.TooManyPasswordFailures('You have reached your limit of password attempts. Please reset your password.')
         elif user['mfa'] is not None:
             raise anvil.users.MFARequired('User needs to enter MFA credentials.')
-        elif user['confirmed_email'] != True:
+        elif not user['confirmed_email']:
             raise anvil.users.EmailNotConfirmed('Please confirm your email before logging in.')
         elif bcrypt.checkpw(password.encode('utf-8'), user['password_hash'].encode('utf-8')):
             anvil.users.force_login(user, remember=True)
