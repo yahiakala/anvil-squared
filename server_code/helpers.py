@@ -19,6 +19,7 @@ def run_callable():
 
 
 def print_timestamp(input_str, verbose=True):
+    # TODO: make this flexible to print any object
     if verbose:
         import datetime as dt
         import pytz
