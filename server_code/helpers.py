@@ -220,8 +220,8 @@ def get_permissions(tenant_id, user, tenant=None, usertenant=None):
 
 
 def validate_user(tenant_id, user, usertenant=None, permissions=None, tenant=None):
-    usertenant = usertenant or get_usertenant(tenant_id, user, tenant=tenant)
     tenant = tenant or verify_tenant(tenant_id, user, usertenant=usertenant)
+    usertenant = usertenant or get_usertenant(tenant_id, user, tenant=tenant)
     permissions = permissions or get_permissions(tenant_id, user, usertenant=usertenant, tenant=tenant)
     return tenant, usertenant, permissions
 
