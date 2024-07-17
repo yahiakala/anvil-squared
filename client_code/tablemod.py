@@ -12,10 +12,12 @@ def refresh_pagination(self):
     # Left Half
     self.btn_dots_1.visible = True
     self.btn_dots_1.text = '...'
+    self.btn_dots_1.enabled = False
     if curr_page > 4:
         pass
     elif curr_page == 4:
         self.btn_dots_1.text = '2'
+        self.btn_dots_1.enabled = True
     else:
         self.btn_dots_1.visible = False
 
@@ -35,6 +37,7 @@ def refresh_pagination(self):
     # Right Half
     self.btn_dots_2.visible = True
     self.btn_dots_2.text = '...'
+    self.btn_dots_2.enabled = False
     if curr_page < num_pages - 3:
         pass
     elif curr_page == num_pages - 3:
