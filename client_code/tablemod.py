@@ -39,6 +39,7 @@ def refresh_pagination(self):
         pass
     elif curr_page == num_pages - 3:
         self.btn_dots_2.text = str(num_pages - 1)
+        self.btn_dots_2.enabled = True
     else:
         self.btn_dots_2.visible = False
 

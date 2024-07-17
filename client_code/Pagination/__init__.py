@@ -77,3 +77,15 @@ class Pagination(PaginationTemplate):
             tablemod.btn_next_click(self)
         self.img_load.visible = False
         self.btn_curr_page.visible = True
+
+    def btn_dots_1_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        with anvil.server.no_loading_indicator:
+            pass
+
+    def btn_dots_2_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        with anvil.server.no_loading_indicator:
+            tablemod.set_page(self, int(self.btn_dots_2.text))
+
+

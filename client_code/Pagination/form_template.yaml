@@ -30,10 +30,11 @@ components:
     properties:
       text: '...'
       role: [page-button, gray-text]
-      enabled: true
+      enabled: false
       font_size: 14
     type: Button
     layout_properties: {}
+    event_bindings: {click: btn_dots_1_click}
   - name: btn_prev
     properties:
       text: '4'
@@ -65,10 +66,11 @@ components:
     properties:
       text: '...'
       role: [page-button, gray-text]
-      enabled: true
+      enabled: false
       font_size: 14
     type: Button
     layout_properties: {}
+    event_bindings: {click: btn_dots_2_click}
   - name: btn_last
     properties:
       text: '100'
