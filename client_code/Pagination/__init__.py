@@ -86,6 +86,6 @@ class Pagination(PaginationTemplate):
     def btn_dots_2_click(self, **event_args):
         """This method is called when the button is clicked"""
         with anvil.server.no_loading_indicator:
-            tablemod.set_page(self, int(self.btn_dots_2.text))
+            tablemod.set_page(self, int(self.btn_dots_2.text)-1)
 
 
