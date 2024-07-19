@@ -30,5 +30,3 @@ custom_component: true
 properties:
 - {name: items, type: object, important: true, default_binding_prop: true}
 - {name: selected, type: object, important: true}
-- {name: show_save, type: boolean, default_value: false, important: true}
-- {name: filters, type: object, important: true}

@@ -16,7 +16,6 @@ class MultiSelectChips2(MultiSelectChips2Template):
     @items.setter
     def items(self, value):
         self._items = value
-        self._filters = None
         self.selected = []
 
     @property
