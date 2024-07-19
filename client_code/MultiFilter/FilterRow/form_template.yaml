@@ -1,3 +1,13 @@
 is_package: true
-container: {type: ColumnPanel}
-components: []
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{"ZXYKUN":5,"LMDJIC":55}'}
+components:
+- name: lbl_name
+  properties: {}
+  type: Label
+  layout_properties: {grid_position: 'PNDTQL,ZXYKUN'}
+- name: msc2
+  properties: {}
+  type: form:MultiSelectChips2
+  layout_properties: {grid_position: 'PNDTQL,LMDJIC'}

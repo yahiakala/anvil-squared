@@ -7,4 +7,6 @@ class FilterRow(FilterRowTemplate):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
-        # Any code you write here will run before the form opens.
+        self.lbl_name.text = self.item['name']
+        self.msc2.items = self.item['items']
+        self.msc2.selected = self.item['selected']
