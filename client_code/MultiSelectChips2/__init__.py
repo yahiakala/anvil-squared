@@ -15,6 +15,17 @@ class MultiSelectChips2(MultiSelectChips2Template):
 
     @items.setter
     def items(self, value):
+        if len(value) > 0:
+            if isinstance(value[0], str):
+                self._items = [
+                    {
+                        'key': i,
+                        'value': i,
+                        'description': i
+                    }
+                    for i in value
+                ]
+
         self._items = value
         self.selected = []
 
@@ -27,9 +38,10 @@ class MultiSelectChips2(MultiSelectChips2Template):
 
     @selected.setter
     def selected(self, value):
+        """Should be list of strings."""
         self._selected = value
         if value:
-            self._selectable = [i for i in self._items if i not in self._selected]
+            self._selectable = [i for i in self._items if i['value'] not in self._selected]
         else:
             self._selectable = self._items
         self.update_chips()

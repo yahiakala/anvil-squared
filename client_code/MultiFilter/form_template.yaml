@@ -15,3 +15,4 @@ components:
   layout_properties: {grid_position: 'TBUBDS,KROAOP'}
   event_bindings: {click: btn_confirm_click}
 is_package: true
+custom_component: true
