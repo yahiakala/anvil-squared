@@ -11,3 +11,4 @@ components:
   properties: {}
   type: form:MultiSelectChips2
   layout_properties: {grid_position: 'PNDTQL,LMDJIC'}
+  event_bindings: {change: msc2_change}
