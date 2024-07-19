@@ -1,4 +1,10 @@
-container: {type: ColumnPanel}
+properties:
+- {name: items, type: object, important: true, default_binding_prop: true}
+- {name: selected, type: object, important: true}
+is_package: true
+events:
+- {name: change, default_event: true}
+custom_component: true
 components:
 - name: fp_msc
   properties: {align: justify, vertical_align: middle}
@@ -21,12 +27,8 @@ components:
       layout_properties: {expand: true}
       event_bindings: {change: dd_items_change}
   - name: fp_right
-    properties: {align: right}
+    properties: {align: left}
     type: FlowPanel
     layout_properties: {expand: true}
     components: []
-is_package: true
-custom_component: true
-properties:
-- {name: items, type: object, important: true, default_binding_prop: true}
-- {name: selected, type: object, important: true}
+container: {type: ColumnPanel}
