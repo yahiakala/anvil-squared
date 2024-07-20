@@ -1,7 +1,0 @@
-container: {type: ColumnPanel}
-components:
-- name: mstlayout_1
-  properties: {}
-  type: form:MSTLayout
-  layout_properties: {grid_position: 'QCCWEK,HCPKKY'}
-is_package: true

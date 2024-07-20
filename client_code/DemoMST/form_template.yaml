@@ -15,6 +15,18 @@ components:
     type: Button
     layout_properties: {}
     event_bindings: {click: btn_filter_click}
+- name: data_grid_1
+  properties:
+    columns:
+    - {id: JKSDUP, title: Column 1, data_key: column_1}
+    - {id: VJQQOR, title: Column 2, data_key: column_2}
+    - {id: OJLQEN, title: Column 3, data_key: column_3}
+  type: DataGrid
+  components:
+  - name: repeating_panel_1
+    properties: {item_template: DemoMST.RowTemplate1}
+    type: RepeatingPanel
+  layout_properties: {grid_position: 'GNBOUJ,RECUMX'}
 - name: pagination_1
   properties: {}
   type: form:Pagination
