@@ -1,0 +1,7 @@
+container: {type: ColumnPanel}
+components:
+- name: msdd2_1
+  properties: {}
+  type: form:MSDD2
+  layout_properties: {grid_position: 'FOLKKX,WLQURB'}
+is_package: true
