@@ -50,15 +50,17 @@ class MultiSelectTable(MultiSelectTableTemplate):
     @selected.setter
     def selected(self, value):
         self._selected = value
-        self.raise_event("change_selected")
+        self.raise_event("change")
 
     def add_item(self, item, **event_args):
         """User clicks to select an item."""
         self._selected = self._selected + [item]
+        self.raise_event('change')
 
     def remove_item(self, item, **event_args):
         """User clicks to unselect an item."""
         self._selected = [i for i in self._selected if i != item]
+        self.raise_event('change')
 
     # FILTERS
     # -------

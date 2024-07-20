@@ -1,4 +1,10 @@
-container: {type: ColumnPanel}
+properties:
+- {name: data_grid, type: object, important: true, default_binding_prop: true}
+- {name: repeating_panel, type: object, important: true}
+is_package: true
+events:
+- {name: change, default_event: true}
+custom_component: true
 components:
 - name: cp_top
   properties: {role: null, spacing_above: none, spacing_below: none, col_widths: '{}'}
@@ -29,8 +35,4 @@ components:
     properties: {}
     type: form:Pagination
     layout_properties: {grid_position: 'EBNEJF,KOZNPJ'}
-is_package: true
-custom_component: true
-properties:
-- {name: data_grid, type: object, important: true, default_binding_prop: true}
-- {name: repeating_panel, type: object, important: true}
+container: {type: ColumnPanel}

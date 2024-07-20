@@ -13,4 +13,8 @@ components:
     properties: {item_template: DemoMST.RowTemplate1}
     type: RepeatingPanel
   layout_properties: {grid_position: 'GNBOUJ,RECUMX'}
+- name: lbl_selected
+  properties: {}
+  type: Label
+  layout_properties: {grid_position: 'UGJXGC,ZJODKW'}
 is_package: true
