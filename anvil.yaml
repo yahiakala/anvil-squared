@@ -9,7 +9,7 @@ services:
 - source: /runtime/services/anvil/users.yml
   client_config: {allow_signup: false, enable_automatically: true, use_email: true, confirm_email: true}
   server_config: {user_table: users}
-startup: {type: form, module: DemoMultiFilter}
+startup: {type: form, module: MDBTest}
 package_name: anvil_squared
 allow_embedding: false
 name: Anvil Squared
