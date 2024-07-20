@@ -6,6 +6,12 @@ class RowTemplate1(RowTemplate1Template):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
+        if self.item['selected']:
+            self.btn_select.role = 'secondary-button-selected'
+            self.btn_select.text = 'Selected'
+        else:
+            self.btn_select.role = 'secondary-button'
+            self.btn_select.text = 'Select'
 
         # Any code you write here will run before the form opens.
 
