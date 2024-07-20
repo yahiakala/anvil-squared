@@ -5,7 +5,6 @@ from ..MultiFilter import MultiFilter
 
 class MultiSelectTable(MultiSelectTableTemplate):
     def __init__(self, **properties):
-        # Set Form properties and Data Bindings.
         self.init_components(**properties)
         self._selected = []
         self._filters = []

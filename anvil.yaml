@@ -6,7 +6,10 @@ services:
 - source: /runtime/services/anvil/secrets.yml
   client_config: {}
   server_config: {}
-startup: {type: form, module: DemoMultiFilter}
+- source: /runtime/services/anvil/users.yml
+  client_config: {allow_signup: false, enable_automatically: true, use_email: true, confirm_email: true}
+  server_config: {user_table: users}
+startup: {type: form, module: DemoMST}
 package_name: anvil_squared
 allow_embedding: false
 name: Anvil Squared
@@ -33,3 +36,27 @@ secrets:
     value: {KDKDM3MG6IQHC2FK: 3fMGQjJ9t23/hicYzE1ZqUYXjAJ/7+jMdJkadUvBmpdi6KcB/9r+hpDuF9wxQxnI4MllbyZUJD/G0CcdziMx1T3K5cJ3GG3Y5kVcd8ocwbcqVPpaLOWlzbMsiPzo8J5PD19NGhaOCT8l1mEpD9RrW04EAkr5DGY=}
     type: secret
 renamed: true
+db_schema:
+  users:
+    client: none
+    server: full
+    columns:
+    - name: email
+      admin_ui: {order: 0, width: 200}
+      type: string
+    - name: enabled
+      admin_ui: {order: 1, width: 200}
+      type: bool
+    - name: last_login
+      admin_ui: {order: 2, width: 200}
+      type: datetime
+    - name: password_hash
+      admin_ui: {order: 3, width: 200}
+      type: string
+    - name: n_password_failures
+      admin_ui: {order: 4, width: 200}
+      type: number
+    - name: confirmed_email
+      admin_ui: {order: 5, width: 200}
+      type: bool
+    title: Users
