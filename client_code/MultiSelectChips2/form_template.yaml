@@ -7,12 +7,12 @@ events:
 custom_component: true
 components:
 - name: fp_msc
-  properties: {align: justify, vertical_align: middle}
+  properties: {align: justify, vertical_align: middle, spacing_above: none, spacing_below: none}
   type: FlowPanel
   layout_properties: {grid_position: 'ZBDJKV,ZGDCYA'}
   components:
   - name: fp_left
-    properties: {vertical_align: middle, spacing_above: small, spacing_below: small}
+    properties: {vertical_align: middle, spacing_above: none, spacing_below: none}
     type: FlowPanel
     layout_properties: {}
     components:
@@ -21,8 +21,10 @@ components:
       type: DropDown
       event_bindings: {change: dd_items_change}
   - name: fp_right
-    properties: {align: left, vertical_align: middle}
+    properties: {align: left, vertical_align: middle, spacing_above: none, spacing_below: none}
     type: FlowPanel
     layout_properties: {expand: true}
     components: []
-container: {type: ColumnPanel}
+container:
+  type: ColumnPanel
+  properties: {spacing_above: none, spacing_below: none}
