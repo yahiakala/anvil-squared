@@ -31,38 +31,44 @@ class MultiSelectChips2(MultiSelectChips2Template):
 
     @property
     def selected(self):
-        if len(self._selected) > 0:
-            return [i['value'] for i in self._selected]
-        else:
-            return []
+        return self._selected
 
     @selected.setter
     def selected(self, value):
-        """Should be list of strings."""
+        """Should be list of dicts."""
         self._selected = value
         if value:
-            self._selectable = [i for i in self._items if i['value'] not in self._selected]
+            self._selectable = [i for i in self._items if i['value'] not in self.selected_values]
         else:
             self._selectable = self._items
         self.update_chips()
+
+    @property
+    def selected_values(self):
+        return [i['value'] for i in self._selected]
+
+    @selected_values.setter
+    def selected_values(self, value):
+        self.selected = [i for i in self._items if i['value'] in value]
+        
 
     def update_chips(self, **event_args):
         self.dd_items.items = [(i["key"], i["value"]) for i in self._selectable]
         self.dd_items.selected_value = None
 
         self.fp_right.clear()
-        for prompt in self._selected:
+        for item in self._selected:
             self.fp_right.add_component(
-                Chip(item={"name": prompt["key"], "description": prompt["description"]})
+                Chip(item={"name": item["key"], 'value': item['value'], "description": item["description"]})
             )
 
     def remove_item(self, remove, **event_args):
-        self.selected = [i for i in self._selected if i["key"] != remove['name']]
+        self.selected = [i for i in self._selected if i['value'] != remove['value']]
         self.raise_event('change')
 
     def dd_items_change(self, **event_args):
         """This method is called when an item is selected"""
         self.selected = self._selected + [
-            i for i in self.items if i["value"] == self.dd_items.selected_value
+            i for i in self._items if i["value"] == self.dd_items.selected_value
         ]
         self.raise_event('change')
