@@ -1,3 +1,22 @@
 container: {type: ColumnPanel}
-components: []
+components:
+- name: fp_top
+  properties: {align: right, spacing: tiny}
+  type: FlowPanel
+  layout_properties: {grid_position: 'AECPDZ,SCWHOD'}
+  components:
+  - name: tb_search
+    properties: {role: null, placeholder: Search, foreground: '', font_size: 14}
+    type: TextBox
+    layout_properties: {width: null, expand: true}
+    event_bindings: {pressed_enter: tb_search_pressed_enter}
+  - name: btn_filter
+    properties: {text: Filters, icon: 'fa:filter', background: '', foreground: ''}
+    type: Button
+    layout_properties: {}
+    event_bindings: {click: btn_filter_click}
+- name: pagination_1
+  properties: {}
+  type: form:Pagination
+  layout_properties: {grid_position: 'XRCRRP,ERDYVG'}
 is_package: true

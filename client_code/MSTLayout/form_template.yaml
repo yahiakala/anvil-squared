@@ -1,0 +1,4 @@
+container: {type: ColumnPanel}
+components: []
+is_package: true
+slots: {}

@@ -10,7 +10,12 @@ startup: {type: form, module: DemoMultiFilter}
 package_name: anvil_squared
 allow_embedding: false
 name: Anvil Squared
-runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+runtime_options:
+  version: 3
+  client_version: '3'
+  server_version: python3-full
+  server_spec: null
+  legacy_features: {class_names: true, bootstrap3: true, __dict__: true, root_container: true}
 startup_form: null
 native_deps:
   head_html: |-
