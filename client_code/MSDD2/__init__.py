@@ -4,7 +4,7 @@ from anvil.js.window import Function as _Function
 from anvil.js.window import document as _document
 from anvil.js.window import jQuery as _S
 
-from ..utils._component_helpers import _css_length, _html_injector, _spacing_property
+from ..utils2._component_helpers import _css_length, _html_injector, _spacing_property
 from ._anvil_designer import MSDD2Template
 
 _html_injector.script(

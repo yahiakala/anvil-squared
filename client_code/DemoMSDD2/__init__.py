@@ -7,4 +7,4 @@ class DemoMSDD2(DemoMSDD2Template):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
-        # Any code you write here will run before the form opens.
+        self.msdd2_1.items = ['option 1', 'option 2', 'option 3']
