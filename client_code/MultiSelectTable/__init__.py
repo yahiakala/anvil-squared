@@ -15,6 +15,7 @@ class MultiSelectTable(MultiSelectTableTemplate):
 
     @data_grid.setter
     def data_grid(self, value):
+        # print('data_grid')
         self.clear()
         self._data_grid = value
         self.pagination_1.data_grid = self._data_grid
@@ -33,6 +34,7 @@ class MultiSelectTable(MultiSelectTableTemplate):
         self.pagination_1.repeating_panel = self._repeating_panel
         self._items = value.items
         self.filters = self.set_filters(value.items)
+        # print(self.filters)
         self._repeating_panel.add_event_handler("x-add-item", self.add_item)
         self._repeating_panel.add_event_handler("x-remove-item", self.remove_item)
 
@@ -66,7 +68,7 @@ class MultiSelectTable(MultiSelectTableTemplate):
             result_list.append({'name': key, 'items': list(val)})
         # unique_values = {key: list(values) for key, values in unique_values.items()}
         # result_list = [{"name": key, "items": values} for key, values in unique_values.items()]
-        print(result_list)
+        # print(result_list)
         return result_list
 
     def add_item(self, item, **event_args):
@@ -83,7 +85,8 @@ class MultiSelectTable(MultiSelectTableTemplate):
     # -------
     def btn_filter_click(self, **event_args):
         """This method is called when the button is clicked"""
-        print(self._filters)
+        print('btn_filter_click')
+        print(self.filters)
         filters = alert(
             MultiFilter(filters=self._filters, is_popup=True),
             role="view-alert",
