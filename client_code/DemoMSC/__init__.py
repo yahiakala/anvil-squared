@@ -14,7 +14,9 @@ class DemoMSC(DemoMSCTemplate):
             {'key': 'something4', 'value': 'something4 value', 'description': 'something4 description'},
         ]
         chipitems2 = ['something1', 'something2', 'something3']
+        chipselect2 = ['something2']
         self.msc2.items = chipitems2
+        self.msc2.selected_values = chipselect2
 
     def msc2_change(self, **event_args):
         alert(self.msc2.selected)

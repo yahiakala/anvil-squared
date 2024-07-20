@@ -6,7 +6,7 @@ services:
 - source: /runtime/services/anvil/secrets.yml
   client_config: {}
   server_config: {}
-startup: {type: form, module: DemoMSC}
+startup: {type: form, module: DemoMultiFilter}
 package_name: anvil_squared
 allow_embedding: false
 name: Anvil Squared

@@ -6,7 +6,6 @@ class MultiFilter(MultiFilterTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
-        self.item = properties['item']
 
     @property
     def filters(self):
@@ -16,7 +15,14 @@ class MultiFilter(MultiFilterTemplate):
     def filters(self, value):
         self._filters = value
         self.rp_filters.items = value
-        
+
+    @property
+    def is_popup(self):
+        return self._is_popup
+
+    @is_popup.setter
+    def is_popup(self, value):
+        self._is_popup = value
 
     def btn_clear_click(self, **event_args):
         """This method is called when the button is clicked"""
@@ -27,14 +33,30 @@ class MultiFilter(MultiFilterTemplate):
         filter_rows = self.rp_filters.get_components()
         filter_list = []
         for filter_row in filter_rows:
-            if len(filter_row.selected) > 0:
+            if len(filter_row.selected_values) > 0:
                 filter_list.append(
                     {
-                        'name': filter_row.name,
-                        'selected': filter_row.selected
+                        'name': filter_row.item['name'],
+                        'selected_values': filter_row.selected_values
                     }
                 )
-        self.raise_event(
-            "x-close-alert",
-            value=filter_list,
-        )
+        self._filters = filter_list
+        self.raise_event('change')
+        if self.is_popup:
+            self.raise_event(
+                "x-close-alert",
+                value=self._filters,
+            )
+        else:
+            self.visible = False
+
+    def btn_cancel_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        self.raise_event('change')
+        if self.is_popup:
+            self.raise_event(
+                'x-close-alert',
+                value=self._filters
+            )
+        else:
+            self.visible = False
