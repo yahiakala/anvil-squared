@@ -26,6 +26,10 @@ components:
       type: Button
       layout_properties: {}
       event_bindings: {click: btn_filter_click}
+  - name: mf
+    properties: {}
+    type: form:MultiFilter
+    layout_properties: {grid_position: 'OWCOUG,YIOLPM'}
 - name: cp_bottom
   properties: {}
   type: ColumnPanel

@@ -26,6 +26,16 @@ class DemoMST(DemoMSTTemplate):
         self.repeating_panel_1.items = items
         self.data_grid_1.remove_from_parent()
         self.mst = MultiSelectTable(data_grid=self.data_grid_1, repeating_panel=self.repeating_panel_1)
+        self.mst.filters = [
+            {
+                'name': 'name',
+                'items': ['Alice', 'Bob', 'Meng', 'Gao', 'Kit', 'Cat', 'Bill', 'Almond', 'Mister', 'Mail', 'Mike', 'Mark', 'Meek', 'Branson']
+            },
+            {
+                'name': 'address',
+                'items': ['1 Road Street', '2 City Town']
+            }
+        ]
         self.mst.set_event_handler('change', self.update_label)
         self.column_panel_1.add_component(self.mst)
 

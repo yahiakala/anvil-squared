@@ -8,8 +8,11 @@ class FilterRow(FilterRowTemplate):
         self.init_components(**properties)
         self.lbl_name.text = self.item['name']
         self.msc2.items = self.item['items']
-        self.msc2.selected_values = self.item['selected_values']
-        self.selected_values = self.item['selected_values']
+        if 'selected_values' in self.item:
+            self.msc2.selected_values = self.item['selected_values']
+            self.selected_values = self.item['selected_values']
+        else:
+            self.selected_values = []
         self.add_event_handler('x-clear-filter', self.clear_filter)
     
     def msc2_change(self, **event_args):

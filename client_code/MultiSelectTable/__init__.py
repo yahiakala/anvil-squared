@@ -8,6 +8,8 @@ class MultiSelectTable(MultiSelectTableTemplate):
         self.init_components(**properties)
         self._selected = []
         self._filters = []
+        self.mf.visible = False
+        self.mf.set_event_handler('change', self.apply_filters)
 
     @property
     def data_grid(self):
@@ -33,7 +35,7 @@ class MultiSelectTable(MultiSelectTableTemplate):
         self._repeating_panel = value
         self.pagination_1.repeating_panel = self._repeating_panel
         self._items = value.items
-        self.filters = self.set_filters(value.items)
+        # self.filters = self.set_filters(value.items)
         # print(self.filters)
         self._repeating_panel.add_event_handler("x-add-item", self.add_item)
         self._repeating_panel.add_event_handler("x-remove-item", self.remove_item)
@@ -44,7 +46,10 @@ class MultiSelectTable(MultiSelectTableTemplate):
 
     @filters.setter
     def filters(self, value):
+        print('setting filters')
+        print(value)
         self._filters = value
+        self.mf.filters = value
 
     @property
     def selected(self):
@@ -85,32 +90,36 @@ class MultiSelectTable(MultiSelectTableTemplate):
     # -------
     def btn_filter_click(self, **event_args):
         """This method is called when the button is clicked"""
-        print('btn_filter_click')
-        print(self.filters)
-        filters = alert(
-            MultiFilter(filters=self._filters, is_popup=True),
-            role="view-alert",
-            dismissible=False,
-            buttons=None,
-        )
-        if filters:
-            self._filters = filters
-            self.apply_filters()
+        # print('btn_filter_click')
+        # print(self.filters)
+        # filters = alert(
+        #     MultiFilter(filters=self._filters, is_popup=True),
+        #     role="view-alert",
+        #     dismissible=False,
+        #     buttons=None,
+        # )
+        # if filters:
+        #     self._filters = filters
+        #     self.apply_filters()
+        self.mf.visible = True
 
-    def apply_filters(self):
-        if self.tb_search.text is not None and len(self.tb_search.text) > 0:
-            filtered_data = [
-                i
-                for i in self._items
-                if self.tb_search.text.lower() in self.get_dict_vals(i)
-            ]
-        else:
-            filtered_data = [i for i in self._items]
+    def apply_filters(self, **event_args):
+        # if self.tb_search.text is not None and len(self.tb_search.text) > 0:
+        #     filtered_data = [
+        #         i
+        #         for i in self._items
+        #         if self.tb_search.text.lower() in self.get_dict_vals(i)
+        #     ]
+        # else:
+        #     filtered_data = [i for i in self._items]
+        filtered_data = [i for i in self._items]
+        self._filters = self.mf.filters
+        # print(self._filters)
 
         for filter in self._filters:
             filtered_data = [
                 i for i in filtered_data
-                if i[filter['name']] in filter[filter['selected']]
+                if i[filter['name']] in filter['selected_values']
             ]
 
         self._repeating_panel.items = filtered_data
