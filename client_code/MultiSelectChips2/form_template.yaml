@@ -12,22 +12,16 @@ components:
   layout_properties: {grid_position: 'ZBDJKV,ZGDCYA'}
   components:
   - name: fp_left
-    properties: {vertical_align: middle}
+    properties: {vertical_align: middle, spacing_above: small, spacing_below: small}
     type: FlowPanel
     layout_properties: {}
     components:
     - name: dd_items
-      properties:
-        role: [outlined, dropdown-clean]
-        include_placeholder: true
-        placeholder: Select
-        align: left
-        spacing_below: none
+      properties: {role: null, include_placeholder: true, placeholder: Select, align: left, spacing_below: small, spacing_above: small}
       type: DropDown
-      layout_properties: {expand: true}
       event_bindings: {change: dd_items_change}
   - name: fp_right
-    properties: {align: left}
+    properties: {align: left, vertical_align: middle}
     type: FlowPanel
     layout_properties: {expand: true}
     components: []

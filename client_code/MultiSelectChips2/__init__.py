@@ -57,6 +57,7 @@ class MultiSelectChips2(MultiSelectChips2Template):
         self.dd_items.selected_value = None
 
         self.fp_right.clear()
+        # self.fp_right.add_component(self.dd_items)
         for item in self._selected:
             self.fp_right.add_component(
                 Chip(item={"name": item["key"], 'value': item['value'], "description": item["description"]})
