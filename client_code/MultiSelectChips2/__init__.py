@@ -53,7 +53,6 @@ class MultiSelectChips2(MultiSelectChips2Template):
         
 
     def update_chips(self, **event_args):
-        print(self._selectable)
         self.dd_items.items = [(i["key"], i["value"]) for i in self._selectable]
         self.dd_items.selected_value = None
 
