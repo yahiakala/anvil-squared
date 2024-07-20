@@ -7,12 +7,17 @@ components:
     - {id: VJQQOR, title: Address, data_key: address}
     - {id: OJLQEN, title: Actions, data_key: column_3}
     show_page_controls: false
+    rows_per_page: 10
   type: DataGrid
   components:
   - name: repeating_panel_1
     properties: {item_template: DemoMST.RowTemplate1}
     type: RepeatingPanel
   layout_properties: {grid_position: 'GNBOUJ,RECUMX'}
+- name: column_panel_1
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'RKTRLE,FSQFFE'}
 - name: lbl_selected
   properties: {}
   type: Label

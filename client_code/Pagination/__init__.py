@@ -56,9 +56,9 @@ class Pagination(PaginationTemplate):
         self.img_load.visible = True
         with anvil.server.no_loading_indicator:
             items = self._repeating_panel.items
-            self._repeating_panel.items = [None] * 3
+            # self._repeating_panel.items = [None] * 3
             _ = items[len(items)-1]
-            self._repeating_panel.items = items
+            # self._repeating_panel.items = items
             tablemod.btn_last_click(self)
         self.img_load.visible = False
         self.btn_curr_page.visible = True

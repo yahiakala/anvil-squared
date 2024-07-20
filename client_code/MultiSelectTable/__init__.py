@@ -32,6 +32,7 @@ class MultiSelectTable(MultiSelectTableTemplate):
         self._repeating_panel = value
         self.pagination_1.repeating_panel = self._repeating_panel
         self._items = value.items
+        self.filters = self.set_filters(value.items)
         self._repeating_panel.add_event_handler("x-add-item", self.add_item)
         self._repeating_panel.add_event_handler("x-remove-item", self.remove_item)
 
@@ -52,6 +53,22 @@ class MultiSelectTable(MultiSelectTableTemplate):
         self._selected = value
         self.raise_event("change")
 
+    def set_filters(self, list_of_dicts):
+        unique_values = {}
+        for d in list_of_dicts:
+            for key, value in d.items():
+                if key not in unique_values:
+                    unique_values[key] = set()
+                unique_values[key].add(value)
+
+        result_list = []
+        for key, val in unique_values.items():
+            result_list.append({'name': key, 'items': list(val)})
+        # unique_values = {key: list(values) for key, values in unique_values.items()}
+        # result_list = [{"name": key, "items": values} for key, values in unique_values.items()]
+        print(result_list)
+        return result_list
+
     def add_item(self, item, **event_args):
         """User clicks to select an item."""
         self._selected = self._selected + [item]
@@ -66,16 +83,9 @@ class MultiSelectTable(MultiSelectTableTemplate):
     # -------
     def btn_filter_click(self, **event_args):
         """This method is called when the button is clicked"""
-        popup_filters = [
-            {
-                'name': i['name'],
-                'items': i['items'],
-                'selected': i['selected']
-            }
-            for i in self._filters
-        ]
+        print(self._filters)
         filters = alert(
-            MultiFilter(item=popup_filters),
+            MultiFilter(filters=self._filters, is_popup=True),
             role="view-alert",
             dismissible=False,
             buttons=None,

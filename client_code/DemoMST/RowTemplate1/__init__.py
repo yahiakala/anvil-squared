@@ -5,9 +5,15 @@ from anvil import *
 class RowTemplate1(RowTemplate1Template):
     def __init__(self, **properties):
         self.init_components(**properties)
+        if self.item and 'selected' in self.item:
+            self.selected = self.item['selected']
+            self.update_button()
+        elif self.item:
+            self.selected = False
+            self.update_button()
 
     def update_button(self, **event_args):
-        if self.item['selected']:
+        if self.selected:
             self.btn_select.role = 'secondary-button-selected'
             self.btn_select.text = 'Selected'
         else:
@@ -16,10 +22,10 @@ class RowTemplate1(RowTemplate1Template):
 
     def btn_select_click(self, **event_args):
         """This method is called when the button is clicked"""
-        if self.item['selected']:
+        if self.selected:
             self.parent.raise_event('x-remove-item', item=self.item)
-            self.item['selected'] = False
+            self.selected = False
         else:
             self.parent.raise_event("x-add-item", item=self.item)
-            self.item['selected'] = True
+            self.selected = True
         self.update_button()
