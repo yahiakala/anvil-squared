@@ -14,5 +14,5 @@ class DemoMultiFilter(DemoMultiFilterTemplate):
             {'name': 'Filter 3', 'items': ['Item 1', 'Item 2', 'Item 3'], 'selected': ['Item 1']},
             {'name': 'Filter 4', 'items': ['Item 1', 'Item 2', 'Item 3'], 'selected': ['Item 2']}
         ]
-        self.mf = MultiFilter(item=item)
+        self.mf = MultiFilter(filters=item)
         self.add_component(self.mf)

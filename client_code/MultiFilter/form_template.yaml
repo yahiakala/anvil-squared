@@ -16,3 +16,5 @@ components:
   event_bindings: {click: btn_confirm_click}
 is_package: true
 custom_component: true
+properties:
+- {name: filters, type: object, important: true, default_binding_prop: true}
