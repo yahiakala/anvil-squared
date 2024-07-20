@@ -1,0 +1,8 @@
+layout: {type: 'form:MSTLayout'}
+is_package: true
+components_by_slot:
+  dg_slot:
+  - name: button_1
+    properties: {text: button_1}
+    type: Button
+    layout_properties: {}
