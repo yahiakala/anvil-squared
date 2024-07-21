@@ -1,7 +1,13 @@
 container:
   type: HtmlTemplate
   properties:
-    html: |2-
+    html: |-
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
+      />
+
+      <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 
       <center style="font-style:italic; color:#888; margin: 3em;">
         (Insert your custom HTML here)
