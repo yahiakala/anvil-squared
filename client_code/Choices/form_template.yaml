@@ -1,0 +1,36 @@
+container:
+  type: HtmlTemplate
+  properties:
+    html: |+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
+      />
+
+      <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+
+      <script>
+          function getSelectedChoices(choicesInstance) {
+              return choicesInstance.getValue(true); // true to get value only, false to get full choice object
+          }
+
+      function setupChangeListener(choicesInstance, callbackName) {
+          choicesInstance.passedElement.element.addEventListener(
+              'change',
+              function(event) {
+                  anvil.call(this, callbackName, choicesInstance.getValue(true));
+              }
+          );
+      }
+      </script>
+      <style>
+      * {
+        overflow: visible !important;
+      }
+      </style>
+      <select multiple anvil-name="my-dropdown" id="my-dropdown" style="width: 100%;"></select>
+
+  event_bindings: {show: form_show}
+components: []
+is_package: true
+custom_component: true
