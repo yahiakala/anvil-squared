@@ -1,6 +1,6 @@
 from ._anvil_designer import RowTemplate1Template
 from anvil import *
-from .. import DemoMST
+# from .. import DemoMST
 
 
 class RowTemplate1(RowTemplate1Template):
