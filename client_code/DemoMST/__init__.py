@@ -55,25 +55,26 @@ class DemoMST(DemoMSTTemplate):
             filtered_data = [
                 i
                 for i in self.items
-                if self.tb_search.text.lower() in self.get_dict_vals(i)
+                if self.tb_search.text.lower() in self.get_dict_vals(i).lower()
             ]
         else:
             filtered_data = [i for i in self.items]
             
         for key, val in self.filters.items():
-            filtered_data = [
-                i for i in filtered_data
-                if i[key] in val
-            ]
+            if len(val) > 0:
+                filtered_data = [
+                    i for i in filtered_data
+                    if i[key] in val
+                ]
 
-        self._repeating_panel.items = filtered_data
+        self.repeating_panel_1.items = filtered_data
         self.pagination_1.refresh_pagination()
 
     def get_dict_vals(self, input_dict):
         output_list = []
         for _, val in input_dict.items():
             output_list.append(str(val))
-        return ', '.append(output_list)
+        return ', '.join(output_list)
 
     def tb_search_pressed_enter(self, **event_args):
         """This method is called when the user presses Enter in this text box"""
