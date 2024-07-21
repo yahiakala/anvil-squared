@@ -1,7 +1,7 @@
 from ._anvil_designer import ChoicesjstestTemplate
 from anvil import *
 from anvil.js.window import Choices
-# import anvil.js
+import anvil.js
 
 class Choicesjstest(ChoicesjstestTemplate):
     def __init__(self, **properties):
@@ -17,3 +17,22 @@ class Choicesjstest(ChoicesjstestTemplate):
                         {'value': '3', 'label': 'Choice 3'}],
             'removeItemButton': True
         })
+        
+    def form_show(self, **event_args):
+        """This method is called when the form is shown on the page"""
+        self.call_js('setupChangeListener', self.choices, 'handle_change')
+
+    def get_selected_items(self):
+        selected_items = self.call_js('getSelectedChoices', self.choices)
+        print("Selected items:", selected_items)
+        return selected_items
+
+    def btn_choices_click(self, **event_args):
+        """This method is called when the button is clicked"""
+        alert(self.get_selected_items())
+    
+    def handle_change(self, selected_items):
+        alert("New selection:", selected_items)  # this shows nothing
+        alert(self.get_selected_items())  # this works
+
+

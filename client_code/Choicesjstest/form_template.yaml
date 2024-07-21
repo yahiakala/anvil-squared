@@ -9,6 +9,24 @@ container:
 
       <div anvil-slot="default"></div>
       <select multiple anvil-name="my-dropdown" id="my-dropdown" style="width: 100%;"></select>
+
+      <script>
+      function getSelectedChoices(choicesInstance) {
+          return choicesInstance.getValue(true); // true to get value only, false to get full choice object
+      }
+      </script>
+
+      <script>
+      function setupChangeListener(choicesInstance, callbackName) {
+          choicesInstance.passedElement.element.addEventListener(
+              'change',
+              function(event) {
+                  anvil.call(this, callbackName, choicesInstance.getValue(true));
+              }
+          );
+      }
+      </script>
+  event_bindings: {show: form_show}
 components:
 - name: cp
   properties: {}
@@ -18,4 +36,9 @@ components:
   properties: {}
   type: DropDown
   layout_properties: {slot: default}
+- name: btn_choices
+  properties: {text: See Choices}
+  type: Button
+  layout_properties: {slot: default}
+  event_bindings: {click: btn_choices_click}
 is_package: true
