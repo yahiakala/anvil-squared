@@ -39,10 +39,6 @@ components:
     properties: {item_template: DemoMST.RowTemplate1}
     type: RepeatingPanel
   layout_properties: {grid_position: 'GNBOUJ,RECUMX'}
-- name: lbl_selected
-  properties: {}
-  type: Label
-  layout_properties: {grid_position: 'UGJXGC,ZJODKW'}
 - name: cp_bottom
   properties: {}
   type: ColumnPanel
@@ -56,4 +52,8 @@ components:
   properties: {}
   type: form:MultiSelectTable
   layout_properties: {grid_position: 'IUXIVF,PXCHDD'}
+- name: lbl_selected
+  properties: {text: wef}
+  type: Label
+  layout_properties: {grid_position: 'NQZFKD,CIWKRB'}
 is_package: true

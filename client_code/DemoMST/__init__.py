@@ -28,17 +28,24 @@ class DemoMST(DemoMSTTemplate):
         self.pagination_1.refresh_pagination()
         self.msdd_name.items = ['Alice', 'Bob', 'Meng', 'Gao', 'Kit', 'Cat', 'Bill', 'Almond', 'Mister', 'Mail', 'Mike', 'Mark', 'Meek', 'Branson']
         self.msdd_addresses.items = ['1 Road Street', '2 City Town']
-        # self.mst = MultiSelectTable(data_grid=self.data_grid_1, repeating_panel=self.repeating_panel_1)
-        # self.mst.set_event_handler('change', self.update_label)
-        # self.column_panel_1.add_component(self.mst)
         self.filters = {
             'name': [],
             'address': []
         }
+        self._selected = []
+        self.repeating_panel_1.tag = []
+        self.repeating_panel_1.add_event_handler('x-remove-item', self.remove_item)
+        self.repeating_panel_1.add_event_handler('x-add-item', self.add_item)
 
-    def update_label(self, **event_args):
-        self.lbl_selected.text = self.mst.selected
-        # alert(self.mst.selected) 
+    def remove_item(self, item, **event_args):
+        self._selected = [i for i in self._selected if i != item]
+        self.repeating_panel_1.tag = self._selected
+        self.lbl_selected.text = self._selected
+
+    def add_item(self, item, **event_args):
+        self._selected = self._selected + [item]
+        self.repeating_panel_1.tag = self._selected
+        self.lbl_selected.text = self._selected
 
     def msdd_name_closed(self, **event_args):
         self.filters['name'] = self.msdd_name.selected

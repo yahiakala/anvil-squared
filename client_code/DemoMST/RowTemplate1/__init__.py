@@ -1,12 +1,15 @@
 from ._anvil_designer import RowTemplate1Template
 from anvil import *
+from .. import DemoMST
 
 
 class RowTemplate1(RowTemplate1Template):
     def __init__(self, **properties):
         self.init_components(**properties)
-        if self.item and 'selected' in self.item:
-            self.selected = self.item['selected']
+
+    def form_show(self, **event_args):
+        if self.item:
+            self.selected = self.item in self.parent.tag
             self.update_button()
         elif self.item:
             self.selected = False

@@ -1,5 +1,7 @@
 is_package: true
-container: {type: DataRowPanel}
+container:
+  type: DataRowPanel
+  event_bindings: {show: form_show}
 components:
 - name: fp_actions
   properties: {}
