@@ -1,5 +1,6 @@
 from ._anvil_designer import DemoMSTTemplate
 from anvil import *
+import anvil.js
 
 
 class DemoMST(DemoMSTTemplate):
@@ -40,6 +41,9 @@ class DemoMST(DemoMSTTemplate):
         self.repeating_panel_1.tag = []
         self.repeating_panel_1.add_event_handler('x-remove-item', self.remove_item)
         self.repeating_panel_1.add_event_handler('x-add-item', self.add_item)
+
+        header_dom = anvil.js.get_dom_node(self.drp_header)
+        header_dom.style.borderBottom = '1px solid black'
 
     def remove_item(self, item, **event_args):
         self._selected = [i for i in self._selected if i != item]

@@ -4,7 +4,7 @@ container:
   event_bindings: {show: form_show}
 components:
 - name: fp_actions
-  properties: {}
+  properties: {align: center}
   type: FlowPanel
   layout_properties: {column: OJLQEN}
   components:
