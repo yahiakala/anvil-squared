@@ -1,22 +1,21 @@
 container:
   type: HtmlTemplate
   properties:
-    html: |-
-      <!-- <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/base.min.css"
-      /> -->
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
-      />
-
-      <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    html: |2-
 
       <center style="font-style:italic; color:#888; margin: 3em;">
         (Insert your custom HTML here)
       </center>
 
       <div anvil-slot="default"></div>
-components: []
+      <select multiple anvil-name="my-dropdown" id="my-dropdown" style="width: 100%;"></select>
+components:
+- name: cp
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {slot: default}
+- name: dd
+  properties: {}
+  type: DropDown
+  layout_properties: {slot: default}
 is_package: true
