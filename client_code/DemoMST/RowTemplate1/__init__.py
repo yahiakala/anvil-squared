@@ -25,10 +25,13 @@ class RowTemplate1(RowTemplate1Template):
 
     def btn_select_click(self, **event_args):
         """This method is called when the button is clicked"""
-        if self.selected:
-            self.parent.raise_event('x-remove-item', item=self.item)
-            self.selected = False
-        else:
-            self.parent.raise_event("x-add-item", item=self.item)
-            self.selected = True
+        try:
+            if self.selected:
+                self.parent.raise_event('x-remove-item', item=self.item)
+                self.selected = False
+            else:
+                self.parent.raise_event("x-add-item", item=self.item)
+                self.selected = True
+        except AttributeError:
+            pass
         self.update_button()
