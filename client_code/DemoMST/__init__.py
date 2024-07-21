@@ -26,6 +26,10 @@ class DemoMST(DemoMSTTemplate):
         self.pagination_1.data_grid = self.data_grid_1
         self.pagination_1.repeating_panel = self.repeating_panel_1
         self.pagination_1.refresh_pagination()
+
+        self.pagination2_1.data_grid = self.data_grid_1
+        self.pagination2_1.repeating_panel = self.repeating_panel_1
+        self.pagination2_1.refresh_pagination()
         self.msdd_name.items = ['Alice', 'Bob', 'Meng', 'Gao', 'Kit', 'Cat', 'Bill', 'Almond', 'Mister', 'Mail', 'Mike', 'Mark', 'Meek', 'Branson']
         self.msdd_addresses.items = ['1 Road Street', '2 City Town']
         self.filters = {
@@ -75,6 +79,7 @@ class DemoMST(DemoMSTTemplate):
 
         self.repeating_panel_1.items = filtered_data
         self.pagination_1.refresh_pagination()
+        self.pagination2_1.refresh_pagination()
 
     def get_dict_vals(self, input_dict):
         output_list = []
