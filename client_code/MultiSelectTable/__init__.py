@@ -8,8 +8,8 @@ class MultiSelectTable(MultiSelectTableTemplate):
         self.init_components(**properties)
         self._selected = []
         self._filters = []
-        self.mf.visible = False
-        self.mf.set_event_handler('change', self.apply_filters)
+        # self.mf.visible = False
+        # self.mf.set_event_handler('change', self.apply_filters)
 
     @property
     def data_grid(self):

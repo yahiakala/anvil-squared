@@ -1,5 +1,30 @@
 container: {type: ColumnPanel}
 components:
+- name: fp_top
+  properties: {align: right, spacing: tiny}
+  type: FlowPanel
+  layout_properties: {grid_position: 'LPKFCN,YQWDBU'}
+  components:
+  - name: tb_search
+    properties: {role: null, placeholder: Search, foreground: '', font_size: 14}
+    type: TextBox
+    layout_properties: {width: null, expand: true}
+    event_bindings: {pressed_enter: tb_search_pressed_enter}
+- name: fp_filters
+  properties: {align: left}
+  type: FlowPanel
+  layout_properties: {grid_position: 'ERLJAV,KPBDLW'}
+  components:
+  - name: msdd_name
+    properties: {width: '300', enable_filtering: true, enable_select_all: true, placeholder: Name}
+    type: form:MSDD2
+    layout_properties: {}
+    event_bindings: {change: msdd_name_change, closed: msdd_name_closed}
+  - name: msdd_addresses
+    properties: {width: '300', enable_filtering: true, enable_select_all: true, placeholder: Address}
+    type: form:MSDD2
+    layout_properties: {}
+    event_bindings: {closed: msdd_addresses_closed}
 - name: data_grid_1
   properties:
     columns:
@@ -7,19 +32,28 @@ components:
     - {id: VJQQOR, title: Address, data_key: address}
     - {id: OJLQEN, title: Actions, data_key: column_3}
     show_page_controls: false
-    rows_per_page: 10
+    rows_per_page: 6
   type: DataGrid
   components:
   - name: repeating_panel_1
     properties: {item_template: DemoMST.RowTemplate1}
     type: RepeatingPanel
   layout_properties: {grid_position: 'GNBOUJ,RECUMX'}
-- name: column_panel_1
-  properties: {}
-  type: ColumnPanel
-  layout_properties: {grid_position: 'RKTRLE,FSQFFE'}
 - name: lbl_selected
   properties: {}
   type: Label
   layout_properties: {grid_position: 'UGJXGC,ZJODKW'}
+- name: cp_bottom
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'IROBJN,DHLPCM'}
+  components:
+  - name: pagination_1
+    properties: {}
+    type: form:Pagination
+    layout_properties: {grid_position: 'EBNEJF,KOZNPJ'}
+- name: mst
+  properties: {}
+  type: form:MultiSelectTable
+  layout_properties: {grid_position: 'IUXIVF,PXCHDD'}
 is_package: true

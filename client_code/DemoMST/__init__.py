@@ -1,13 +1,12 @@
 from ._anvil_designer import DemoMSTTemplate
 from anvil import *
-from ..MultiSelectTable import MultiSelectTable
 
 
 class DemoMST(DemoMSTTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
-        items = [
+        self.items = [
             {'name': 'Alice', 'address': '1 Road Street'},
             {'name': 'Bob', 'address': '2 City Town'},
             {'name': 'Meng', 'address': '2 City Town'},
@@ -23,22 +22,68 @@ class DemoMST(DemoMSTTemplate):
             {'name': 'Meek', 'address': '2 City Town'},
             {'name': 'Branson', 'address': '2 City Town'}
         ]
-        self.repeating_panel_1.items = items
-        self.data_grid_1.remove_from_parent()
-        self.mst = MultiSelectTable(data_grid=self.data_grid_1, repeating_panel=self.repeating_panel_1)
-        self.mst.filters = [
-            {
-                'name': 'name',
-                'items': ['Alice', 'Bob', 'Meng', 'Gao', 'Kit', 'Cat', 'Bill', 'Almond', 'Mister', 'Mail', 'Mike', 'Mark', 'Meek', 'Branson']
-            },
-            {
-                'name': 'address',
-                'items': ['1 Road Street', '2 City Town']
-            }
-        ]
-        self.mst.set_event_handler('change', self.update_label)
-        self.column_panel_1.add_component(self.mst)
+        self.repeating_panel_1.items = self.items
+        self.pagination_1.data_grid = self.data_grid_1
+        self.pagination_1.repeating_panel = self.repeating_panel_1
+        self.pagination_1.refresh_pagination()
+        self.msdd_name.items = ['Alice', 'Bob', 'Meng', 'Gao', 'Kit', 'Cat', 'Bill', 'Almond', 'Mister', 'Mail', 'Mike', 'Mark', 'Meek', 'Branson']
+        self.msdd_addresses.items = ['1 Road Street', '2 City Town']
+        # self.mst = MultiSelectTable(data_grid=self.data_grid_1, repeating_panel=self.repeating_panel_1)
+        # self.mst.set_event_handler('change', self.update_label)
+        # self.column_panel_1.add_component(self.mst)
+        self.filters = {
+            'name': [],
+            'address': []
+        }
 
     def update_label(self, **event_args):
         self.lbl_selected.text = self.mst.selected
-        # alert(self.mst.selected)
+        # alert(self.mst.selected) 
+
+    def msdd_name_closed(self, **event_args):
+        self.filters['name'] = self.msdd_name.selected
+        update_placeholder(self.msdd_name, 'Name')
+        self.apply_filters()
+
+    def msdd_addresses_closed(self, **event_args):
+        self.filters['address'] = self.msdd_addresses.selected
+        update_placeholder(self.msdd_addresses, 'Address')
+        self.apply_filters()
+
+    def apply_filters(self, **event_args):
+        if self.tb_search.text is not None and len(self.tb_search.text) > 0:
+            filtered_data = [
+                i
+                for i in self.items
+                if self.tb_search.text.lower() in self.get_dict_vals(i)
+            ]
+        else:
+            filtered_data = [i for i in self.items]
+            
+        for key, val in self.filters.items():
+            filtered_data = [
+                i for i in filtered_data
+                if i[key] in val
+            ]
+
+        self._repeating_panel.items = filtered_data
+        self.pagination_1.refresh_pagination()
+
+    def get_dict_vals(self, input_dict):
+        output_list = []
+        for _, val in input_dict.items():
+            output_list.append(str(val))
+        return ', '.append(output_list)
+
+    def tb_search_pressed_enter(self, **event_args):
+        """This method is called when the user presses Enter in this text box"""
+        self.apply_filters()
+
+
+def update_placeholder(msdd, title):
+    if len(msdd.selected) == 0:
+        msdd.placeholder = title
+        msdd.role = None
+    else:
+        msdd.placeholder = title + ' (' + str(len(msdd.selected)) + ')'
+        msdd.role = 'squared-msdd'

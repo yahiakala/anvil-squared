@@ -24,3 +24,8 @@
     --primary500: %color:Primary 500%;
     --primarycontainer: %color:Primary Container%;
 }
+
+.anvil-role-squared-msdd .btn {
+    background: black !important;
+    color: white !important;
+}
