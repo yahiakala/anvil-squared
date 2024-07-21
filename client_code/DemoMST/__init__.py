@@ -53,8 +53,7 @@ class DemoMST(DemoMSTTemplate):
     def apply_filters(self, **event_args):
         if self.tb_search.text is not None and len(self.tb_search.text) > 0:
             filtered_data = [
-                i
-                for i in self.items
+                i for i in self.items
                 if self.tb_search.text.lower() in self.get_dict_vals(i).lower()
             ]
         else:
