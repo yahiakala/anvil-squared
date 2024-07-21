@@ -1,0 +1,96 @@
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{"OSHDJC":40}'}
+components:
+- name: fp_pagination
+  properties: {align: center, spacing: none, visible: false, vertical_align: middle}
+  type: FlowPanel
+  layout_properties: {grid_position: 'SXQBFT,OSHDJC'}
+  components:
+  - name: btn_prev_arrow
+    properties:
+      text: ''
+      icon: fa:arrow-left
+      role: [page-button, gray-text]
+      font_size: 14
+      align: right
+      visible: true
+    type: Button
+    event_bindings: {click: btn_prev_arrow_click}
+  - name: btn_first
+    properties:
+      text: '1'
+      role: [page-button, gray-text]
+      font_size: 14
+    type: Button
+    layout_properties: {}
+    event_bindings: {click: btn_first_click}
+  - name: btn_dots_1
+    properties:
+      text: '...'
+      role: [page-button, gray-text]
+      enabled: false
+      font_size: 14
+    type: Button
+    layout_properties: {}
+    event_bindings: {click: btn_dots_1_click}
+  - name: btn_prev
+    properties:
+      text: '4'
+      role: [page-button, gray-text]
+      font_size: 14
+    type: Button
+    layout_properties: {}
+    event_bindings: {click: btn_prev_click}
+  - name: btn_curr_page
+    properties:
+      text: '5'
+      role: [filled-button, page-button]
+      font_size: 14
+    type: Button
+    layout_properties: {}
+  - name: img_load
+    properties: {source: _/theme/loading6.gif, height: '30', visible: false}
+    type: Image
+    layout_properties: {}
+  - name: btn_next
+    properties:
+      text: '6'
+      role: [page-button, gray-text]
+      font_size: 14
+    type: Button
+    layout_properties: {}
+    event_bindings: {click: btn_next_click}
+  - name: btn_dots_2
+    properties:
+      text: '...'
+      role: [page-button, gray-text]
+      enabled: false
+      font_size: 14
+    type: Button
+    layout_properties: {}
+    event_bindings: {click: btn_dots_2_click}
+  - name: btn_last
+    properties:
+      text: '100'
+      role: [page-button, gray-text]
+      font_size: 14
+    type: Button
+    layout_properties: {}
+    event_bindings: {click: btn_last_click}
+  - name: btn_next_arrow
+    properties:
+      text: ''
+      icon: fa:arrow-right
+      icon_align: right
+      role: [page-button, gray-text]
+      font_size: 14
+      align: left
+      visible: true
+    type: Button
+    event_bindings: {click: btn_next_arrow_click}
+is_package: true
+custom_component: true
+properties:
+- {name: data_grid, type: object, important: true, default_binding_prop: true}
+- {name: repeating_panel, type: object, important: true}

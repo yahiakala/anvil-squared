@@ -4,6 +4,6 @@ properties:
 is_package: true
 events:
 - {name: change, default_event: true}
-custom_component: true
+custom_component: false
 components: []
 container: {type: ColumnPanel}

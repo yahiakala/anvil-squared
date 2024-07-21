@@ -48,10 +48,6 @@ components:
     properties: {}
     type: form:Pagination
     layout_properties: {grid_position: 'EBNEJF,KOZNPJ'}
-- name: mst
-  properties: {}
-  type: form:MultiSelectTable
-  layout_properties: {grid_position: 'IUXIVF,PXCHDD'}
 - name: lbl_selected
   properties: {text: wef}
   type: Label
