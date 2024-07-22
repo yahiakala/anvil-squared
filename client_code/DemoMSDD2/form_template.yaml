@@ -10,11 +10,11 @@ components:
   layout_properties: {grid_position: 'LQXXLB,MIHOIS'}
   components:
   - name: msdd2_2
-    properties: {placeholder: Col 1, width: '200', enable_select_all: true}
+    properties: {placeholder: Col 1, width: '200', enable_select_all: true, data_selected_text_format: static}
     type: form:MSDD2
     layout_properties: {}
   - name: msdd2_3
-    properties: {placeholder: Col 2, width: '200'}
+    properties: {placeholder: Col 2, width: '200', data_max_options: '2'}
     type: form:MSDD2
     layout_properties: {}
   - name: msdd2_4

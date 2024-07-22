@@ -66,6 +66,8 @@ _defaults = {
     "enable_select_all": False,
     "width": "",
     "visible": True,
+    "data_selected_text_format": "static",
+    "data_max_options": ""
 }
 
 visible_false_classes = ["visible-false", "anvil-visible-false"]
@@ -215,6 +217,17 @@ class MSDD2(MSDD2Template):
     enabled = _component_property("enabled", "disabled", lambda v: not v)
     enable_select_all = _component_property("enable_select_all", "data-actions-box")
     tag = _HtmlPanel.tag
+    data_selected_text_format = _component_property("data_selected_text_format", "data-selected-text-format")
+    data_max_options = _component_property("data_max_options", "data-max-options")
+
+    # @property
+    # def data_selected_text_format(self):
+    #     return self._data_selected_text_format
+
+    # @data_selected_text_format.setter
+    # def data_selected_text_format(self, value):
+    #     self._data_selected_text_format = value
+    #     self.call_js('setSelectProperty', '.select-picker', 'data-selected-text-format', 'static')
 
     def _set_visible(self, val):
         _HtmlPanel.visible.__set__(self, val)
