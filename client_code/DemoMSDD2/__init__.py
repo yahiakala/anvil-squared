@@ -10,3 +10,4 @@ class DemoMSDD2(DemoMSDD2Template):
         self.msdd2_1.items = ['option 1', 'option 2', 'option 3']
         self.msdd2_2.items = ['option 1', 'option 2', 'option 3']
         self.msdd2_3.items = ['option 1', 'option 2', 'option 3']
+        self.msdd2_4.items = ['option 1', 'option 2', 'option 3']
