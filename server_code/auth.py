@@ -28,14 +28,15 @@ def login_with_email_squared(email, password):
         raise anvil.users.AuthenticationFailed('Email or password is incorrect.')
 
 
-def signup_with_email_squared(email, password, app_name='App'):
+def signup_with_email_squared(email, password, app_name='App', app_email=None):
     """Signup a new user. Require them to confirm email before logging in."""
     if app_tables.users.get(email=email):
         raise anvil.users.UserExists('User already exists')
     if is_password_pwned(password) or len(password) < 8:
         raise anvil.users.PasswordNotAcceptable('Please use a stronger password of at least 8 characters with a combination of numbers, letters, and symbols.')
     user = create_new_user(email, password, confirm_email=True, require_mfa=False, mfa_method=None, remember=False)
-    response = send_confirmation_email(email, user['email_confirmation_key'], from_name=app_name)
+    response = send_confirmation_email(email, user['email_confirmation_key'], from_name=app_name, from_email=app_email)
+    print(response)
     return user
 
 
@@ -119,7 +120,8 @@ def generate_confirmation_url(email, confirmation_key):
     return confirm_url
 
 
-def send_confirmation_email(email, confirmation_key, from_name='App'):
+def send_confirmation_email(email, confirmation_key, from_name='App', from_email=None):
+    """Send custom email signup confirmation email to user."""
     # Check if we need to send a confirmation email
     # Generate the confirmation URL
     confirm_url = generate_confirmation_url(email, confirmation_key)
@@ -139,10 +141,10 @@ Thank you."""
         to=email,
         subject=subject,
         text=body,
-        from_address='accounts',
+        from_address=from_email or 'accounts',
         from_name=from_name + ' Accounts'
     )
-    return f"Confirmation email sent to {email}."
+    return f"Confirmation email sent to {email} from {from_email}."
 
 
 def add_mfa_method_squared(password, mfa_method):
