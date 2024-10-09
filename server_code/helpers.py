@@ -271,7 +271,7 @@ def create_tenant_single_squared(user, admin_role_name, role_dict):
     if len(app_tables.tenants.search()) != 0:
         raise anvil.server.InternalError('Only one tenant can exist in this instance.')
 
-    tenant = app_tables.tenants.add_row()
+    tenant = app_tables.tenants.add_row(name='Default')
     _ = populate_roles(tenant, role_dict)
     admin_role = app_tables.roles.get(tenant=tenant, name=admin_role_name)
     

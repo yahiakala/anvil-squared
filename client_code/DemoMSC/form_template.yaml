@@ -1,8 +1,8 @@
-container: {type: ColumnPanel}
 components:
-- name: msc2
+- event_bindings: {change: msc2_change}
+  layout_properties: {grid_position: 'KKDKLA,RKRXUO'}
+  name: msc2
   properties: {}
   type: form:MultiSelectChips2
-  layout_properties: {grid_position: 'KKDKLA,RKRXUO'}
-  event_bindings: {change: msc2_change}
+container: {type: ColumnPanel}
 is_package: true

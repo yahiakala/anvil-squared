@@ -1,9 +1,9 @@
-properties:
-- {name: data_grid, type: object, important: true, default_binding_prop: true}
-- {name: repeating_panel, type: object, important: true}
-is_package: true
-events:
-- {name: change, default_event: true}
-custom_component: false
 components: []
 container: {type: ColumnPanel}
+custom_component: false
+events:
+- {default_event: true, name: change}
+is_package: true
+properties:
+- {default_binding_prop: true, important: true, name: data_grid, type: object}
+- {important: true, name: repeating_panel, type: object}

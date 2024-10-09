@@ -1,25 +1,30 @@
-dependencies: []
-services:
-- source: /runtime/services/tables.yml
-  client_config: {}
-  server_config: {}
-- source: /runtime/services/anvil/secrets.yml
-  client_config: {}
-  server_config: {}
-- source: /runtime/services/anvil/users.yml
-  client_config: {allow_signup: false, enable_automatically: true, use_email: true, confirm_email: true}
-  server_config: {user_table: users}
-startup: {type: form, module: DemoMSDD2}
-package_name: anvil_squared
 allow_embedding: false
+db_schema:
+  users:
+    client: none
+    columns:
+    - admin_ui: {order: 0, width: 200}
+      name: email
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: enabled
+      type: bool
+    - admin_ui: {order: 2, width: 200}
+      name: last_login
+      type: datetime
+    - admin_ui: {order: 3, width: 200}
+      name: password_hash
+      type: string
+    - admin_ui: {order: 4, width: 200}
+      name: n_password_failures
+      type: number
+    - admin_ui: {order: 5, width: 200}
+      name: confirmed_email
+      type: bool
+    server: full
+    title: Users
+dependencies: []
 name: Anvil Squared
-runtime_options:
-  version: 3
-  client_version: '3'
-  server_version: python3-full
-  server_spec: null
-  legacy_features: {class_names: true, bootstrap3: true, __dict__: true, root_container: true}
-startup_form: null
 native_deps:
   head_html: |-
     <script>
@@ -33,35 +38,30 @@ native_deps:
       overflow: visible !important;
     }
     </style> -->
+package_name: anvil_squared
+renamed: true
+runtime_options:
+  client_version: '3'
+  legacy_features: {__dict__: true, bootstrap3: true, class_names: true, root_container: true}
+  server_spec: null
+  server_version: python3-full
+  version: 3
 secrets:
   lemon_api_key:
+    type: secret
     value: {KDKDM3MG6IQHC2FK: O9R16yVENPT1KQFj2kghwndw6tQK2M8IdT0hS8yMPecOWJNzQ+vZa1/vuJr7Fp2nTKYXdbzMNgv5yE/icz+41u//XCkHY9SXH40l+4LRk2xmM61pSgQsZeK9aPypW76N8WCH+YLdIfxsITuEfChZHP9KEg2Ypf6uwEPB+fjJq2si5r4axzcn0QypjxszXXi4hexReVC1tNbqt2dT5bbkhbekZlUhyLG4ZTVus5K+260o6bz4i7yncCUD1SEC7AFkou8ckcUSb79OmX6KkbEIv0CUzWblqN1wz8DfPpMFz5sYW7H2XApafp5TGfAZLwQUilCagYF6jsVY3X8MPRHSkYUqZ3dWKuOh2hGAfRyJhzoVu9aiEBT1jbMoY29JwTj1oE0WTgUaun6Kt8C9Wx9WN9hNFG50NeiAozF9tumwrFv/GF8Iq9fScIRAEFX3du2/ls6JTebR4vyaHHtzpEbMoFh8txPvYIbcAVCxRYh505SGc8vEzpkSMaNxAQmvRKg45yxn7rNfPvd+MAg/hAa+qfp8t+FiWu7BPpP0Kw/SvGGJkCNavR6ayE3VLPQkyWPbI+fz7XZRiCzEJcTYz2IxSl7xBemlejxniYv/yLPXvQM4aRY+yrouQ6bAlRJkPr4/5RJb6Y/LCNrB4vZuZP14/Rj4+NnCsyMmvaRZoWWar/VVyVcVzV0fLSCb/sZfTMTdTMI8m6fcbmjiZlcAbO0O9gPl7ep1zCeHDB9xImSkYXtjEBLuTUzMG8bupozRS+ZLRzxfDK0jZ1m3RDF9N/ZqByxL1l4tXzm5prp037z6ZxtHYWzgiOkX2qqmv4RlI3XL6PwbMs9zXoSGw55R8yDlv0qoz/lJjg++sADHiwCeGMesaP5/90v5SDV/RAWjUBYWyYYEx4N66S66KTheodjW9gM9COYh5ICPOrp6mxCDNNhlM7cBD1Wcgy7vcJR2k/xUVOZB4Xw45IVGt7RJI4yJ1wGgwNTZZqahKS8v9Pt21KchKDhCYK9v8oOejRV6hDP7PId+zxD2WCIgMLU5oU5EpaWTdgzoIc8DQgfzxIgGTKiEk8fk3oU1TEyuYHsEuOdMGQooI74/TALodP4Eiu80AMN1pXYQsItQ3+uGDPv7YkKH1kL1h09kUD3zpOEcWFVcdzIMn9a1eBxlrTjU4dMhwbOQ+TqmZdVnr4LzYJq3zl464Oxki+W4Q7O7rToSCmy2a1l0AAiHs4dbekp2kjx2XdV0TlHq/4YrHQQGA6vBWuj2N3p51lKf0Q/ans6R7uM=}
-    type: secret
   lemon_signing:
-    value: {KDKDM3MG6IQHC2FK: 3fMGQjJ9t23/hicYzE1ZqUYXjAJ/7+jMdJkadUvBmpdi6KcB/9r+hpDuF9wxQxnI4MllbyZUJD/G0CcdziMx1T3K5cJ3GG3Y5kVcd8ocwbcqVPpaLOWlzbMsiPzo8J5PD19NGhaOCT8l1mEpD9RrW04EAkr5DGY=}
     type: secret
-renamed: true
-db_schema:
-  users:
-    client: none
-    server: full
-    columns:
-    - name: email
-      admin_ui: {order: 0, width: 200}
-      type: string
-    - name: enabled
-      admin_ui: {order: 1, width: 200}
-      type: bool
-    - name: last_login
-      admin_ui: {order: 2, width: 200}
-      type: datetime
-    - name: password_hash
-      admin_ui: {order: 3, width: 200}
-      type: string
-    - name: n_password_failures
-      admin_ui: {order: 4, width: 200}
-      type: number
-    - name: confirmed_email
-      admin_ui: {order: 5, width: 200}
-      type: bool
-    title: Users
+    value: {KDKDM3MG6IQHC2FK: 3fMGQjJ9t23/hicYzE1ZqUYXjAJ/7+jMdJkadUvBmpdi6KcB/9r+hpDuF9wxQxnI4MllbyZUJD/G0CcdziMx1T3K5cJ3GG3Y5kVcd8ocwbcqVPpaLOWlzbMsiPzo8J5PD19NGhaOCT8l1mEpD9RrW04EAkr5DGY=}
+services:
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/tables.yml
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/anvil/secrets.yml
+- client_config: {allow_signup: false, confirm_email: true, enable_automatically: true, use_email: true}
+  server_config: {user_table: users}
+  source: /runtime/services/anvil/users.yml
+startup: {module: DemoMSDD2, type: form}
+startup_form: null

@@ -1,77 +1,77 @@
-container: {type: ColumnPanel}
 components:
-- name: fp_top
+- components:
+  - event_bindings: {pressed_enter: tb_search_pressed_enter}
+    layout_properties: {expand: true, width: null}
+    name: tb_search
+    properties: {font_size: 14, foreground: '', placeholder: Search, role: null}
+    type: TextBox
+  layout_properties: {grid_position: 'LPKFCN,YQWDBU'}
+  name: fp_top
   properties: {align: right, spacing: tiny}
   type: FlowPanel
-  layout_properties: {grid_position: 'LPKFCN,YQWDBU'}
-  components:
-  - name: tb_search
-    properties: {role: null, placeholder: Search, foreground: '', font_size: 14}
-    type: TextBox
-    layout_properties: {width: null, expand: true}
-    event_bindings: {pressed_enter: tb_search_pressed_enter}
-- name: fp_filters
+- components:
+  - event_bindings: {change: msdd_name_change, closed: msdd_name_closed}
+    layout_properties: {}
+    name: msdd_name
+    properties: {enable_filtering: true, enable_select_all: true, placeholder: Name, width: '300'}
+    type: form:MSDD2
+  - event_bindings: {closed: msdd_addresses_closed}
+    layout_properties: {}
+    name: msdd_addresses
+    properties: {enable_filtering: true, enable_select_all: true, placeholder: Address, width: '300'}
+    type: form:MSDD2
+  layout_properties: {grid_position: 'ERLJAV,KPBDLW'}
+  name: fp_filters
   properties: {align: left}
   type: FlowPanel
-  layout_properties: {grid_position: 'ERLJAV,KPBDLW'}
-  components:
-  - name: msdd_name
-    properties: {width: '300', enable_filtering: true, enable_select_all: true, placeholder: Name}
-    type: form:MSDD2
-    layout_properties: {}
-    event_bindings: {change: msdd_name_change, closed: msdd_name_closed}
-  - name: msdd_addresses
-    properties: {width: '300', enable_filtering: true, enable_select_all: true, placeholder: Address}
-    type: form:MSDD2
-    layout_properties: {}
-    event_bindings: {closed: msdd_addresses_closed}
-- name: data_grid_1
-  properties:
-    columns:
-    - {id: JKSDUP, title: Name, data_key: name}
-    - {id: VJQQOR, title: Address, data_key: address}
-    - {id: OJLQEN, title: Actions, data_key: column_3}
-    show_page_controls: false
-    rows_per_page: 6
-    auto_header: false
-  type: DataGrid
-  components:
-  - name: drp_header
+- components:
+  - components:
+    - layout_properties: {column: JKSDUP}
+      name: lbl_header_name
+      properties: {align: center, text: Name}
+      type: Label
+    - layout_properties: {column: VJQQOR}
+      name: lbl_header_address
+      properties: {align: center, text: Address}
+      type: Label
+    - layout_properties: {column: OJLQEN}
+      name: lbl_header_actions
+      properties: {align: center, text: Actions}
+      type: Label
+    layout_properties: {pinned: true}
+    name: drp_header
     properties: {}
     type: DataRowPanel
-    components:
-    - name: lbl_header_name
-      properties: {text: Name, align: center}
-      type: Label
-      layout_properties: {column: JKSDUP}
-    - name: lbl_header_address
-      properties: {text: Address, align: center}
-      type: Label
-      layout_properties: {column: VJQQOR}
-    - name: lbl_header_actions
-      properties: {text: Actions, align: center}
-      type: Label
-      layout_properties: {column: OJLQEN}
-    layout_properties: {pinned: true}
   - name: repeating_panel_1
     properties: {item_template: DemoMST.RowTemplate1}
     type: RepeatingPanel
   layout_properties: {grid_position: 'GNBOUJ,RECUMX'}
-- name: pagination2_1
+  name: data_grid_1
+  properties:
+    auto_header: false
+    columns:
+    - {data_key: name, id: JKSDUP, title: Name}
+    - {data_key: address, id: VJQQOR, title: Address}
+    - {data_key: column_3, id: OJLQEN, title: Actions}
+    rows_per_page: 6
+    show_page_controls: false
+  type: DataGrid
+- layout_properties: {grid_position: 'KAYHTO,SIPRQH'}
+  name: pagination2_1
   properties: {}
   type: form:Pagination2
-  layout_properties: {grid_position: 'KAYHTO,SIPRQH'}
-- name: cp_bottom
-  properties: {}
-  type: ColumnPanel
-  layout_properties: {grid_position: 'IROBJN,DHLPCM'}
-  components:
-  - name: pagination_1
+- components:
+  - layout_properties: {grid_position: 'EBNEJF,KOZNPJ'}
+    name: pagination_1
     properties: {}
     type: form:Pagination
-    layout_properties: {grid_position: 'EBNEJF,KOZNPJ'}
-- name: lbl_selected
+  layout_properties: {grid_position: 'IROBJN,DHLPCM'}
+  name: cp_bottom
+  properties: {}
+  type: ColumnPanel
+- layout_properties: {grid_position: 'NQZFKD,CIWKRB'}
+  name: lbl_selected
   properties: {text: wef}
   type: Label
-  layout_properties: {grid_position: 'NQZFKD,CIWKRB'}
+container: {type: ColumnPanel}
 is_package: true

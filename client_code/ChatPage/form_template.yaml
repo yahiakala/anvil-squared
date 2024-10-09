@@ -1,58 +1,58 @@
-properties:
-- {name: message_history, type: object, important: true, default_binding_prop: true, description: List of dicts of message history}
-- {name: show_branding, type: boolean, default_value: true, important: true, description: Whether to show the branding message below the textbox}
-- {name: brand_message, type: object, important: true, description: 'Brand message below the textbox, in HTML format.'}
-- {name: input_text, type: string, default_value: '', important: true, description: User input text in the textbox}
-- {name: show_flag, type: boolean, default_value: false, important: true}
-is_package: true
+components:
+- components:
+  - layout_properties: {grid_position: 'GVKUMJ,HANFIW YOFLLJ,VDHPBQ'}
+    name: rp_chatbubbles
+    properties: {item_template: ChatPage.ChatTemplate}
+    type: RepeatingPanel
+  - layout_properties: {grid_position: 'BOJFJV,TXAVLM'}
+    name: btn_flag
+    properties: {align: left, icon: 'fa:flag', role: flag-button, text: '', visible: false}
+    type: Button
+  layout_properties: {slot: default}
+  name: cp_chatbubbles
+  properties: {role: cp-chatbubbles}
+  type: ColumnPanel
+- components:
+  - components:
+    - layout_properties: {expand: true}
+      name: tb_input
+      properties: {bold: false, role: naked, spacing_above: none, spacing_below: none}
+      type: TextBox
+    - layout_properties: {}
+      name: btn_send
+      properties: {align: center, icon: 'fa:send', text: ''}
+      type: Button
+    layout_properties: {grid_position: 'VWLIGT,YFKBXQ'}
+    name: fp_input
+    properties: {background: 'theme:Surface Variant', border: '', role: round-flow-panel, spacing: none, spacing_above: none, spacing_below: none, vertical_align: middle}
+    type: FlowPanel
+  - components: []
+    data_bindings: []
+    layout_properties: {grid_position: 'PHJJUR,NKWPHV'}
+    name: rt_poweredby
+    properties: {align: center, content: '', font_size: 12, foreground: black, format: restricted_html, role: null, spacing_above: none, spacing_below: none, visible: true}
+    type: RichText
+  layout_properties: {slot: footer-slot}
+  name: cp_footer
+  properties: {col_spacing: none, role: cp-chatbubbles, spacing_above: none, spacing_below: none}
+  type: ColumnPanel
+container:
+  event_bindings: {show: form_show}
+  properties: {html: '@theme:chatpage.html'}
+  type: HtmlTemplate
+custom_component: true
 events:
-- {name: send_message, default_event: true, description: User pressed enter or hit send}
-- {name: flag_click, description: User clicked the flag}
+- {default_event: true, description: User pressed enter or hit send, name: send_message}
+- {description: User clicked the flag, name: flag_click}
 - {name: show}
 - {name: hide}
 - {name: thumbs_up_click}
 - {name: thumbs_down_click}
+is_package: true
+properties:
+- {default_binding_prop: true, description: List of dicts of message history, important: true, name: message_history, type: object}
+- {default_value: true, description: Whether to show the branding message below the textbox, important: true, name: show_branding, type: boolean}
+- {description: 'Brand message below the textbox, in HTML format.', important: true, name: brand_message, type: object}
+- {default_value: '', description: User input text in the textbox, important: true, name: input_text, type: string}
+- {default_value: false, important: true, name: show_flag, type: boolean}
 toolbox_item: {title: ChatPage}
-custom_component: true
-components:
-- name: cp_chatbubbles
-  properties: {role: cp-chatbubbles}
-  type: ColumnPanel
-  layout_properties: {slot: default}
-  components:
-  - name: rp_chatbubbles
-    properties: {item_template: ChatPage.ChatTemplate}
-    type: RepeatingPanel
-    layout_properties: {grid_position: 'GVKUMJ,HANFIW YOFLLJ,VDHPBQ'}
-  - name: btn_flag
-    properties: {text: '', visible: false, icon: 'fa:flag', align: left, role: flag-button}
-    type: Button
-    layout_properties: {grid_position: 'BOJFJV,TXAVLM'}
-- name: cp_footer
-  properties: {col_spacing: none, spacing_above: none, spacing_below: none, role: cp-chatbubbles}
-  type: ColumnPanel
-  layout_properties: {slot: footer-slot}
-  components:
-  - name: fp_input
-    properties: {vertical_align: middle, border: '', background: 'theme:Surface Variant', role: round-flow-panel, spacing_above: none, spacing_below: none, spacing: none}
-    type: FlowPanel
-    layout_properties: {grid_position: 'VWLIGT,YFKBXQ'}
-    components:
-    - name: tb_input
-      properties: {role: naked, bold: false, spacing_above: none, spacing_below: none}
-      type: TextBox
-      layout_properties: {expand: true}
-    - name: btn_send
-      properties: {text: '', icon: 'fa:send', align: center}
-      type: Button
-      layout_properties: {}
-  - name: rt_poweredby
-    properties: {role: null, align: center, foreground: black, visible: true, font_size: 12, content: '', spacing_above: none, spacing_below: none, format: restricted_html}
-    type: RichText
-    layout_properties: {grid_position: 'PHJJUR,NKWPHV'}
-    components: []
-    data_bindings: []
-container:
-  type: HtmlTemplate
-  properties: {html: '@theme:chatpage.html'}
-  event_bindings: {show: form_show}

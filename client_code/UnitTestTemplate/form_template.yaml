@@ -1,52 +1,52 @@
-properties:
-- {name: btn_role, type: string, default_value: '', default_binding_prop: true, description: Role for the button}
-- {name: test_desc, type: string, default_value: '', description: Test description}
-- {name: btn_run_function, type: object, description: Function reference to run when button is clicked.}
-- {name: btn_text, type: string, default_value: '', description: Text to go on button}
-- {name: cp_role, type: string, default_value: '', description: Column panel role.}
-- {name: icon_size, type: number, description: Pass/Fail icon size.}
-- {name: rp_panels, type: object, description: RepeatingPanel object}
-is_package: true
-events: []
-toolbox_item: {title: UnitTest}
-custom_component: true
 components:
-- type: ColumnPanel
-  properties: {col_widths: '{}'}
-  name: cp_1
-  layout_properties: {grid_position: 'KYAUJI,WZUXDF'}
-  components:
-  - type: FlowPanel
-    properties: {}
-    name: fp_runs
-    layout_properties: {grid_position: 'JPJUYT,DYGFQP'}
-    components:
-    - name: btn_expand
-      properties: {text: '', icon: 'fa:chevron-right', visible: false}
-      type: Button
+- components:
+  - components:
+    - event_bindings: {click: btn_expand_click}
       layout_properties: {}
-      event_bindings: {click: btn_expand_click}
-    - type: Button
-      properties: {role: null, align: left, tooltip: '', border: '', enabled: true, foreground: '', visible: true, text: Run Tests, font_size: null, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: ''}
-      name: btn_run
+      name: btn_expand
+      properties: {icon: 'fa:chevron-right', text: '', visible: false}
+      type: Button
+    - event_bindings: {click: btn_run_click}
       layout_properties: {grid_position: 'MMJWAK,BVSGMD'}
-      event_bindings: {click: btn_run_click}
-    - name: cb_debug
+      name: btn_run
+      properties: {align: left, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Run Tests, tooltip: '', underline: false, visible: true}
+      type: Button
+    - layout_properties: {}
+      name: cb_debug
       properties: {text: Debug, visible: false}
       type: CheckBox
-      layout_properties: {}
-    - type: Label
-      properties: {}
+    - layout_properties: {}
       name: lbl_doc
-      layout_properties: {}
-    - type: Label
-      properties: {role: null, align: left, tooltip: '', border: '', foreground: '#4f7a28', visible: false, text: '', font_size: 20, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: 'fa:check-circle'}
+      properties: {}
+      type: Label
+    - layout_properties: {}
       name: lbl_success
-      layout_properties: {}
-    - type: Label
-      properties: {role: null, align: left, tooltip: '', border: '', foreground: '#9e1e15', visible: false, text: '', font_size: 20, font: '', spacing_above: small, icon_align: left, spacing_below: small, italic: false, background: '', bold: false, underline: false, icon: 'fa:exclamation-circle'}
+      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: 20, foreground: '#4f7a28', icon: 'fa:check-circle', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', underline: false, visible: false}
+      type: Label
+    - layout_properties: {}
       name: lbl_fail
-      layout_properties: {}
-container:
-  type: ColumnPanel
+      properties: {align: left, background: '', bold: false, border: '', font: '', font_size: 20, foreground: '#9e1e15', icon: 'fa:exclamation-circle', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', underline: false, visible: false}
+      type: Label
+    layout_properties: {grid_position: 'JPJUYT,DYGFQP'}
+    name: fp_runs
+    properties: {}
+    type: FlowPanel
+  layout_properties: {grid_position: 'KYAUJI,WZUXDF'}
+  name: cp_1
   properties: {col_widths: '{}'}
+  type: ColumnPanel
+container:
+  properties: {col_widths: '{}'}
+  type: ColumnPanel
+custom_component: true
+events: []
+is_package: true
+properties:
+- {default_binding_prop: true, default_value: '', description: Role for the button, name: btn_role, type: string}
+- {default_value: '', description: Test description, name: test_desc, type: string}
+- {description: Function reference to run when button is clicked., name: btn_run_function, type: object}
+- {default_value: '', description: Text to go on button, name: btn_text, type: string}
+- {default_value: '', description: Column panel role., name: cp_role, type: string}
+- {description: Pass/Fail icon size., name: icon_size, type: number}
+- {description: RepeatingPanel object, name: rp_panels, type: object}
+toolbox_item: {title: UnitTest}

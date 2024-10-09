@@ -1,15 +1,15 @@
-is_package: true
-container:
-  type: DataRowPanel
-  event_bindings: {show: form_show}
 components:
-- name: fp_actions
-  properties: {align: center}
-  type: FlowPanel
-  layout_properties: {column: OJLQEN}
-  components:
-  - name: btn_select
+- components:
+  - event_bindings: {click: btn_select_click}
+    layout_properties: {}
+    name: btn_select
     properties: {text: Select}
     type: Button
-    layout_properties: {}
-    event_bindings: {click: btn_select_click}
+  layout_properties: {column: OJLQEN}
+  name: fp_actions
+  properties: {align: center}
+  type: FlowPanel
+container:
+  event_bindings: {show: form_show}
+  type: DataRowPanel
+is_package: true

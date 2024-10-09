@@ -1,5 +1,6 @@
+components: []
 container:
-  type: HtmlTemplate
+  event_bindings: {show: form_show}
   properties:
     html: |+
       <link
@@ -30,7 +31,6 @@ container:
       </style>
       <select multiple anvil-name="my-dropdown" id="my-dropdown" style="width: 100%;"></select>
 
-  event_bindings: {show: form_show}
-components: []
-is_package: true
+  type: HtmlTemplate
 custom_component: true
+is_package: true

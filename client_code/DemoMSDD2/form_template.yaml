@@ -1,24 +1,24 @@
-container: {type: ColumnPanel}
 components:
-- name: msdd2_1
-  properties: {placeholder: Items, enable_select_all: true, enable_filtering: true}
+- layout_properties: {grid_position: 'FOLKKX,WLQURB'}
+  name: msdd2_1
+  properties: {enable_filtering: true, enable_select_all: true, placeholder: Items}
   type: form:MSDD2
-  layout_properties: {grid_position: 'FOLKKX,WLQURB'}
-- name: fp_msdd
-  properties: {spacing: tiny, vertical_align: middle, align: left}
-  type: FlowPanel
-  layout_properties: {grid_position: 'LQXXLB,MIHOIS'}
-  components:
-  - name: msdd2_2
-    properties: {placeholder: Col 1, width: '200', enable_select_all: true, data_selected_text_format: static}
+- components:
+  - layout_properties: {}
+    name: msdd2_2
+    properties: {data_selected_text_format: static, enable_select_all: true, placeholder: Col 1, width: '200'}
     type: form:MSDD2
-    layout_properties: {}
-  - name: msdd2_3
-    properties: {placeholder: Col 2, width: '200', data_max_options: '2'}
+  - layout_properties: {}
+    name: msdd2_3
+    properties: {data_max_options: '2', placeholder: Col 2, width: '200'}
     type: form:MSDD2
-    layout_properties: {}
-  - name: msdd2_4
+  - layout_properties: {}
+    name: msdd2_4
     properties: {placeholder: Col 3, width: '200'}
     type: form:MSDD2
-    layout_properties: {}
+  layout_properties: {grid_position: 'LQXXLB,MIHOIS'}
+  name: fp_msdd
+  properties: {align: left, spacing: tiny, vertical_align: middle}
+  type: FlowPanel
+container: {type: ColumnPanel}
 is_package: true

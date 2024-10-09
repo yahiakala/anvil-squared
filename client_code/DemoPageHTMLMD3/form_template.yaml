@@ -1,15 +1,15 @@
+components:
+- data_bindings:
+  - {code: self.msg_hist, property: message_history, writeback: false}
+  layout_properties: {slot: default}
+  name: chat_page_1
+  properties: {}
+  type: form:ChatPage
 container:
-  type: HtmlTemplate
   properties:
     html: |-
       <link href="_/theme/theme_md3.css" rel="stylesheet" type='text/css'>
 
       <div anvil-slot="default"></div>
-components:
-- name: chat_page_1
-  properties: {}
-  type: form:ChatPage
-  layout_properties: {slot: default}
-  data_bindings:
-  - {property: message_history, code: self.msg_hist, writeback: false}
+  type: HtmlTemplate
 is_package: true
