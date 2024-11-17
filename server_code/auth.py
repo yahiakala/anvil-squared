@@ -10,7 +10,7 @@ def login_with_email_squared(email, password):
     user = app_tables.users.get(email=email)
     if user:
         if not user['password_hash']:
-            raise anvil.users.AuthenticationFailed('No password exists - please login via Google.')
+            raise anvil.users.AuthenticationFailed('No password exists - please login via Google or reset your password.')
         elif user['n_password_failures'] is not None and user['n_password_failures'] >= 10:
             raise anvil.users.TooManyPasswordFailures('You have reached your limit of password attempts. Please reset your password.')
         elif user['mfa'] is not None:
