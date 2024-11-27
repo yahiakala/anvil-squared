@@ -13,6 +13,7 @@ def run_callable():
             _ = anvil.secrets.get_secret("SQUARED")
         except anvil.secrets.SecretError as e:
             print_timestamp(str(e.args[0]))
+            raise
 
 
 def print_timestamp(input_str, verbose=True):
