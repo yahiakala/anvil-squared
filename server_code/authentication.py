@@ -2,9 +2,10 @@ import anvil.server
 from anvil.tables import app_tables
 import anvil.users
 import anvil.email
+from .helpers import run_callable
 
 
-def login_with_email_squared(email, password):
+def login_with_email(email, password):
     """Try to log user in without MFA. Return exception if user has MFA configured."""
     import bcrypt
     user = app_tables.users.get(email=email)
@@ -28,7 +29,7 @@ def login_with_email_squared(email, password):
         raise anvil.users.AuthenticationFailed('Email or password is incorrect.')
 
 
-def signup_with_email_squared(email, password, app_name='App', app_email=None):
+def signup_with_email(email, password, app_name='App', app_email=None):
     """Signup a new user. Require them to confirm email before logging in."""
     if app_tables.users.get(email=email):
         raise anvil.users.UserExists('User already exists')
@@ -147,7 +148,7 @@ Thank you."""
     return f"Confirmation email sent to {email} from {from_email}."
 
 
-def add_mfa_method_squared(password, mfa_method):
+def add_mfa_method(password, mfa_method):
     """Add an mfa method."""
     import bcrypt
     user = anvil.users.get_user(allow_remembered=True)
@@ -163,7 +164,7 @@ def add_mfa_method_squared(password, mfa_method):
     return user
 
 
-def delete_mfa_method_squared(password, id):
+def delete_mfa_method(password, id):
     """Delete mfa method if the password is correct."""
     import bcrypt
     user = anvil.users.get_user(allow_remembered=True)
@@ -174,3 +175,30 @@ def delete_mfa_method_squared(password, id):
     else:
         raise anvil.users.AuthenticationFailed('Incorrect password.')
     return user
+
+
+# ---------
+# Callables
+# ---------
+@anvil.server.callable
+def login_with_email_squared(email, password):
+    run_callable()
+    return login_with_email(email, password)
+
+
+@anvil.server.callable
+def signup_with_email_squared(email, password, app_name):
+    run_callable()
+    return signup_with_email(email, password, app_name)
+
+
+@anvil.server.callable(require_user=True)
+def add_mfa_method_squared(password, mfa_method):
+    run_callable()
+    return add_mfa_method(password, mfa_method)
+
+
+@anvil.server.callable(require_user=True)
+def delete_mfa_method_squared(password, id):
+    run_callable()
+    return delete_mfa_method(password, id)

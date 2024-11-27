@@ -1,5 +1,4 @@
 import anvil.server
-from anvil.tables import app_tables
 
 
 def run_callable():
@@ -27,9 +26,6 @@ def print_timestamp(input_str, verbose=True):
         print(f"{input_str} : {formatted_time}")
 
 
-
-
-
 def list_to_csv(data):
     """Output a list of dicts to csv."""
     import io
@@ -53,3 +49,10 @@ def list_to_csv(data):
     # Create a media object from the CSV content
     csv_file = anvil.BlobMedia('text/csv', csv_content.encode('utf-8'), 'data.csv')
     return csv_file
+
+
+def decrypt(something):
+    if something:
+        return anvil.secrets.decrypt_with_key("encryption_key", something)
+    else:
+        return ''

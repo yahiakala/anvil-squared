@@ -97,7 +97,7 @@ def proceed_or_wait(row, taskid, func_name=None, extra_keys=None):
             if not task.is_running():
                 print_timestamp(f"\nTask {row['bk_tasks'][0]} is no longer running")
                 # Remove task and update db.
-                row['bk_tasks'] = row['bk_tasks'][1:]  # TODO: might cause an error
+                row['bk_tasks'] = row['bk_tasks'][1:]  # Might cause an error
                 print_timestamp(f"\nRemoval check: {row['bk_tasks']}")
         except anvil.server.BackgroundTaskNotFound:
             row['bk_tasks'] = row['bk_tasks'][1:]

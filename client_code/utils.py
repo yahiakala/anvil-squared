@@ -7,7 +7,8 @@ def print_timestamp(input_str):
     print(input_str, " : ", dt.datetime.now().strftime("%H:%M:%S.%f"))
 
 
-def signup_with_email(tb_email, tb_password, tb_password_repeat, app_name, callable_name, lbl_error):
+def signup_with_email(tb_email, tb_password, tb_password_repeat,
+                      lbl_error, app_name, callable_name='signup_with_email_squared'):
     """Signup with email with a custom server function and email confirmation."""
     lbl_error.visible = False
     proceed = signup_with_email_checker(tb_email.text, tb_password.text, tb_password_repeat.text, lbl_error)
@@ -52,13 +53,13 @@ def signup_with_email_checker(email, password, password_repeat, lbl_error):
     return False
 
 
-def signin_with_email(tb_email, tb_password, callable_name, lbl_error):
+def signin_with_email(tb_email, tb_password, lbl_error, callable_name='signin_with_email_squared'):
     """Signin with email with a custom server function."""
     lbl_error.visible = False
     user = None
     try:
         user = anvil.server.call(callable_name, tb_email.text, tb_password.text)
-    except anvil.users.MFARequired as e:
+    except anvil.users.MFARequired:
         r = anvil.users.mfa.mfa_login_with_form(tb_email.text, tb_password.text)
         if r == 'reset_mfa':
             anvil.users.mfa.send_mfa_reset_email(tb_email.text)
