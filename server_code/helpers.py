@@ -13,7 +13,7 @@ def run_callable():
             _ = anvil.secrets.get_secret("SQUARED")
         except anvil.secrets.SecretError as e:
             print_timestamp(str(e.args[0]))
-            raise
+            raise anvil.server.InternalError('App is not configured to use callables from Anvil Squared.')
 
 
 def print_timestamp(input_str, verbose=True):
