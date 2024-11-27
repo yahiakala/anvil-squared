@@ -1,5 +1,6 @@
 import anvil.tables.query as q
 from anvil.tables import app_tables
+import anvil.users
 
 
 def verify_tenant(tenant_id, user, tenant=None, usertenant=None):
@@ -117,13 +118,7 @@ def get_all_permissions():
     return [i["name"] for i in app_tables.permissions.search()]
 
 
-@anvil.server.callable(require_user=True)
 def impersonate_user(tenant_id, email):
-    from ..helpers import run_callable
-    import anvil.users
-    
-    run_callable()
-    
     user = anvil.users.get_user(allow_remembered=True)
     tenant, usertenant, permissions = validate_user(tenant_id, user)
 
@@ -132,3 +127,10 @@ def impersonate_user(tenant_id, email):
 
     anvil.users.force_login(member)
     return member
+
+
+@anvil.server.callable(require_user=True)
+def impersonate_user_squared(tenant_id, email):
+    from ..helpers import run_callable
+    run_callable()
+    return impersonate_user(tenant_id, email)
