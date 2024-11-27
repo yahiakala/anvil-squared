@@ -125,8 +125,11 @@ def impersonate_user(tenant_id, email):
     member = app_tables.users.get(email=email)
     _, membertenant, _ = validate_user(tenant_id, member)
 
-    anvil.users.force_login(member)
-    return member
+    if 'dev' in permissions:
+        anvil.users.force_login(member)
+        return member
+    else:
+        return user
 
 
 @anvil.server.callable(require_user=True)
