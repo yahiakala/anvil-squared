@@ -39,6 +39,7 @@ def get_tenant_single(user=None, tenant=None):
 
     return tenant_dict
 
+
 @anvil.server.callable
 def get_tenant_single_squared():
     run_callable()
