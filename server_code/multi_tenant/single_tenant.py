@@ -1,31 +1,22 @@
 import anvil.server
-from anvil.tables import app-tables
+from anvil.tables import app_tables
 
-def create_tenant_single():
-    """Create a tenant."""
-    user = anvil.users.get_user(allow_remembered=True)
-    if len(app_tables.tenants.search()) != 0:
-        return None
-
-    tenant = app_tables.tenants.add_row(name="Main", new_roles=["Member"])
-    _ = populate_roles(tenant)
-    admin_role = app_tables.roles.get(tenant=tenant, name="Admin")
-    _ = app_tables.usertenant.add_row(tenant=tenant, user=user, roles=[admin_role])
-    return get_tenant_single(user, tenant)
+from .tasks import populate_roles
+from .authorization import validate_user
 
 
-def create_tenant_single_squared(user, admin_role_name, role_dict):
+def create_tenant_single(user, role_dict, admin_role_name, new_role_list):
     """Create a tenant."""
     if len(app_tables.tenants.search()) != 0:
         raise anvil.server.InternalError('Only one tenant can exist in this instance.')
 
-    tenant = app_tables.tenants.add_row(name='Default')
+    tenant = app_tables.tenants.add_row(name='Default', new_roles=new_role_list)
     _ = populate_roles(tenant, role_dict)
     admin_role = app_tables.roles.get(tenant=tenant, name=admin_role_name)
     
     _ = app_tables.usertenant.add_row(tenant=tenant, user=user, roles=[admin_role])
     
-    return tenant
+    return get_tenant_single(user, tenant)
 
 
 def get_tenant_single(user=None, tenant=None):

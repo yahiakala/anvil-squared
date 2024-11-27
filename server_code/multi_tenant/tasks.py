@@ -1,5 +1,6 @@
 """Functions for usertenant app architecture."""
 from anvil.tables import app_tables
+import anvil.tables.query as q
 
 from ..helpers import print_timestamp
 
