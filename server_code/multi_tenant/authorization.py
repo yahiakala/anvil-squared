@@ -115,3 +115,20 @@ def get_usertenant(tenant_id, user, tenant=None):
 
 def get_all_permissions():
     return [i["name"] for i in app_tables.permissions.search()]
+
+
+@anvil.server.callable(require_user=True)
+def impersonate_user(tenant_id, email):
+    from ..helpers import run_callable
+    import anvil.users
+    
+    run_callable()
+    
+    user = anvil.users.get_user(allow_remembered=True)
+    tenant, usertenant, permissions = validate_user(tenant_id, user)
+
+    member = app_tables.users.get(email=email)
+    _, membertenant, _ = validate_user(tenant_id, member)
+
+    anvil.users.force_login(member)
+    return member
