@@ -3,6 +3,7 @@ from anvil.tables import app_tables
 
 from .authorization import validate_user
 from .tasks import populate_roles
+from ..helpers import run_callable
 
 
 def create_tenant_single(user, role_dict, admin_role_name, new_role_list):
@@ -37,3 +38,8 @@ def get_tenant_single(user=None, tenant=None):
             return app_tables.tenants.client_writable().get()
 
     return tenant_dict
+
+@anvil.server.callable
+def get_tenant_single_squared():
+    run_callable()
+    return get_tenant_single()

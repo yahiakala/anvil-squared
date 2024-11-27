@@ -111,3 +111,7 @@ def get_usertenant(tenant_id, user, tenant=None):
     else:
         usertenant = app_tables.usertenant.get(user=user, tenant=tenant)
     return usertenant
+
+
+def get_all_permissions():
+    return [i["name"] for i in app_tables.permissions.search()]
