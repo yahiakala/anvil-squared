@@ -6,7 +6,7 @@ from anvil.tables import app_tables
 from .helpers import run_callable
 
 
-def login_with_email(email, password):
+def signin_with_email(email, password):
     """Try to log user in without MFA. Return exception if user has MFA configured."""
     import bcrypt
 
@@ -221,9 +221,9 @@ def delete_mfa_method(password, id):
 # Callables
 # ---------
 @anvil.server.callable
-def login_with_email_squared(email, password):
+def signin_with_email_squared(email, password):
     run_callable()
-    return login_with_email(email, password)
+    return signin_with_email(email, password)
 
 
 @anvil.server.callable
