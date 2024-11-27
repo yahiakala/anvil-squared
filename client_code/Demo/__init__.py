@@ -1,25 +1,26 @@
-from ._anvil_designer import DemoTemplate
 from anvil import *
-from .. import client_unittest
 
+from .. import client_unittest
+from ._anvil_designer import DemoTemplate
 
 msg_hist = [
-            {'from': 'bot', 'text': 'Hi, how can I help you?'},
-            {'from': 'user', 'text': 'How do I do this thing?'},
-            {'from': 'bot', 'text': "Well that's easy. Just push the button."},
-            {'from': 'bot', 'text': 'Hi, how can I help you?'},
-            {'from': 'user', 'text': 'How do I do this thing?'},
-            {'from': 'bot', 'text': "Well that's easy. Just push the button."},
-            {'from': 'bot', 'text': 'Hi, how can I help you?'},
-            {'from': 'user', 'text': 'How do I do this thing?'},
-            {'from': 'bot', 'text': "Well that's easy. Just push the button."},
-            {'from': 'bot', 'text': 'Hi, how can I help you?'},
-            {'from': 'user', 'text': 'How do I do this thing?'},
-            {'from': 'bot', 'text': "Well that's easy. Just push the button."},
-            {'from': 'bot', 'text': 'Hi, how can I help you?'},
-            {'from': 'user', 'text': 'How do I do this thing?'},
-            {'from': 'bot', 'text': "Well that's easy. Just push the button."}
+    {"from": "bot", "text": "Hi, how can I help you?"},
+    {"from": "user", "text": "How do I do this thing?"},
+    {"from": "bot", "text": "Well that's easy. Just push the button."},
+    {"from": "bot", "text": "Hi, how can I help you?"},
+    {"from": "user", "text": "How do I do this thing?"},
+    {"from": "bot", "text": "Well that's easy. Just push the button."},
+    {"from": "bot", "text": "Hi, how can I help you?"},
+    {"from": "user", "text": "How do I do this thing?"},
+    {"from": "bot", "text": "Well that's easy. Just push the button."},
+    {"from": "bot", "text": "Hi, how can I help you?"},
+    {"from": "user", "text": "How do I do this thing?"},
+    {"from": "bot", "text": "Well that's easy. Just push the button."},
+    {"from": "bot", "text": "Hi, how can I help you?"},
+    {"from": "user", "text": "How do I do this thing?"},
+    {"from": "bot", "text": "Well that's easy. Just push the button."},
 ]
+
 
 class Demo(DemoTemplate):
     def __init__(self, **properties):

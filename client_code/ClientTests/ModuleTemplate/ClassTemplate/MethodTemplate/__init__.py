@@ -3,8 +3,8 @@
 
 import anvil
 
-from ._anvil_designer import MethodTemplateTemplate
 from .....UnitTestTemplate import UnitTestTemplate
+from ._anvil_designer import MethodTemplateTemplate
 
 __version__ = "0.0.1"
 
@@ -14,25 +14,25 @@ class MethodTemplate(MethodTemplateTemplate):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
         self.success = True
-        
+
         self.test_method = UnitTestTemplate(
             cp_role=self.item["card_role"],
-            btn_role=self.item['btn_role'],
+            btn_role=self.item["btn_role"],
             btn_text=self.item["name"],
             test_desc=self.item["ref"].__doc__,
             icon_size=self.item["icon_size"],
-            item = self.item,
-            btn_run_function=self.btn_run_test_click
+            item=self.item,
+            btn_run_function=self.btn_run_test_click,
         )
         self.add_component(self.test_method)
-        self.add_event_handler('x-run', self.run_try_except)
+        self.add_event_handler("x-run", self.run_try_except)
 
     def btn_run_test_click(self, **event_args):
         """This method is called when the button is clicked"""
         with anvil.Notification("Test " + self.item["name"] + " running..."):
-            unitclass = self.item['classref']()
+            unitclass = self.item["classref"]()
             unitclass.setUp()
-            getattr(unitclass, self.item['name'].replace('Method:', '').strip())()
+            getattr(unitclass, self.item["name"].replace("Method:", "").strip())()
             unitclass.tearDown()
             self.test_method.pass_fail_icon_change(self.success)
 
@@ -43,7 +43,7 @@ class MethodTemplate(MethodTemplateTemplate):
             self.test_method.pass_fail_icon_change(self.success)
         except Exception:
             self.success = False
-            unitclass = self.item['classref']()
+            unitclass = self.item["classref"]()
             unitclass.tearDown()
             self.test_method.pass_fail_icon_change(self.success)
 
@@ -54,4 +54,3 @@ class MethodTemplate(MethodTemplateTemplate):
     #         self.btn_run_test_click()
     #     else:
     #         self.run_try_except()
-            

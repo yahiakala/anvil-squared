@@ -1,6 +1,8 @@
-from ._anvil_designer import PricingTableTemplate
 from anvil import *
+
+from ._anvil_designer import PricingTableTemplate
 from .PriceCard import PriceCard
+
 
 class PricingTable(PricingTableTemplate):
     def __init__(self, **properties):
@@ -8,7 +10,7 @@ class PricingTable(PricingTableTemplate):
         self.init_components(**properties)
 
     def form_show(self, **event_args):
-        max_len = 0
+        # max_len = 0
         # if self.items:
         #     max_len = max([max(max_len, len(i['features'])) for i in self.items])
 
@@ -17,9 +19,10 @@ class PricingTable(PricingTableTemplate):
         #         if len(i['features']) < max_len:
         #             filler_features = ['Blank' for j in range(max_len - len(i['features']))]
         #             i['features'] += filler_features
-            
+
         #     for i in self.items:
         #         self.fp_pricing.add_component(PriceCard(item=i))
+        pass
 
     @property
     def items(self):

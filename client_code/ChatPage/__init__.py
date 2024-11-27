@@ -1,22 +1,21 @@
 from ._anvil_designer import ChatPageTemplate
 
-
 msg_hist = [
-            {'from': 'bot', 'text': 'Hi, how can I help you?'},
-            {'from': 'user', 'text': 'How do I do this thing?'},
-            {'from': 'bot', 'text': "Well that's easy. Just push the button."},
-            {'from': 'bot', 'text': 'Hi, how can I help you?'},
-            {'from': 'user', 'text': 'How do I do this thing?'},
-            {'from': 'bot', 'text': "Well that's easy. Just push the button."},
-            {'from': 'bot', 'text': 'Hi, how can I help you?'},
-            {'from': 'user', 'text': 'How do I do this thing?'},
-            {'from': 'bot', 'text': "Well that's easy. Just push the button."},
-            {'from': 'bot', 'text': 'Hi, how can I help you?'},
-            {'from': 'user', 'text': 'How do I do this thing?'},
-            {'from': 'bot', 'text': "Well that's easy. Just push the button."},
-            {'from': 'bot', 'text': 'Hi, how can I help you?'},
-            {'from': 'user', 'text': 'How do I do this thing?'},
-            {'from': 'bot', 'text': "Well that's easy. Just push the button."}
+    {"from": "bot", "text": "Hi, how can I help you?"},
+    {"from": "user", "text": "How do I do this thing?"},
+    {"from": "bot", "text": "Well that's easy. Just push the button."},
+    {"from": "bot", "text": "Hi, how can I help you?"},
+    {"from": "user", "text": "How do I do this thing?"},
+    {"from": "bot", "text": "Well that's easy. Just push the button."},
+    {"from": "bot", "text": "Hi, how can I help you?"},
+    {"from": "user", "text": "How do I do this thing?"},
+    {"from": "bot", "text": "Well that's easy. Just push the button."},
+    {"from": "bot", "text": "Hi, how can I help you?"},
+    {"from": "user", "text": "How do I do this thing?"},
+    {"from": "bot", "text": "Well that's easy. Just push the button."},
+    {"from": "bot", "text": "Hi, how can I help you?"},
+    {"from": "user", "text": "How do I do this thing?"},
+    {"from": "bot", "text": "Well that's easy. Just push the button."},
 ]
 
 _defaults = {
@@ -37,15 +36,19 @@ class ChatPage(ChatPageTemplate):
         self.btn_flag.set_event_handler(
             "click", lambda **e: self.raise_event("flag_click")
         )
-        self.rp_chatbubbles.add_event_handler('x-thumbs-up', lambda **e: self.raise_event("thumbs_up_click", **e))
-        self.rp_chatbubbles.add_event_handler('x-thumbs-down', lambda **e: self.raise_event("thumbs_down_click", **e))
+        self.rp_chatbubbles.add_event_handler(
+            "x-thumbs-up", lambda **e: self.raise_event("thumbs_up_click", **e)
+        )
+        self.rp_chatbubbles.add_event_handler(
+            "x-thumbs-down", lambda **e: self.raise_event("thumbs_down_click", **e)
+        )
         properties = _defaults | properties
         self.init_components(**properties)
-        
+
     def form_show(self, **event_args):
         """This method is called when the HTML panel is shown on the screen"""
         self.scroll_bottom()
-    
+
     def scroll_bottom(self):
         if self.btn_flag.visible:
             # print('button is visible')
@@ -77,9 +80,9 @@ class ChatPage(ChatPageTemplate):
     @show_branding.setter
     def show_branding(self, value):
         if value:
-            self.fp_input.role = 'round-flow-panel'
+            self.fp_input.role = "round-flow-panel"
         else:
-            self.fp_input.role = 'solo-flow-panel'
+            self.fp_input.role = "solo-flow-panel"
         self.rt_poweredby.visible = value
 
     @property

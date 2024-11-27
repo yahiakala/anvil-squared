@@ -1,6 +1,7 @@
-from ._anvil_designer import MultiSelectTableTemplate
 from anvil import *
+
 from ..MultiFilter import MultiFilter
+from ._anvil_designer import MultiSelectTableTemplate
 
 
 class MultiSelectTable(MultiSelectTableTemplate):
@@ -21,7 +22,7 @@ class MultiSelectTable(MultiSelectTableTemplate):
         self.clear()
         self._data_grid = value
         self.pagination_1.data_grid = self._data_grid
-        
+
         self.add_component(self.cp_top)
         self.add_component(self._data_grid)
         self.add_component(self.cp_bottom)
@@ -42,11 +43,11 @@ class MultiSelectTable(MultiSelectTableTemplate):
 
     @property
     def filters(self):
-        return self._filters 
+        return self._filters
 
     @filters.setter
     def filters(self, value):
-        print('setting filters')
+        print("setting filters")
         print(value)
         self._filters = value
         self.mf.filters = value
@@ -70,7 +71,7 @@ class MultiSelectTable(MultiSelectTableTemplate):
 
         result_list = []
         for key, val in unique_values.items():
-            result_list.append({'name': key, 'items': list(val)})
+            result_list.append({"name": key, "items": list(val)})
         # unique_values = {key: list(values) for key, values in unique_values.items()}
         # result_list = [{"name": key, "items": values} for key, values in unique_values.items()]
         # print(result_list)
@@ -79,12 +80,12 @@ class MultiSelectTable(MultiSelectTableTemplate):
     def add_item(self, item, **event_args):
         """User clicks to select an item."""
         self._selected = self._selected + [item]
-        self.raise_event('change')
+        self.raise_event("change")
 
     def remove_item(self, item, **event_args):
         """User clicks to unselect an item."""
         self._selected = [i for i in self._selected if i != item]
-        self.raise_event('change')
+        self.raise_event("change")
 
     # FILTERS
     # -------
@@ -118,8 +119,9 @@ class MultiSelectTable(MultiSelectTableTemplate):
 
         for filter in self._filters:
             filtered_data = [
-                i for i in filtered_data
-                if i[filter['name']] in filter['selected_values']
+                i
+                for i in filtered_data
+                if i[filter["name"]] in filter["selected_values"]
             ]
 
         self._repeating_panel.items = filtered_data
@@ -133,4 +135,4 @@ class MultiSelectTable(MultiSelectTableTemplate):
         output_list = []
         for _, val in input_dict.items():
             output_list.append(str(val))
-        return ', '.append(output_list)
+        return ", ".append(output_list)

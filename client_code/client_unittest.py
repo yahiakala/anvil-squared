@@ -30,4 +30,4 @@ class TestClass(unittest.TestCase):
 
     def test_method_final(self):
         """Final passing test."""
-        assert(self.var_1)
+        assert self.var_1

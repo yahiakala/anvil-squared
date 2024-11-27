@@ -67,7 +67,7 @@ _defaults = {
     "width": "",
     "visible": True,
     "data_selected_text_format": "static",
-    "data_max_options": ""
+    "data_max_options": "",
 }
 
 visible_false_classes = ["visible-false", "anvil-visible-false"]
@@ -103,7 +103,6 @@ def _component_property(prop, jquery, fn=None):
             self._reset()
 
     return _props_property(prop, setter)
-
 
 
 class MSDD2(MSDD2Template):
@@ -217,7 +216,9 @@ class MSDD2(MSDD2Template):
     enabled = _component_property("enabled", "disabled", lambda v: not v)
     enable_select_all = _component_property("enable_select_all", "data-actions-box")
     tag = _HtmlPanel.tag
-    data_selected_text_format = _component_property("data_selected_text_format", "data-selected-text-format")
+    data_selected_text_format = _component_property(
+        "data_selected_text_format", "data-selected-text-format"
+    )
     data_max_options = _component_property("data_max_options", "data-max-options")
 
     # @property
@@ -329,4 +330,3 @@ def _clean_items(items):
         options.append(option)
 
     return _S("\n".join(options)), value_dict
-

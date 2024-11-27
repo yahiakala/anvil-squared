@@ -1,5 +1,6 @@
-from ._anvil_designer import DemoChoicesTemplate
 from anvil import *
+
+from ._anvil_designer import DemoChoicesTemplate
 
 
 class DemoChoices(DemoChoicesTemplate):
@@ -7,4 +8,4 @@ class DemoChoices(DemoChoicesTemplate):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
-        self.drop_down_1.items = ['Cheese 1', 'Cheese 2']
+        self.drop_down_1.items = ["Cheese 1", "Cheese 2"]

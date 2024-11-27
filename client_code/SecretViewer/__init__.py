@@ -1,6 +1,7 @@
-from ._anvil_designer import SecretViewerTemplate
 from anvil import *
 from anvil.js.window import navigator
+
+from ._anvil_designer import SecretViewerTemplate
 
 
 class SecretViewer(SecretViewerTemplate):
@@ -21,38 +22,38 @@ class SecretViewer(SecretViewerTemplate):
     def btn_view_click(self, **event_args):
         """This method is called when the button is clicked"""
         self.disable_buttons()
-        self.raise_event('view')
+        self.raise_event("view")
         if self.tb_secret.hide_text:
             self.tb_secret.hide_text = False
-            self.btn_view.icon = 'fa:eye-slash'
+            self.btn_view.icon = "fa:eye-slash"
         else:
             self.tb_secret.hide_text = True
-            self.btn_view.icon = 'fa:eye'
+            self.btn_view.icon = "fa:eye"
         self.enable_buttons()
 
     def btn_edit_click(self, **event_args):
         """This method is called when the button is clicked"""
         self.disable_buttons()
-        self.raise_event('edit')
+        self.raise_event("edit")
         self.tb_secret.hide_text = False
-        self.btn_view.icon = 'fa:eye-slash'
+        self.btn_view.icon = "fa:eye-slash"
         self.tb_secret.enabled = True
         self.enable_buttons()
 
     def btn_reset_click(self, **event_args):
         """This method is called when the button is clicked"""
         self.disable_buttons()
-        self.raise_event('reset')  # This needs to generate a new key.
+        self.raise_event("reset")  # This needs to generate a new key.
         self.tb_secret.hide_text = False
-        self.btn_view.icon = 'fa:eye-slash'
+        self.btn_view.icon = "fa:eye-slash"
         self.tb_secret.enabled = True
         self.tb_secret.text = self._secret
         self.enable_buttons()
-        
+
     def btn_copy_click(self, **event_args):
         """This method is called when the button is clicked"""
         self.disable_buttons()
-        self.raise_event('copy')
+        self.raise_event("copy")
         navigator.clipboard.writeText(self._secret)
         self.enable_buttons()
 

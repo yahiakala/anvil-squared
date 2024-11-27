@@ -1,7 +1,9 @@
-from ._anvil_designer import Pagination2Template
-from anvil import *
-from .. import tablemod
 import anvil.server
+from anvil import *
+
+from .. import tablemod
+from ._anvil_designer import Pagination2Template
+
 # from ..utils import print_timestamp
 
 

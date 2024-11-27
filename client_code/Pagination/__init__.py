@@ -1,8 +1,9 @@
-from ._anvil_designer import PaginationTemplate
-from anvil import *
-from .. import tablemod
 import anvil.server
+from anvil import *
+
+from .. import tablemod
 from ..utils import print_timestamp
+from ._anvil_designer import PaginationTemplate
 
 
 class Pagination(PaginationTemplate):
@@ -57,12 +58,11 @@ class Pagination(PaginationTemplate):
         with anvil.server.no_loading_indicator:
             items = self._repeating_panel.items
             # self._repeating_panel.items = [None] * 3
-            _ = items[len(items)-1]
+            _ = items[len(items) - 1]
             # self._repeating_panel.items = items
             tablemod.btn_last_click(self)
         self.img_load.visible = False
         self.btn_curr_page.visible = True
-            
 
     def btn_prev_click(self, **event_args):
         """This method is called when the button is clicked"""
@@ -81,11 +81,9 @@ class Pagination(PaginationTemplate):
     def btn_dots_1_click(self, **event_args):
         """This method is called when the button is clicked"""
         with anvil.server.no_loading_indicator:
-            tablemod.set_page(self, int(self.btn_dots_1.text)-1)
+            tablemod.set_page(self, int(self.btn_dots_1.text) - 1)
 
     def btn_dots_2_click(self, **event_args):
         """This method is called when the button is clicked"""
         with anvil.server.no_loading_indicator:
-            tablemod.set_page(self, int(self.btn_dots_2.text)-1)
-
-
+            tablemod.set_page(self, int(self.btn_dots_2.text) - 1)

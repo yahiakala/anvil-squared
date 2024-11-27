@@ -1,6 +1,7 @@
-from ._anvil_designer import MultiSelectChips2Template
 from anvil import *
+
 from ..Chip import Chip
+from ._anvil_designer import MultiSelectChips2Template
 
 
 class MultiSelectChips2(MultiSelectChips2Template):
@@ -17,14 +18,7 @@ class MultiSelectChips2(MultiSelectChips2Template):
     def items(self, value):
         if len(value) > 0:
             if isinstance(value[0], str):
-                self._items = [
-                    {
-                        'key': i,
-                        'value': i,
-                        'description': i
-                    }
-                    for i in value
-                ]
+                self._items = [{"key": i, "value": i, "description": i} for i in value]
             else:
                 self._items = value
             self.selected = []
@@ -38,19 +32,20 @@ class MultiSelectChips2(MultiSelectChips2Template):
         """Should be list of dicts."""
         self._selected = value
         if value:
-            self._selectable = [i for i in self._items if i['value'] not in self.selected_values]
+            self._selectable = [
+                i for i in self._items if i["value"] not in self.selected_values
+            ]
         else:
             self._selectable = self._items
         self.update_chips()
 
     @property
     def selected_values(self):
-        return [i['value'] for i in self._selected]
+        return [i["value"] for i in self._selected]
 
     @selected_values.setter
     def selected_values(self, value):
-        self.selected = [i for i in self._items if i['value'] in value]
-        
+        self.selected = [i for i in self._items if i["value"] in value]
 
     def update_chips(self, **event_args):
         self.dd_items.items = [(i["key"], i["value"]) for i in self._selectable]
@@ -60,16 +55,22 @@ class MultiSelectChips2(MultiSelectChips2Template):
         # self.fp_right.add_component(self.dd_items)
         for item in self._selected:
             self.fp_right.add_component(
-                Chip(item={"name": item["key"], 'value': item['value'], "description": item["description"]})
+                Chip(
+                    item={
+                        "name": item["key"],
+                        "value": item["value"],
+                        "description": item["description"],
+                    }
+                )
             )
 
     def remove_item(self, remove, **event_args):
-        self.selected = [i for i in self._selected if i['value'] != remove['value']]
-        self.raise_event('change')
+        self.selected = [i for i in self._selected if i["value"] != remove["value"]]
+        self.raise_event("change")
 
     def dd_items_change(self, **event_args):
         """This method is called when an item is selected"""
         self.selected = self._selected + [
             i for i in self._items if i["value"] == self.dd_items.selected_value
         ]
-        self.raise_event('change')
+        self.raise_event("change")

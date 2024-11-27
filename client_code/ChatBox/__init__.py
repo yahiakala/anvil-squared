@@ -1,22 +1,22 @@
-from ._anvil_designer import ChatBoxTemplate
 import anvil
 
+from ._anvil_designer import ChatBoxTemplate
 
 msg_hist = [
-            {'from': 'bot', 'text': 'Hi, how can I help you?'},
-            {'from': 'user', 'text': 'How do I do this thing?'},
-            {'from': 'bot', 'text': "Well that's easy. Just push the button."},
-            {'from': 'user', 'text': "What button?"},
-            {'from': 'bot', 'text': "You know, the button!"},
-            {'from': 'user', 'text': "That's not helpful."},
-            {'from': 'bot', 'text': "Loading.", 'img': True}
+    {"from": "bot", "text": "Hi, how can I help you?"},
+    {"from": "user", "text": "How do I do this thing?"},
+    {"from": "bot", "text": "Well that's easy. Just push the button."},
+    {"from": "user", "text": "What button?"},
+    {"from": "bot", "text": "You know, the button!"},
+    {"from": "user", "text": "That's not helpful."},
+    {"from": "bot", "text": "Loading.", "img": True},
 ]
 
 _defaults = {
     # "message_history": msg_hist,
     "show_branding": True,
     "brand_message": """Powered by <a href="https://Chatbeaver.ca">Placeholder</a>""",
-    "height": 300
+    "height": 300,
 }
 
 
@@ -32,9 +32,13 @@ class ChatBox(ChatBoxTemplate):
             "click", lambda **e: self.raise_event("flag_click")
         )
         properties = _defaults | properties
-        self._height = _defaults['height']
-        self.rp_chatbubbles.add_event_handler('x-thumbs-up', lambda **e: self.raise_event("thumbs_up_click", **e))
-        self.rp_chatbubbles.add_event_handler('x-thumbs-down', lambda **e: self.raise_event("thumbs_down_click", **e))
+        self._height = _defaults["height"]
+        self.rp_chatbubbles.add_event_handler(
+            "x-thumbs-up", lambda **e: self.raise_event("thumbs_up_click", **e)
+        )
+        self.rp_chatbubbles.add_event_handler(
+            "x-thumbs-down", lambda **e: self.raise_event("thumbs_down_click", **e)
+        )
         self.init_components(**properties)
 
     def form_show(self, **event_args):
@@ -44,7 +48,7 @@ class ChatBox(ChatBoxTemplate):
         self.scroll_bottom()
 
     def scroll_bottom(self):
-        self.call_js('scrollBottom', self.rp_chatbubbles)
+        self.call_js("scrollBottom", self.rp_chatbubbles)
 
     @property
     def height(self):
@@ -77,9 +81,9 @@ class ChatBox(ChatBoxTemplate):
     @show_branding.setter
     def show_branding(self, value):
         if value:
-            self.fp_input.role = 'round-flow-panel'
+            self.fp_input.role = "round-flow-panel"
         else:
-            self.fp_input.role = 'solo-flow-panel'
+            self.fp_input.role = "solo-flow-panel"
         self.rt_poweredby.visible = value
 
     @property

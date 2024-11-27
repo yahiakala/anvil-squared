@@ -1,5 +1,6 @@
-from ._anvil_designer import ChipTemplate
 from anvil import *
+
+from ._anvil_designer import ChipTemplate
 
 
 class Chip(ChipTemplate):

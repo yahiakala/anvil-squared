@@ -1,22 +1,25 @@
 import math
+
 from .utils import print_timestamp
 
 
 def refresh_pagination(self):
-    print_timestamp('refresh_pagination')
-    num_pages = math.ceil(len(self.repeating_panel.items) / self.data_grid.rows_per_page)
+    print_timestamp("refresh_pagination")
+    num_pages = math.ceil(
+        len(self.repeating_panel.items) / self.data_grid.rows_per_page
+    )
     curr_page = self.data_grid.get_page() + 1
     self.btn_curr_page.text = str(curr_page)
     self.btn_last.text = str(num_pages)
 
     # Left Half
     self.btn_dots_1.visible = True
-    self.btn_dots_1.text = '...'
+    self.btn_dots_1.text = "..."
     self.btn_dots_1.enabled = False
     if curr_page > 4:
         pass
     elif curr_page == 4:
-        self.btn_dots_1.text = '2'
+        self.btn_dots_1.text = "2"
         self.btn_dots_1.enabled = True
     else:
         self.btn_dots_1.visible = False
@@ -36,7 +39,7 @@ def refresh_pagination(self):
 
     # Right Half
     self.btn_dots_2.visible = True
-    self.btn_dots_2.text = '...'
+    self.btn_dots_2.text = "..."
     self.btn_dots_2.enabled = False
     if curr_page < num_pages - 3:
         pass
@@ -60,43 +63,50 @@ def refresh_pagination(self):
         self.btn_next.visible = False
         self.btn_next_arrow.enabled = False
 
+
 def btn_next_arrow_click(self, **event_args):
     """This method is called when the button is clicked"""
-    print_timestamp('home_next_arrow_click')
+    print_timestamp("home_next_arrow_click")
     self.data_grid.next_page()
     self.refresh_pagination()
+
 
 def btn_prev_arrow_click(self, **event_args):
     """This method is called when the button is clicked"""
-    print_timestamp('home_prev_arrow_click')
+    print_timestamp("home_prev_arrow_click")
     self.data_grid.previous_page()
     self.refresh_pagination()
+
 
 def btn_first_click(self, **event_args):
     """This method is called when the button is clicked"""
-    print_timestamp('home_first_click')
+    print_timestamp("home_first_click")
     self.data_grid.jump_to_first_page()
     self.refresh_pagination()
 
+
 def btn_last_click(self, **event_args):
     """This method is called when the button is clicked"""
-    print_timestamp('home_last_click')
+    print_timestamp("home_last_click")
     self.data_grid.jump_to_last_page()
     self.refresh_pagination()
 
+
 def btn_prev_click(self, **event_args):
     """This method is called when the button is clicked"""
-    print_timestamp('home_prev_click')
+    print_timestamp("home_prev_click")
     self.data_grid.previous_page()
     self.refresh_pagination()
 
+
 def btn_next_click(self, **event_args):
     """This method is called when the button is clicked"""
-    print_timestamp('home_next_click')
+    print_timestamp("home_next_click")
     self.data_grid.next_page()
     self.refresh_pagination()
 
+
 def set_page(self, page_num, **event_args):
-    print_timestamp('set_page')
+    print_timestamp("set_page")
     self.data_grid.set_page(page_num)
     self.refresh_pagination()

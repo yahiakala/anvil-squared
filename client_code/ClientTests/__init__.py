@@ -5,9 +5,9 @@ import unittest
 
 import anvil
 
+from ..UnitTestTemplate import UnitTestTemplate
 from ._anvil_designer import ClientTestsTemplate
 from .ModuleTemplate import ModuleTemplate
-from ..UnitTestTemplate import UnitTestTemplate
 
 __version__ = "0.0.1"
 
@@ -15,15 +15,15 @@ _defaults = {
     "test_modules": [],
     "card_roles": [None, None, None],
     "icon_size": 30,
-    "btn_role": "filled-button"
+    "btn_role": "filled-button",
 }
+
 
 class ClientTests(ClientTestsTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         properties = _defaults | properties
         self.init_components(**properties)
-
 
     def form_show(self, **event_args):
         """Runs this when the form is displayed."""
@@ -93,7 +93,7 @@ class ClientTests(ClientTestsTemplate):
                         # "tearDown": getattr(testclass_ref(), 'tearDown'),
                         "card_role": self._card_roles[2],
                         "btn_role": self._btn_role,
-                        "icon_size": self._icon_size
+                        "icon_size": self._icon_size,
                     }
                     for am in methods_in_class
                     if am.startswith("test_")
@@ -114,11 +114,11 @@ class ClientTests(ClientTestsTemplate):
     def populate_tests(self):
         self.test_obj = UnitTestTemplate(
             btn_role=self._btn_role,
-            btn_text='Run All',
-            test_desc='Run all tests',
+            btn_text="Run All",
+            test_desc="Run all tests",
             icon_size=self._icon_size,
             btn_run_function=self.btn_run_click,
-            rp_panels=self.rp_panels
+            rp_panels=self.rp_panels,
         )
         self.add_component(self.test_obj)
 
@@ -133,8 +133,8 @@ class ClientTests(ClientTestsTemplate):
     def btn_run_click(self, **event_args):
         children = self.rp_panels.get_components()
         for child in children:
-            child.raise_event('x-run')
+            child.raise_event("x-run")
             if not child.success:
                 self.success = False
-        print('main success ', self.success)
+        print("main success ", self.success)
         self.test_obj.pass_fail_icon_change(self.success)

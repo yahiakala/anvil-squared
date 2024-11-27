@@ -1,5 +1,6 @@
-from ._anvil_designer import ChipTemplate
 from anvil import *
+
+from ._anvil_designer import ChipTemplate
 
 
 class Chip(ChipTemplate):
@@ -9,4 +10,4 @@ class Chip(ChipTemplate):
 
     def btn_chip_click(self, **event_args):
         """This method is called when the button is clicked"""
-        self.parent.raise_event("x-remove", remove=self.item['name'])
+        self.parent.raise_event("x-remove", remove=self.item["name"])

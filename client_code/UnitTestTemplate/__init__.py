@@ -6,6 +6,7 @@ import unittest
 import anvil
 
 from ._anvil_designer import UnitTestTemplateTemplate
+
 __version__ = "0.0.1"
 
 
@@ -23,7 +24,7 @@ class UnitTestTemplate(UnitTestTemplateTemplate):
         if self.rp_panels:
             self.btn_expand.visible = True
             if self.rp_panels.visible:
-                self.btn_expand.icon = 'fa:chevron-down'
+                self.btn_expand.icon = "fa:chevron-down"
             self.cp_1.add_component(self.rp_panels)
         # self.add_event_handler('x-run', self.btn_run_click)
 
@@ -35,7 +36,7 @@ class UnitTestTemplate(UnitTestTemplateTemplate):
         """Show the pass or fail icon."""
         self.lbl_fail.visible = False
         self.lbl_success.visible = False
-        
+
         if success:
             self.lbl_success.visible = True
         else:
@@ -43,9 +44,9 @@ class UnitTestTemplate(UnitTestTemplateTemplate):
 
     def btn_expand_click(self, **event_args):
         """This method is called when the button is clicked"""
-        if self.btn_expand.icon == 'fa:chevron-right' and self.rp_panels:
+        if self.btn_expand.icon == "fa:chevron-right" and self.rp_panels:
             self.rp_panels.visible = True
-            self.btn_expand.icon = 'fa:chevron-down'
+            self.btn_expand.icon = "fa:chevron-down"
         elif self.rp_panels:
             self.rp_panels.visible = False
-            self.btn_expand.icon = 'fa:chevron-right'
+            self.btn_expand.icon = "fa:chevron-right"

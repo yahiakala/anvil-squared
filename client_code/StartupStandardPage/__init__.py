@@ -1,5 +1,7 @@
-from ._anvil_designer import StartupStandardPageTemplate
 from anvil import *
+
+from ._anvil_designer import StartupStandardPageTemplate
+
 
 class StartupStandardPage(StartupStandardPageTemplate):
     def __init__(self, **properties):
