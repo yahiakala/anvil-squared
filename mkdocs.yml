@@ -1,0 +1,54 @@
+site_name: Anvil Squared Documentation
+site_description: User and Developer Documentation for Anvil Squared
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - tables
+  - toc:
+      permalink: true
+
+repo_url: https://github.com/yahiakala/anvil-squared
+edit_uri: edit/master/docs
+
+nav:
+  - Home: index.md
+  - Components:
+    - ChatBox: components/chatbox.md
+    - ChatPage: components/chatpage.md
+    - Client Tests: components/client-tests.md
+  - Server Features:
+    - Authentication: server/authentication.md
+    - Multi-Tenant System: server/multi-tenant.md
+    - Callables: server/security.md
+  - Contributing: CONTRIBUTING.md
