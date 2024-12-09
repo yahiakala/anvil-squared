@@ -84,6 +84,7 @@ def signin_with_email(
         user = anvil.server.call(callable_name, tb_email.text, tb_password.text)
     except anvil.users.MFARequired:
         r = anvil.users.mfa.mfa_login_with_form(tb_email.text, tb_password.text)
+        print(r)
         if r == "reset_mfa":
             anvil.users.mfa.send_mfa_reset_email(tb_email.text)
             lbl_error.text = (
