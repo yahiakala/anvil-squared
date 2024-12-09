@@ -6,6 +6,19 @@ from anvil.tables import app_tables
 from .helpers import run_callable
 
 
+def check_password(email, password):
+    import bcrypt
+    user = app_tables.users.get(email=email)
+
+    if bcrypt.checkpw(
+            password.encode("utf-8"), user["password_hash"].encode("utf-8")
+        ):
+        return
+    else:
+        user["n_password_failures"] += 1
+        raise anvil.users.AuthenticationFailed("Email or password is incorrect.")
+
+
 def signin_with_email(email, password):
     """Try to log user in without MFA. Return exception if user has MFA configured."""
     import bcrypt
@@ -220,6 +233,13 @@ def delete_mfa_method(password, id):
 # ---------
 # Callables
 # ---------
+
+@anvil.server.callable
+def check_password_squared(email, password):
+    run_callable()
+    return check_password(email, password)
+
+
 @anvil.server.callable
 def signin_with_email_squared(email, password):
     run_callable()
