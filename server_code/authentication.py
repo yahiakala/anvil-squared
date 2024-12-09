@@ -37,6 +37,7 @@ def signin_with_email(email, password):
                 "You have reached your limit of password attempts. Please reset your password."
             )
         elif user["mfa"] is not None:
+            check_password()
             raise anvil.users.MFARequired("User needs to enter MFA credentials.")
         elif not user["confirmed_email"]:
             raise anvil.users.EmailNotConfirmed(

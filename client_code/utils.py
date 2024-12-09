@@ -88,7 +88,7 @@ def signin_with_email(
         # TODO: anvil.users.mfa.mfa_login_with_form has a bug that returns the error
         # "no authentication methods available" if the password is incorrect.
         # So we use a server call called 'check_password_squared' first.
-        anvil.server.call('check_password_squared', tb_email.text, tb_password.text)
+        # anvil.server.call('check_password_squared', tb_email.text, tb_password.text)
         r = anvil.users.mfa.mfa_login_with_form(tb_email.text, tb_password.text)
         if r == "reset_mfa":
             anvil.users.mfa.send_mfa_reset_email(tb_email.text)
