@@ -180,7 +180,6 @@ def send_confirmation_email(email, confirmation_key, from_name="App", from_email
     # Check if we need to send a confirmation email
     # Generate the confirmation URL
     confirm_url = generate_confirmation_url(email, confirmation_key)
-    print(from_email)
 
     # Define the email properties
     subject = "Please confirm your email address"
