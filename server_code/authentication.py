@@ -196,7 +196,7 @@ Thank you."""
         to=email,
         subject=subject,
         text=body,
-        from_address=from_email or "accounts",
+        from_address=from_email or "accounts",  # TODO: figure out way to read custom email from users service
         from_name=from_name + " Accounts",
     )
     return f"Confirmation email sent to {email} from {from_email}."
