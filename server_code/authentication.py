@@ -129,6 +129,7 @@ def create_new_user(
 ):
     """Create a new user."""
     import bcrypt
+    import datetime as dt
 
     # Hash the password with bcrypt
     password_hash = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode(
@@ -153,6 +154,7 @@ def create_new_user(
         email_confirmation_key=confirmation_key,
         mfa=mfa,
         n_password_failures=0,
+        signed_up=dt.datetime.now()
     )
 
     if remember and not confirm_email:
