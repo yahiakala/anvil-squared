@@ -191,7 +191,13 @@ Please click on the link below to confirm your email address:
 
 Thank you."""
 
-    # Send the email
+    # If an SMTP email exists, use that.
+    if not from_email:
+        try:
+            from_email = anvil.secrets.get_secret('SMTP_EMAIL')
+        except Exception:
+            pass
+    
     anvil.email.send(
         to=email,
         subject=subject,
