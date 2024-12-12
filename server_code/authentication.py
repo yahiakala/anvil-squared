@@ -2,7 +2,7 @@ import anvil.email
 import anvil.server
 import anvil.users
 from anvil.tables import app_tables
-
+import anvil.secrets
 from .helpers import run_callable
 
 
@@ -195,7 +195,7 @@ Thank you."""
     if not from_email:
         try:
             from_email = anvil.secrets.get_secret('SMTP_EMAIL')
-        except Exception:
+        except anvil.secrets.SecretError:
             pass
     
     anvil.email.send(
