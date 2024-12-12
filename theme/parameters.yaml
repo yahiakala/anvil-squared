@@ -286,7 +286,7 @@ roles:
 - components: [Link]
   name: selected
 - components: [ColumnPanel, LinearPanel, XYPanel, RepeatingPanel]
-  display_in_toolbox: true
+  display_in_toolbox: false
   name: outlined-card
   title: Outlined Card
 - components: [ColumnPanel, LinearPanel, XYPanel, RepeatingPanel]
@@ -298,7 +298,7 @@ roles:
   name: tonal-card
   title: Tonal Card
 - components: [Button, FileLoader]
-  display_in_toolbox: true
+  display_in_toolbox: false
   name: outlined-button
   title: Outlined Button
 - components: [Button, FileLoader]
@@ -314,7 +314,7 @@ roles:
   name: tonal-button
   title: Tonal Button
 - components: [TextBox, TextArea, DatePicker, DropDown]
-  display_in_toolbox: true
+  display_in_toolbox: false
   name: outlined
   title: Outlined TextBox
 - components: [Label, Link]
