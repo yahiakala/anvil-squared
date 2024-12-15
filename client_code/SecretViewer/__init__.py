@@ -80,6 +80,7 @@ class SecretViewer(SecretViewerTemplate):
         self.btn_confirm.visible = False
         self.tb_secret.enabled = False
         self.tb_secret.hide_text = True
+        self.raise_event("change")
 
     def btn_cancel_click(self, **event_args):
         """This method is called when the button is clicked"""
