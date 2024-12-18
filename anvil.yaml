@@ -24,7 +24,7 @@ db_schema:
     server: full
     title: Users
 dependencies: []
-name: Anvil Squared
+name: anvil_squared
 native_deps:
   head_html: |-
     <script>
