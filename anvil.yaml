@@ -38,7 +38,7 @@ native_deps:
       overflow: visible !important;
     }
     </style> -->
-package_name: anvil_squared
+package_name: Anvil_Squared
 renamed: true
 runtime_options:
   client_version: '3'
