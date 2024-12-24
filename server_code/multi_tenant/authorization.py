@@ -53,7 +53,27 @@ def get_permissions(tenant_id, user, tenant=None, usertenant=None):
                 for permission in role["permissions"]:
                     user_permissions.append(permission["name"])
 
+    user_permissions_list = list(set(user_permissions))
     # Cross check with plans table if it exists (saas app)
+    try:
+        plans = app_tables.plans.search(tenant['plans'])  # Returns error if tbl doesn't exist
+        if len(plans) > 0:
+            account_permissions = []
+            for plan in tenant['plans']:
+                if plan['permissions']:
+                    for permission in plan['permissions']:
+                        account_permissions.append(permission["name"])
+            account_permissions_list = list(set(account_permissions))
+            user_permissions_list = [
+                i for i in user_permissions_list if i in account_permissions_list
+            ]
+    except AttributeError as e:
+        if 'No such app table' in str(e):
+            pass
+        elif 'No such column' in str(e):
+            pass
+        else:
+            raise
     
     return list(set(user_permissions))
 
