@@ -54,6 +54,7 @@ def get_permissions(tenant_id, user, tenant=None, usertenant=None):
                     user_permissions.append(permission["name"])
 
     user_permissions_list = list(set(user_permissions))
+    
     # Cross check with plans table if it exists (saas app)
     try:
         plans = app_tables.plans.search(tenant['plans'])  # Returns error if tbl doesn't exist
