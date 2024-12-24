@@ -53,6 +53,8 @@ def get_permissions(tenant_id, user, tenant=None, usertenant=None):
                 for permission in role["permissions"]:
                     user_permissions.append(permission["name"])
 
+    # Cross check with plans table if it exists (saas app)
+    
     return list(set(user_permissions))
 
 
