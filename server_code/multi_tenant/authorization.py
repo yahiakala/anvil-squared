@@ -79,7 +79,7 @@ def get_permissions(tenant_id, user, tenant=None, usertenant=None):
         else:
             raise
     
-    return list(set(user_permissions))
+    return user_permissions_list
 
 
 def get_users_with_permission(tenant_id, permission, tenant=None):
