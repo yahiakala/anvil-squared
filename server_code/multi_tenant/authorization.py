@@ -58,7 +58,7 @@ def get_permissions(tenant_id, user, tenant=None, usertenant=None):
     # Cross check with plans table if it exists (saas app)
     try:
         plan_list = [i['name'] for i in tenant['plans'] or []]
-        plans = app_tables.plans.search(name=q.any_of(plan_list))  # Returns error if tbl doesn't exist
+        plans = app_tables.plans.search(name=q.any_of(*plan_list))  # Returns error if tbl doesn't exist
         if len(plans) > 0:
             account_permissions = []
             for plan in tenant['plans']:
