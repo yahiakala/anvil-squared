@@ -71,6 +71,11 @@ def get_permissions(tenant_id, user, tenant=None, usertenant=None):
             ]
         elif len(plans) > 0:
             user_permissions_list = []
+    except anvil.tables.TableError as e:
+        if 'No such column' in str(e):
+            pass
+        else:
+            raise
     except AttributeError as e:
         if 'No such app table' in str(e):
             pass
