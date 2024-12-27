@@ -58,8 +58,8 @@ def get_permissions(tenant_id, user, tenant=None, usertenant=None):
     # Cross check with plans table if it exists (saas app)
     try:
         plan_list = [i['name'] for i in tenant['plans'] or []]
-        plans = app_tables.plans.search(name=q.any_of(*plan_list))  # Returns error if tbl doesn't exist
-        if len(plans) > 0:
+        plans = app_tables.plans.search()  # Returns error if tbl doesn't exist
+        if len(plan_list) > 0:
             account_permissions = []
             for plan in tenant['plans']:
                 if plan['permissions']:
@@ -69,11 +69,8 @@ def get_permissions(tenant_id, user, tenant=None, usertenant=None):
             user_permissions_list = [
                 i for i in user_permissions_list if i in account_permissions_list
             ]
-    # except anvil.tables.TableError as e:
-    #     if 'Invalid query operator' in str(e):
-    #         pass
-    #     else:
-    #         raise
+        elif len(plans) > 0:
+            user_permissions_list = []
     except AttributeError as e:
         if 'No such app table' in str(e):
             pass
