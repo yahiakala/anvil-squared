@@ -1,0 +1,5 @@
+This is an Anvil app. Anvil API documentation is at https://anvil.works/docs/api
+
+Read the docs folder before starting your task.
+
+Ignore all linting errors. I use pre-commit anyway.

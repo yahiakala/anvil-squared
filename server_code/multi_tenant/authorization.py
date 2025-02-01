@@ -1,6 +1,6 @@
 import anvil.tables.query as q
-from anvil.tables import app_tables
 import anvil.users
+from anvil.tables import app_tables
 
 
 def verify_tenant(tenant_id, user, tenant=None, usertenant=None):
@@ -33,6 +33,31 @@ def validate_user(tenant_id, user, usertenant=None, permissions=None, tenant=Non
     return tenant, usertenant, permissions
 
 
+def get_plan_permissions(tenant):
+    """Get the permissions allowed by a tenant's subscription plan.
+    Returns all permissions if no plans table exists or if table exists but has no records.
+    """
+    try:
+        plan_list = [i["name"] for i in tenant["plans"] or []]  # Err col
+        plans = app_tables.plans.search()  # Err table
+
+        if len(plan_list) > 0:
+            account_permissions = []
+            for plan in tenant["plans"]:
+                if plan["permissions"]:
+                    for permission in plan["permissions"]:
+                        account_permissions.append(permission["name"])
+            return list(set(account_permissions))
+        elif len(plans) > 0:
+            return []
+        else:
+            return get_all_permissions()
+    except (anvil.tables.TableError, AttributeError) as e:
+        if "No such column" in str(e) or "No such app table" in str(e):
+            return get_all_permissions()
+        raise
+
+
 def get_permissions(tenant_id, user, tenant=None, usertenant=None):
     """Get the permissions of a user in a particular tenant."""
     tenant = (
@@ -54,37 +79,9 @@ def get_permissions(tenant_id, user, tenant=None, usertenant=None):
                     user_permissions.append(permission["name"])
 
     user_permissions_list = list(set(user_permissions))
-    
-    # Cross check with plans table if it exists (saas app)
-    try:
-        plan_list = [i['name'] for i in tenant['plans'] or []]  # Err col
-        plans = app_tables.plans.search()  # Err table
-        if len(plan_list) > 0:
-            account_permissions = []
-            for plan in tenant['plans']:
-                if plan['permissions']:
-                    for permission in plan['permissions']:
-                        account_permissions.append(permission["name"])
-            account_permissions_list = list(set(account_permissions))
-            user_permissions_list = [
-                i for i in user_permissions_list if i in account_permissions_list
-            ]
-        elif len(plans) > 0:
-            user_permissions_list = []
-    except anvil.tables.TableError as e:
-        if 'No such column' in str(e):
-            pass
-        else:
-            raise
-    except AttributeError as e:
-        if 'No such app table' in str(e):
-            pass
-        elif 'No such column' in str(e):
-            pass
-        else:
-            raise
-    
-    return user_permissions_list
+    plan_permissions = get_plan_permissions(tenant)
+
+    return [i for i in user_permissions_list if i in plan_permissions]
 
 
 def get_users_with_permission(tenant_id, permission, tenant=None):
@@ -156,7 +153,7 @@ def impersonate_user(tenant_id, email):
     member = app_tables.users.get(email=email)
     _, membertenant, _ = validate_user(tenant_id, member)
 
-    if 'dev' in permissions:
+    if "dev" in permissions:
         anvil.users.force_login(member)
         return member
     else:
@@ -166,5 +163,6 @@ def impersonate_user(tenant_id, email):
 @anvil.server.callable(require_user=True)
 def impersonate_user_squared(tenant_id, email):
     from ..helpers import run_callable
+
     run_callable()
     return impersonate_user(tenant_id, email)
